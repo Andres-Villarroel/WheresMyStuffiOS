@@ -10,10 +10,26 @@ import SwiftUI
 struct ContentView: View {
     var body: some View {
         VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+            HStack{
+                VStack {
+                    Text("Recently Added")
+                    Text("Your most recently added item will show up here")
+                        .padding()
+                        //.frame(maxHeight: .infinity)
+                        .background(Rectangle().stroke())
+                        .multilineTextAlignment(.center)
+                        
+                }
+                .padding()
+                VStack {
+                    Text("Recently Viewed")
+                    Text("Your last viewed item will appear here")
+                        .padding()
+                        .background(Rectangle().stroke())
+                        .multilineTextAlignment(.center)
+                }
+                .padding()
+            }
         }
         .padding()
     }
