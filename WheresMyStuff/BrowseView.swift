@@ -10,30 +10,19 @@ import SwiftUI
 struct BrowseView: View {
     var body: some View {
         NavigationStack {
+            
             VStack {
-                HStack{
-                    VStack {
-                        Text("Recently Added")
-                        Text("Your most recently added item will show up here")
-                            .padding()
-                            //.frame(maxHeight: .infinity)
-                            .background(Rectangle().stroke())
-                            .multilineTextAlignment(.center)
-                            
-                    }
+                Text("Browse")
+                RecentsCards()
+                
+                Text("Categories")
+                //add scrollview here
+                ScrollableGridView()
+                    .background(Color(.red))
                     .padding()
-                    VStack {
-                        Text("Recently Viewed")
-                        Text("Your last viewed item will appear here")
-                            .padding()
-                            .background(Rectangle().stroke())
-                            .multilineTextAlignment(.center)
-                    }
-                    .padding()
-                }
             }
-            .padding()
         }
+        .navigationTitle("Browse")
     }
 }
 
