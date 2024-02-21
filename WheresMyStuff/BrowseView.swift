@@ -12,6 +12,7 @@ struct BrowseView: View {
         NavigationStack {
             
             VStack {
+                
                 Text("Browse")
                 RecentsCards()
                 
@@ -20,9 +21,9 @@ struct BrowseView: View {
                 ScrollableGridView()
                     .background(Color(.red))
                     .padding()
+                
             }
         }
-        .navigationTitle("Browse")
     }
 }
 

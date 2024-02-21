@@ -8,21 +8,25 @@
 import SwiftUI
 
 struct TabBarView: View {
+    @State private var selection = 2
+    
     var body: some View {
-        TabView{
+        TabView(selection:$selection){
             AddItemView()
                 .tabItem{
                     Label("Add", systemImage: "plus")
                 }
+                .tag(1)
             BrowseView()
                 .tabItem {
-                    Label("Menu", systemImage: "list.dash")
+                    Label("Browse", systemImage: "list.dash")
                 }
-            
+                .tag(2)
             SearchView()
                 .tabItem {
                     Label("Search", systemImage: "magnifyingglass")
                 }
+                .tag(3)
         }
     }
 }

@@ -5,6 +5,11 @@
 //  Created by Andres Villarroel on 2/20/24.
 //
 
+
+/*
+ Try turning these default cards into views for a more seamless implmentation
+ in the future when you have to add the default behavior functionality
+ */
 import SwiftUI
 
 struct RecentsCards: View {

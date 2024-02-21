@@ -11,7 +11,8 @@ import SwiftUI
 struct WheresMyStuffApp: App {
     var body: some Scene {
         WindowGroup {
-            BrowseView()
+            TabBarView()
+            //BrowseView()
         }
     }
 }
