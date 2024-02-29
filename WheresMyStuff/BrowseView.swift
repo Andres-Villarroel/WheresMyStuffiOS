@@ -14,12 +14,14 @@ struct BrowseView: View {
             VStack {
                 
                 Text("Browse")
+                //consider the ContenetUnavailableView() here
                 RecentsCards()
                 
                 Text("Categories")
                 //add scrollview here
                 ScrollableGridView()
                     .background(Color(.red))
+                    .cornerRadius(30.0)
                     .padding()
                 
             }

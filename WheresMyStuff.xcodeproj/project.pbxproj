@@ -16,6 +16,7 @@
 		4450DEB32B851790007C0841 /* AddItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4450DEB22B851790007C0841 /* AddItemView.swift */; };
 		4450DEB52B859F86007C0841 /* ScrollableGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4450DEB42B859F86007C0841 /* ScrollableGridView.swift */; };
 		4450DEB72B85A1B7007C0841 /* RecentsCards.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4450DEB62B85A1B7007C0841 /* RecentsCards.swift */; };
+		44651AD02B8EB802009F2BFF /* ItemDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44651ACF2B8EB802009F2BFF /* ItemDataModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +30,7 @@
 		4450DEB22B851790007C0841 /* AddItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItemView.swift; sourceTree = "<group>"; };
 		4450DEB42B859F86007C0841 /* ScrollableGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollableGridView.swift; sourceTree = "<group>"; };
 		4450DEB62B85A1B7007C0841 /* RecentsCards.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentsCards.swift; sourceTree = "<group>"; };
+		44651ACF2B8EB802009F2BFF /* ItemDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDataModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +63,7 @@
 		4450DE9D2B850654007C0841 /* WheresMyStuff */ = {
 			isa = PBXGroup;
 			children = (
+				44651ACF2B8EB802009F2BFF /* ItemDataModel.swift */,
 				4450DE9E2B850654007C0841 /* WheresMyStuffApp.swift */,
 				4450DEA02B850654007C0841 /* BrowseView.swift */,
 				4450DEB62B85A1B7007C0841 /* RecentsCards.swift */,
@@ -158,6 +161,7 @@
 				4450DEAF2B8513F6007C0841 /* TabBarView.swift in Sources */,
 				4450DEB72B85A1B7007C0841 /* RecentsCards.swift in Sources */,
 				4450DE9F2B850654007C0841 /* WheresMyStuffApp.swift in Sources */,
+				44651AD02B8EB802009F2BFF /* ItemDataModel.swift in Sources */,
 				4450DEB32B851790007C0841 /* AddItemView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -298,8 +302,9 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = UIInterfaceOrientationLandscapeLeft;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -327,8 +332,9 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = UIInterfaceOrientationLandscapeLeft;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
