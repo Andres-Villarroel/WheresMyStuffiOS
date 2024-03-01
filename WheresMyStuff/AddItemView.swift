@@ -100,6 +100,7 @@ struct AddItemView: View {
                         }
                         //category = (category == "category") ? "" : category
                         let item = ItemDataModel(name: name, location: location, category: category, notes: notes)
+                        item.image = imageData
                         modelContext.insert(item)
                         
                         print("Printing swiftdata address:")

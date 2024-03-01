@@ -17,6 +17,7 @@
 		4450DEB52B859F86007C0841 /* ScrollableGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4450DEB42B859F86007C0841 /* ScrollableGridView.swift */; };
 		4450DEB72B85A1B7007C0841 /* RecentsCards.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4450DEB62B85A1B7007C0841 /* RecentsCards.swift */; };
 		44651AD02B8EB802009F2BFF /* ItemDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44651ACF2B8EB802009F2BFF /* ItemDataModel.swift */; };
+		44651AD32B91013A009F2BFF /* ItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44651AD22B91013A009F2BFF /* ItemCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +32,7 @@
 		4450DEB42B859F86007C0841 /* ScrollableGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollableGridView.swift; sourceTree = "<group>"; };
 		4450DEB62B85A1B7007C0841 /* RecentsCards.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentsCards.swift; sourceTree = "<group>"; };
 		44651ACF2B8EB802009F2BFF /* ItemDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDataModel.swift; sourceTree = "<group>"; };
+		44651AD22B91013A009F2BFF /* ItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +66,7 @@
 			isa = PBXGroup;
 			children = (
 				44651ACF2B8EB802009F2BFF /* ItemDataModel.swift */,
+				44651AD22B91013A009F2BFF /* ItemCell.swift */,
 				4450DE9E2B850654007C0841 /* WheresMyStuffApp.swift */,
 				4450DEA02B850654007C0841 /* BrowseView.swift */,
 				4450DEB62B85A1B7007C0841 /* RecentsCards.swift */,
@@ -157,6 +160,7 @@
 			files = (
 				4450DEB12B8515DD007C0841 /* SearchView.swift in Sources */,
 				4450DEB52B859F86007C0841 /* ScrollableGridView.swift in Sources */,
+				44651AD32B91013A009F2BFF /* ItemCell.swift in Sources */,
 				4450DEA12B850654007C0841 /* BrowseView.swift in Sources */,
 				4450DEAF2B8513F6007C0841 /* TabBarView.swift in Sources */,
 				4450DEB72B85A1B7007C0841 /* RecentsCards.swift in Sources */,

@@ -16,6 +16,7 @@ class ItemDataModel {
     let date: Date
     var name: String
     var location: String
+    //@Attribute(.externalStorage) var image : Data?
     var image : Data?
     var category: String
     var notes: String
