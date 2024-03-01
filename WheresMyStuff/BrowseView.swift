@@ -25,11 +25,7 @@ struct BrowseView: View {
                 
                 Text("Categories")
                 //add scrollview here
-                List {
-                    ForEach(items) { item in
-                        Image(uiImage: UIImage(data: item.image!)!)
-                    }
-                }
+                ItemsListView()
 //                ScrollableGridView()
 //                    .background(Color(.red))
 //                    .cornerRadius(30.0)

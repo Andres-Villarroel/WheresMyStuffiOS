@@ -6,8 +6,10 @@
 //
 
 import SwiftUI
+//import SwiftData
 
 struct ScrollableGridView: View {
+    
     var body: some View {
         
         let placeholderLayout = [
