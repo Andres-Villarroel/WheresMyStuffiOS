@@ -8,14 +8,16 @@
 import Foundation
 
 class Category: ObservableObject{
-    //@Published var categoryList = [String]()
     @Published var categoryList = ["Miscellaneous"]
+    //@Published var categoryList: [String] = []
+    
+//    init() {
+//        self.categoryList = ["Miscellaneous"]
+//    }
     
     func appendNewCategory(newCat: String){
         categoryList.append(newCat)
     }
     
-    func returnCatList() -> [String]{
-        return categoryList
-    }
+    
 }

@@ -13,7 +13,8 @@ struct BrowseView: View {
     @Environment(\.modelContext) var modelContext
     @Query var items: [ItemDataModel]
     //@Query var categories: [CategoryDataModel]
-    @ObservedObject var pickerItems = Category()    //to be used for the list
+    //@ObservedObject var pickerItems = Category()    //to be used for the list
+    @ObservedObject var pickerItems: Category
     
     
     @State private var showingAlert = false
@@ -49,7 +50,6 @@ struct BrowseView: View {
                 
                 Text("Categories")
                 //add list here
-                
                  
                 List (pickerItems.categoryList, id:\.self) { categories in
                     Text(categories)
@@ -91,6 +91,6 @@ struct BrowseView: View {
 }
 
 #Preview {
-    BrowseView()
+    BrowseView(pickerItems: Category())
  
 }
