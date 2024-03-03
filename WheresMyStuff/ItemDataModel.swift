@@ -7,7 +7,6 @@
 
 import Foundation
 import SwiftData
-import UIKit
 
 @Model
 class ItemDataModel {

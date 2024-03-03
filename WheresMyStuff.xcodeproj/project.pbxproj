@@ -19,6 +19,10 @@
 		44651AD02B8EB802009F2BFF /* ItemDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44651ACF2B8EB802009F2BFF /* ItemDataModel.swift */; };
 		44651AD32B91013A009F2BFF /* ItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44651AD22B91013A009F2BFF /* ItemCell.swift */; };
 		44651AD52B918664009F2BFF /* ItemsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44651AD42B918664009F2BFF /* ItemsListView.swift */; };
+		44651AD72B93B93B009F2BFF /* CategoryDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44651AD62B93B93B009F2BFF /* CategoryDataModel.swift */; };
+		44651AD92B93BA15009F2BFF /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44651AD82B93BA15009F2BFF /* ContentView.swift */; };
+		44651ADB2B93C003009F2BFF /* CustomContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44651ADA2B93C003009F2BFF /* CustomContainer.swift */; };
+		44651ADD2B93EDE7009F2BFF /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44651ADC2B93EDE7009F2BFF /* Category.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +39,10 @@
 		44651ACF2B8EB802009F2BFF /* ItemDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDataModel.swift; sourceTree = "<group>"; };
 		44651AD22B91013A009F2BFF /* ItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCell.swift; sourceTree = "<group>"; };
 		44651AD42B918664009F2BFF /* ItemsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsListView.swift; sourceTree = "<group>"; };
+		44651AD62B93B93B009F2BFF /* CategoryDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryDataModel.swift; sourceTree = "<group>"; };
+		44651AD82B93BA15009F2BFF /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		44651ADA2B93C003009F2BFF /* CustomContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomContainer.swift; sourceTree = "<group>"; };
+		44651ADC2B93EDE7009F2BFF /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,9 +76,13 @@
 			isa = PBXGroup;
 			children = (
 				44651ACF2B8EB802009F2BFF /* ItemDataModel.swift */,
+				44651AD62B93B93B009F2BFF /* CategoryDataModel.swift */,
+				44651AD82B93BA15009F2BFF /* ContentView.swift */,
+				44651ADC2B93EDE7009F2BFF /* Category.swift */,
 				44651AD22B91013A009F2BFF /* ItemCell.swift */,
 				4450DE9E2B850654007C0841 /* WheresMyStuffApp.swift */,
 				4450DEA02B850654007C0841 /* BrowseView.swift */,
+				44651ADA2B93C003009F2BFF /* CustomContainer.swift */,
 				4450DEB62B85A1B7007C0841 /* RecentsCards.swift */,
 				4450DEB42B859F86007C0841 /* ScrollableGridView.swift */,
 				44651AD42B918664009F2BFF /* ItemsListView.swift */,
@@ -162,14 +174,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				4450DEB12B8515DD007C0841 /* SearchView.swift in Sources */,
+				44651ADD2B93EDE7009F2BFF /* Category.swift in Sources */,
 				4450DEB52B859F86007C0841 /* ScrollableGridView.swift in Sources */,
+				44651AD92B93BA15009F2BFF /* ContentView.swift in Sources */,
 				44651AD32B91013A009F2BFF /* ItemCell.swift in Sources */,
 				4450DEA12B850654007C0841 /* BrowseView.swift in Sources */,
 				4450DEAF2B8513F6007C0841 /* TabBarView.swift in Sources */,
 				4450DEB72B85A1B7007C0841 /* RecentsCards.swift in Sources */,
 				4450DE9F2B850654007C0841 /* WheresMyStuffApp.swift in Sources */,
 				44651AD02B8EB802009F2BFF /* ItemDataModel.swift in Sources */,
+				44651ADB2B93C003009F2BFF /* CustomContainer.swift in Sources */,
 				44651AD52B918664009F2BFF /* ItemsListView.swift in Sources */,
+				44651AD72B93B93B009F2BFF /* CategoryDataModel.swift in Sources */,
 				4450DEB32B851790007C0841 /* AddItemView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -11,13 +11,25 @@ import SwiftData
 @main
 struct WheresMyStuffApp: App {
     
+    
     var body: some Scene {
+        
         WindowGroup {
-            TabBarView()
+            ContentView()
+                //.environmentObject(pickerOptions)
         }
-        .modelContainer(for: [ItemDataModel.self])    //creates storage for the app
+        
+        .modelContainer(CustomContainer.create())
+        /*
+         .modelContainer(for: [
+             ItemDataModel.self,
+             CategoryDataModel.self
+         
+         ])    //creates storage for the app and adds data models to it
+         */
     }
 }
+//for gaining direct access to the sqlite database that Swift Data uses
 extension ModelContext {
     var sqliteCommand: String {
         if let url = container.configurations.first?.url.path(percentEncoded: false) {

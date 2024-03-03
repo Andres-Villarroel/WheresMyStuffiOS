@@ -12,8 +12,11 @@ import PhotosUI
 
 struct AddItemView: View {
     
+    //SwiftData
     @Query var items: [ItemDataModel]
+    @Query var categories: [CategoryDataModel]
     @Environment(\.modelContext) var modelContext
+    @ObservedObject var pickerItems = Category()    //to be used for the Picker()
     
     //for the photo picker feature
     @State private var photoPickerItem: PhotosPickerItem?
@@ -25,6 +28,8 @@ struct AddItemView: View {
     @State private var location = ""
     @State private var notes = ""
     @State private var imageData: Data?
+    
+    
     
     var body: some View {
         
@@ -40,7 +45,8 @@ struct AddItemView: View {
                 //this section is for the optional data fields
                 Section(header: Text("Optional")){
                     
-                    //this lets users choose an image they own--------------------------
+                    //--------this lets users choose an image they own---------------------
+                    // MARK: Photo Picker
                     PhotosPicker(selection: $photoPickerItem, matching: .images){
 
                         let chosenImage: UIImage? = avatarImage
@@ -71,13 +77,13 @@ struct AddItemView: View {
                      }
                     //-------------END PHOTO PICKER SECTION-------------------------------
                     
-                    //modify this once the UI has been completed
-                    Picker("Select a Category:", selection: $category){
-                        Text("categories").tag("categories")
-                        Text("Desk").tag("Desk")
-                        Text("Garage").tag("Garage")
-                        Text("Kitchen").tag("Kitchen")
-                    }
+                    //Category Picker
+                    Picker("Choose Category", selection: $category, content: {
+                        ForEach(pickerItems.returnCatList(), id: \.self) { categoryQuery in
+                            Text(categoryQuery)
+                        }
+                        
+                    })
                     
                     TextField("Notes", text: $notes, axis: .vertical)
                         .padding()
@@ -89,12 +95,6 @@ struct AddItemView: View {
                     
                     Button ("Save Item"){
                         
-                        //send to browse screen when tapped
-                        //modelContext.insert(itemDataModel)
-                        /*
-                         create an ItemDataModel and fill it with the form variables
-                         insert it into the context
-                         */
                         if(category == "category"){
                             category = ""
                         }
@@ -104,6 +104,7 @@ struct AddItemView: View {
                         modelContext.insert(item)
                         
                         print("Printing swiftdata address:")
+                        //COMMENT THIS OUT WHEN DEBUGGING IS NOT NEEDED
                         print(modelContext.sqliteCommand)
                         
                         //CLEAR FORM WHEN FINISHED
