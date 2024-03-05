@@ -9,13 +9,33 @@ import SwiftUI
 import SwiftData
 
 struct ItemListView: View {
-    @Query (sort: \ItemDataModel.date, order: .reverse) var items: [ItemDataModel]
+    @Query var items: [ItemDataModel]
+    @Binding var selection: Int
     
     var body: some View {
-//        List (items){ item in
-//            Text(item.name)
-//        }
-        Text(items[0].name)
+        NavigationStack{
+            
+            List (items){ item in
+                Text(item.name)
+            }
+            .overlay {
+                if items.isEmpty {
+                    ContentUnavailableView{
+                        Label("Nothing here...", systemImage: "questionmark")
+                    } description: {
+                        Text("No items found, go to the add screen to begin tracking your items.")
+                    } actions: {
+                        Text("Add an Item")
+                            .foregroundStyle(Color.blue)
+                            .onTapGesture {
+                                selection = 1
+                            }
+                    }
+                }
+            }
+            
+        }
+        //Text(items[0].name)
     }
 }
 
@@ -29,6 +49,6 @@ struct ItemListView: View {
     container.mainContext.insert(firstItem)
     container.mainContext.insert(secondItem)
     container.mainContext.insert(thirdItem)
-    return ItemListView()
+    return ItemListView(selection: .constant(2))
         .modelContainer(container)
 }

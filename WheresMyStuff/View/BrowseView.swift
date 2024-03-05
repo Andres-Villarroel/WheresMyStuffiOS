@@ -13,6 +13,7 @@ struct BrowseView: View {
     @Environment(\.modelContext) var modelContext
     @Query var items: [ItemDataModel]
     @Query var categories: [CategoryDataModel]
+    @Binding var selection: Int
     
     //@ObservedObject var pickerItems: Category //to use the observed object, uncomment this...
     
@@ -44,38 +45,16 @@ struct BrowseView: View {
                         }
                     }
                 
-                //consider the ContenetUnavailableView() here
+                //consider the ContentUnavailableView() here
                 RecentsCards()
                 
                 Text("Categories")
                 //add list here
                 
+                //ItemListView(selection: $selection)
                  List(categories[0].categoryList, id:\.self){ cat in
                      Text(cat)
                  }
-                 
-                /*
-                 //...remove from comment to use
-                 List (pickerItems.categoryList, id:\.self) { categories in
-                 Text(categories)
-                 }
-                 */
-                 
-                /*
-                 Note: you cant use observable, stateobject, and environment to make the array of category strings into a list since they do not have an identifiable like UUID or adhere to the Identifiable protocol. You tried using a swift data model to make the category list as it automatically conforms to the identifiable protocol but you found it damn near impossible to convert it into an array as that is what the Picker() view needs to read from
-                 */
-                /*
-                 The List {} below could not be completed due to above note.
-                 List{
-                     ForEach(pickerItems.categoryList) { category in
-                         //REPLACE TEXT() BELOW WITH A NAVIGATION LINK
-                         Text(category)
-                     }
-                 }
-                 */
-                //items wont show up here due to limitations of Xcode's Live Preview, just run to view them
-                //ItemsListView()
-                
             }
         }
     }
@@ -100,8 +79,6 @@ struct BrowseView: View {
 }
 
 #Preview {
-    //BrowseView(pickerItems: Category())   //..and this
-    //BrowseView()
     let container = try! ModelContainer(for: CategoryDataModel.self, ItemDataModel.self, configurations: ModelConfiguration(isStoredInMemoryOnly: true))
     let image = UIImage(named: "tiltedParrot")!
     let data = image.pngData()
@@ -111,7 +88,7 @@ struct BrowseView: View {
     let tempArray = ["testMiscellaneous"]
     let newCategory = CategoryDataModel(categoryList: tempArray)
     container.mainContext.insert(newCategory)
-        return BrowseView()
+    return BrowseView(selection: .constant(2))
             .modelContainer(container)
     
 }
