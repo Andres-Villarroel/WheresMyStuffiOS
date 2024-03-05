@@ -8,12 +8,13 @@
 import SwiftUI
 
 struct ContentView: View {
-    //@StateObject var pickerOptions = Category()
-    @StateObject var pickerOptions: Category = Category()
+    //to use below: uncomment it...
+    //@StateObject var pickerOptions: Category = Category()
     
     var body: some View {
         //TabBarView().environmentObject(pickerOptions)
-        TabBarView(pickerItems: pickerOptions)
+        //TabBarView(pickerItems: pickerOptions)    //...and this
+        TabBarView()
     }
 }
 

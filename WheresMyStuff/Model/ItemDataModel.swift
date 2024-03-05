@@ -15,8 +15,7 @@ class ItemDataModel {
     let date: Date
     var name: String
     var location: String
-    //@Attribute(.externalStorage) var image : Data?
-    var image : Data?
+    @Attribute(.externalStorage) var image : Data?
     var category: String
     var notes: String
     
@@ -25,7 +24,6 @@ class ItemDataModel {
         self.date = date
         self.name = name
         self.location = location
-        //self.image = image
         self.category = category
         self.notes = notes
     }

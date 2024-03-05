@@ -9,16 +9,21 @@ import SwiftUI
 
 struct TabBarView: View {
     @State private var selection = 2
-    @ObservedObject var pickerItems: Category
+    
+    //To use pickerItems again, uncomment the line below...
+    //@ObservedObject var pickerItems: Category
     
     var body: some View {
         TabView(selection:$selection){
-            AddItemView(pickerItems: pickerItems)
+            
+            //AddItemView(pickerItems: pickerItems) //...and this
+            AddItemView()
                 .tabItem{
                     Label("Add", systemImage: "plus")
                 }
                 .tag(1)
-            BrowseView(pickerItems: pickerItems)
+            //BrowseView(pickerItems: pickerItems)  //..and this
+            BrowseView()
                 .tabItem {
                     Label("Browse", systemImage: "list.dash")
                 }
@@ -35,6 +40,7 @@ struct TabBarView: View {
 #Preview {
     //@ObservedObject var pickerItems: Category
     //TabBarView(pickerItems: pickerItems)
-    TabBarView(pickerItems: Category())
+    //TabBarView(pickerItems: Category())
+    TabBarView()
     
 }

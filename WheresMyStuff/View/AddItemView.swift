@@ -16,7 +16,10 @@ struct AddItemView: View {
     @Query var items: [ItemDataModel]
     @Query var categories: [CategoryDataModel]
     @Environment(\.modelContext) var modelContext
-    @ObservedObject var pickerItems: Category   //to be used for the Picker()
+    /*
+    //to use pickerItems again, uncomment the line below...
+     @ObservedObject var pickerItems: Category   //to be used for the Picker()
+     */
     
     //for the photo picker feature
     @State private var photoPickerItem: PhotosPickerItem?
@@ -78,12 +81,16 @@ struct AddItemView: View {
                     //-------------END PHOTO PICKER SECTION-------------------------------
                     
                     // MARK: Category Picker
-                    Picker("Choose Category", selection: $category, content: {
-                        ForEach(pickerItems.categoryList, id: \.self) { categoryQuery in
-                            Text(categoryQuery).tag(categoryQuery)
-                        }
-                        
-                    })
+                    //TODO: Add Picker()
+                    
+                    /*
+                     //..and this
+                     Picker("Choose Category", selection: $category, content: {
+                     ForEach(pickerItems.categoryList, id: \.self) { categoryQuery in
+                     Text(categoryQuery).tag(categoryQuery)
+                     }
+                     })
+                     */
                     
                     TextField("Notes", text: $notes, axis: .vertical)
                         .padding()
@@ -128,7 +135,8 @@ struct AddItemView: View {
 }
 
 #Preview {
-    AddItemView(pickerItems: Category())
+    //AddItemView(pickerItems: Category())  //..and this
+    AddItemView()
 }
 /*
  PhotosPickerView()

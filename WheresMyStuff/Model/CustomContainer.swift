@@ -28,7 +28,8 @@ actor CustomContainer {
         
         //the default values defined in the container file runs all the time upon startup. if the user were to delete the Miscellaneous category, it would continue to show up which would be annoying.
         if shouldCreateDefaults {
-            container.mainContext.insert(CategoryDataModel(name: "Miscellaneous"))
+            let tempStringArray = ["Miscellaneous"]
+            container.mainContext.insert(CategoryDataModel(categoryList: tempStringArray))
             shouldCreateDefaults = false
         }
         return container

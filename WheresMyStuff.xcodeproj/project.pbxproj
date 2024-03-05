@@ -75,20 +75,8 @@
 		4450DE9D2B850654007C0841 /* WheresMyStuff */ = {
 			isa = PBXGroup;
 			children = (
-				44651ACF2B8EB802009F2BFF /* ItemDataModel.swift */,
-				44651AD62B93B93B009F2BFF /* CategoryDataModel.swift */,
-				44651AD82B93BA15009F2BFF /* ContentView.swift */,
-				44651ADC2B93EDE7009F2BFF /* Category.swift */,
-				44651AD22B91013A009F2BFF /* ItemCell.swift */,
-				4450DE9E2B850654007C0841 /* WheresMyStuffApp.swift */,
-				4450DEA02B850654007C0841 /* BrowseView.swift */,
-				44651ADA2B93C003009F2BFF /* CustomContainer.swift */,
-				4450DEB62B85A1B7007C0841 /* RecentsCards.swift */,
-				4450DEB42B859F86007C0841 /* ScrollableGridView.swift */,
-				44651AD42B918664009F2BFF /* ItemsListView.swift */,
-				4450DEB02B8515DD007C0841 /* SearchView.swift */,
-				4450DEAE2B8513F6007C0841 /* TabBarView.swift */,
-				4450DEB22B851790007C0841 /* AddItemView.swift */,
+				44651ADE2B9687DF009F2BFF /* Model */,
+				44651ADF2B9687F6009F2BFF /* View */,
 				4450DEA22B850656007C0841 /* Assets.xcassets */,
 				4450DEA42B850656007C0841 /* Preview Content */,
 			);
@@ -101,6 +89,34 @@
 				4450DEA52B850656007C0841 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		44651ADE2B9687DF009F2BFF /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				44651ACF2B8EB802009F2BFF /* ItemDataModel.swift */,
+				44651AD62B93B93B009F2BFF /* CategoryDataModel.swift */,
+				44651ADC2B93EDE7009F2BFF /* Category.swift */,
+				4450DE9E2B850654007C0841 /* WheresMyStuffApp.swift */,
+				44651ADA2B93C003009F2BFF /* CustomContainer.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		44651ADF2B9687F6009F2BFF /* View */ = {
+			isa = PBXGroup;
+			children = (
+				44651AD82B93BA15009F2BFF /* ContentView.swift */,
+				44651AD22B91013A009F2BFF /* ItemCell.swift */,
+				4450DEA02B850654007C0841 /* BrowseView.swift */,
+				4450DEB62B85A1B7007C0841 /* RecentsCards.swift */,
+				4450DEB42B859F86007C0841 /* ScrollableGridView.swift */,
+				44651AD42B918664009F2BFF /* ItemsListView.swift */,
+				4450DEB02B8515DD007C0841 /* SearchView.swift */,
+				4450DEAE2B8513F6007C0841 /* TabBarView.swift */,
+				4450DEB22B851790007C0841 /* AddItemView.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
