@@ -17,7 +17,7 @@ struct AddItemView: View {
     @Query var categories: [CategoryDataModel]
     @Environment(\.modelContext) var modelContext
     /*
-    //to use pickerItems again, uncomment the line below...
+     //to use pickerItems again, uncomment the line below...
      @ObservedObject var pickerItems: Category   //to be used for the Picker()
      */
     
@@ -51,7 +51,7 @@ struct AddItemView: View {
                     //--------this lets users choose an image they own---------------------
                     // MARK: Photo Picker
                     PhotosPicker(selection: $photoPickerItem, matching: .images){
-
+                        
                         let chosenImage: UIImage? = avatarImage
                         if chosenImage != nil{
                             Image(uiImage: avatarImage!)
@@ -61,27 +61,31 @@ struct AddItemView: View {
                         } else{
                             Text("Choose Image")
                         }
-                     }
-                     .onChange(of: photoPickerItem){ _, _ in
-                         Task{
-                             if let photoPickerItem,
-                                let data = try? await photoPickerItem.loadTransferable(type: Data.self){
-                                 if let image = UIImage(data: data){
-                                     avatarImage = image
-                                     imageData = data
-                                 }
-                             }
-                             photoPickerItem = nil
-                         }
-                     }
-                     .frame(maxWidth: .infinity)
-                     .alignmentGuide(.listRowSeparatorLeading) { viewDimensions in
-                     return 0
-                     }
+                    }
+                    .onChange(of: photoPickerItem){ _, _ in
+                        Task{
+                            if let photoPickerItem,
+                               let data = try? await photoPickerItem.loadTransferable(type: Data.self){
+                                if let image = UIImage(data: data){
+                                    avatarImage = image
+                                    imageData = data
+                                }
+                            }
+                            photoPickerItem = nil
+                        }
+                    }
+                    .frame(maxWidth: .infinity)
+                    .alignmentGuide(.listRowSeparatorLeading) { viewDimensions in
+                        return 0
+                    }
                     //-------------END PHOTO PICKER SECTION-------------------------------
                     
                     // MARK: Category Picker
-                    //TODO: Add Picker()
+                    Picker("Choose Category", selection: $category){
+                        ForEach(categories[0].categoryList, id: \.self) { cat in
+                            Text(cat)
+                        }
+                    }
                     
                     /*
                      //..and this
@@ -102,9 +106,11 @@ struct AddItemView: View {
                     
                     Button ("Save Item"){
                         
-                        if(category == "category"){
-                            category = ""
-                        }
+                        /*
+                         if(category == "category"){
+                         category = ""
+                         }
+                         */
                         //category = (category == "category") ? "" : category
                         let item = ItemDataModel(name: name, location: location, category: category, notes: notes)
                         item.image = imageData
@@ -112,6 +118,7 @@ struct AddItemView: View {
                         
                         print("Printing swiftdata address:")
                         //COMMENT THIS OUT WHEN DEBUGGING IS NOT NEEDED
+                        //TODO: Delete this line when publishing final product
                         print(modelContext.sqliteCommand)
                         
                         //CLEAR FORM WHEN FINISHED
@@ -136,7 +143,14 @@ struct AddItemView: View {
 
 #Preview {
     //AddItemView(pickerItems: Category())  //..and this
-    AddItemView()
+    //AddItemView()
+    let container = try! ModelContainer(for: CategoryDataModel.self, configurations: ModelConfiguration(isStoredInMemoryOnly: true))
+    let tempArray = ["Miscellaneous"]
+    let newCategory = CategoryDataModel(categoryList: tempArray)
+    container.mainContext.insert(newCategory)
+    return AddItemView()
+        .modelContainer(container)
+    
 }
 /*
  PhotosPickerView()

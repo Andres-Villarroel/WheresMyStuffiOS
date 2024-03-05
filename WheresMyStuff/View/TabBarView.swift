@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct TabBarView: View {
     @State private var selection = 2
@@ -41,6 +42,15 @@ struct TabBarView: View {
     //@ObservedObject var pickerItems: Category
     //TabBarView(pickerItems: pickerItems)
     //TabBarView(pickerItems: Category())
-    TabBarView()
+    
+    //return TabBarView()
+    //preview kept crashing, reason was that the isolated container used in AddItemView and BrowseView() should also be used here as it calls those views in TabView()
+    let container = try! ModelContainer(for: CategoryDataModel.self, configurations: ModelConfiguration(isStoredInMemoryOnly: true))
+    let tempArray = ["Miscellaneous"]
+    let newCategory = CategoryDataModel(categoryList: tempArray)
+    container.mainContext.insert(newCategory)
+        return TabBarView()
+            .modelContainer(container)
+
     
 }

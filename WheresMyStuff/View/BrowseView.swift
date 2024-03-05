@@ -16,7 +16,6 @@ struct BrowseView: View {
     
     //@ObservedObject var pickerItems: Category //to use the observed object, uncomment this...
     
-    
     @State private var showingAlert = false
     @State private var newCategoryName = ""
     
@@ -51,12 +50,10 @@ struct BrowseView: View {
                 Text("Categories")
                 //add list here
                 
-                 
                  List(categories[0].categoryList, id:\.self){ cat in
                      Text(cat)
                  }
                  
-                
                 /*
                  //...remove from comment to use
                  List (pickerItems.categoryList, id:\.self) { categories in
@@ -105,7 +102,12 @@ struct BrowseView: View {
 #Preview {
     //BrowseView(pickerItems: Category())   //..and this
     //BrowseView()
-    let container = try! ModelContainer(for: CategoryDataModel.self, configurations: ModelConfiguration(isStoredInMemoryOnly: true))
+    let container = try! ModelContainer(for: CategoryDataModel.self, ItemDataModel.self, configurations: ModelConfiguration(isStoredInMemoryOnly: true))
+    let image = UIImage(named: "tiltedParrot")!
+    let data = image.pngData()
+    let newItem = ItemDataModel(name: "test name", location: "test location", category: "test category", notes: "test notes")
+    newItem.image = data
+    container.mainContext.insert(newItem)
     let tempArray = ["testMiscellaneous"]
     let newCategory = CategoryDataModel(categoryList: tempArray)
     container.mainContext.insert(newCategory)
@@ -113,4 +115,3 @@ struct BrowseView: View {
             .modelContainer(container)
     
 }
-

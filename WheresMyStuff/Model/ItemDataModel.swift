@@ -12,19 +12,32 @@ import SwiftData
 class ItemDataModel {
     
     @Attribute(.unique) var id: String = UUID().uuidString
+    @Attribute(.externalStorage) var image : Data?
     let date: Date
     var name: String
     var location: String
-    @Attribute(.externalStorage) var image : Data?
     var category: String
     var notes: String
+    var lastViewDate: Date
     
-    init(id: String = UUID().uuidString, date: Date = .now, name: String, location: String, category: String, notes: String) {
+    /*
+     init(id: String = UUID().uuidString, date: Date = .now, name: String, location: String, category: String, notes: String) {
+     self.id = id
+     self.date = date
+     self.name = name
+     self.location = location
+     self.category = category
+     self.notes = notes
+     }
+     
+     */
+    init(id: String = UUID().uuidString, date: Date = .now, name: String, location: String, category: String, notes: String, lastViewDate: Date = .now) {
         self.id = id
         self.date = date
         self.name = name
         self.location = location
         self.category = category
         self.notes = notes
+        self.lastViewDate = lastViewDate
     }
 }
