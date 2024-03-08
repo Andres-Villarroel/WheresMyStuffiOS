@@ -26,7 +26,6 @@ struct ItemCardPreview: View {
                 .resizable()
                 .scaledToFit()
                 .padding(.top)
-                //.frame()
             Text(itemName)
         }
         //.padding(/*@START_MENU_TOKEN@*/EdgeInsets()/*@END_MENU_TOKEN@*/)

@@ -47,11 +47,10 @@ struct BrowseView: View {
                 
                 //consider the ContentUnavailableView() here
                 RecentsCards()
+                    .frame(maxHeight: 200)
                 
                 Text("Categories")
                 //add list here
-                
-                //ItemListView(selection: $selection)
                  List(categories[0].categoryList, id:\.self){ cat in
                      Text(cat)
                  }
@@ -75,7 +74,7 @@ struct BrowseView: View {
         //COMMENT THIS OUT WHEN DEBUGGING IS NOT NEEDED
         print(modelContext.sqliteCommand)
     }
-    
+
 }
 
 #Preview {

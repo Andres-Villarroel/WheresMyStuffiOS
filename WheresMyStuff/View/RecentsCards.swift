@@ -19,34 +19,64 @@ struct RecentsCards: View {
     
     var body: some View {
         HStack{
+            Spacer()
             VStack {
+                //.frame(width: 170, height: 150)
                 Text("Recently Added")
                 if items.isEmpty{
-                    Text("Your most recently added item will show up here")
-                        .padding()
-                        .background(Rectangle().stroke())
-                        .multilineTextAlignment(.center)
                     
+                    ContentUnavailableView {
+                        Image(systemName: "questionmark")
+                    } description: {
+                        Text("Your most recently added item will appear here")
+                    }
+                        .frame(width: 170, height: 150)
                 } else{
                     ItemCardPreview(imageData: items[0].image, itemName: items[0].name)
                 }
                 
             }
-            .padding()
             
+            Spacer()
             VStack {
                 Text("Recently Viewed")
                 if(items.isEmpty){
-                    Text("Recently Viewed")
-                    Text("Your last viewed item will appear here")
-                        .padding()
-                        .background(Rectangle().stroke())
-                        .multilineTextAlignment(.center)
+                    ContentUnavailableView {
+                        Image(systemName: "questionmark")
+                    } description: {
+                        Text("Your most recently seen item will appear here")
+                    }
+                        .frame(width: 170, height: 150)
+                        
                 } else {
                     RecentlyViewedView()
                 }
+                /*
+                 Text("Recently Viewed")
+                 if(items.isEmpty){
+                     ContentUnavailableView {
+                         Image(systemName: "questionmark")
+                     } description: {
+                         Text("Recently Viewed")
+                     }
+                 } else {
+                     RecentlyViewedView()
+                 }
+                 */
+                /*
+                 Rectangle()
+                     .stroke(style: StrokeStyle(lineWidth: 2, dash: [5]))
+                     .foregroundColor(.black)
+                     .frame(width: 170, height: 150)
+                     .overlay {
+                         ContentUnavailableView {
+                             Image(systemName: "questionmark")
+                         }
+                     }
+                 */
             }
-            .padding()
+        
+            Spacer()
         }
         
     }
@@ -59,7 +89,7 @@ struct RecentsCards: View {
     let data = image.pngData()
     let newItem = ItemDataModel(name: "test name", location: "test location", category: "test category", notes: "test notes")
     newItem.image = data
-    container.mainContext.insert(newItem)
+    //container.mainContext.insert(newItem)
     return RecentsCards()
         .modelContainer(container)
 }

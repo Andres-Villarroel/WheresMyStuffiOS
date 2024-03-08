@@ -12,7 +12,7 @@ struct ItemsListView: View {
     
     //access to swiftdata model context and swiftdata model
     @Environment(\.modelContext) var context
-    @Query var items: [ItemDataModel]
+    var items: [ItemDataModel]
     
     var body: some View {
         
@@ -47,5 +47,34 @@ struct ItemsListView: View {
 }
 
 #Preview {
-    ItemsListView()
+    let container = try! ModelContainer(for: CategoryDataModel.self, ItemDataModel.self, configurations: ModelConfiguration(isStoredInMemoryOnly: true))
+    
+    let image = UIImage(named: "tiltedParrot")!
+    let data = image.pngData()
+    
+    let newItem = ItemDataModel(name: "test name", location: "test location", category: "test category", notes: "test notes")
+    newItem.image = data
+    let firstItem = ItemDataModel(name: "Pen", location: "Desk", category: "Desk", notes: "First added")
+    firstItem.image = data
+    let secondItem = ItemDataModel(name: "PSP", location: "Closet middle", category: "Closet", notes: "Second added")
+    secondItem.image = data
+    let thirdItem = ItemDataModel(name: "Dehumidifier", location: "Chloe's Crate", category: "My Bedroom", notes: "Third added")
+    thirdItem.image = data
+    
+    //container.mainContext.insert(newItem)
+//    container.mainContext.insert(firstItem)
+//    container.mainContext.insert(secondItem)
+//    container.mainContext.insert(thirdItem)
+    let itemsArray = [
+        firstItem,
+        secondItem,
+        thirdItem
+    ]
+    
+    let tempArray = ["testMiscellaneous"]
+    let newCategory = CategoryDataModel(categoryList: tempArray)
+    
+    container.mainContext.insert(newCategory)
+    return ItemsListView(items: itemsArray)
+        .modelContainer(container)
 }

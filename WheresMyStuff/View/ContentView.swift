@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct ContentView: View {
     //to use below: uncomment it...
@@ -19,5 +20,11 @@ struct ContentView: View {
 }
 
 #Preview {
-    ContentView()
+    
+    let container = try! ModelContainer(for: CategoryDataModel.self, ItemDataModel.self, configurations: ModelConfiguration(isStoredInMemoryOnly: true))
+    let tempArray = ["Miscellaneous"]
+    let newCategory = CategoryDataModel(categoryList: tempArray)
+    container.mainContext.insert(newCategory)
+        return ContentView()
+            .modelContainer(container)
 }
