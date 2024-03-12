@@ -16,10 +16,8 @@ struct AddItemView: View {
     @Query var items: [ItemDataModel]
     @Query var categories: [CategoryDataModel]
     @Environment(\.modelContext) var modelContext
-    /*
-     //to use pickerItems again, uncomment the line below...
-     @ObservedObject var pickerItems: Category   //to be used for the Picker()
-     */
+    @Binding var selection: Int
+
     
     //for the photo picker feature
     @State private var photoPickerItem: PhotosPickerItem?
@@ -37,7 +35,9 @@ struct AddItemView: View {
     var body: some View {
         
         NavigationView{
+            
             Form{
+                
                 //This section is for the required data fields
                 Section(header: Text("Required")){
                     
@@ -87,14 +87,6 @@ struct AddItemView: View {
                         }
                     }
                     
-                    /*
-                     //..and this
-                     Picker("Choose Category", selection: $category, content: {
-                     ForEach(pickerItems.categoryList, id: \.self) { categoryQuery in
-                     Text(categoryQuery).tag(categoryQuery)
-                     }
-                     })
-                     */
                     
                     TextField("Notes", text: $notes, axis: .vertical)
                         .padding()
@@ -105,16 +97,10 @@ struct AddItemView: View {
                     Spacer()
                     
                     Button ("Save Item"){
-                        
-                        /*
-                         if(category == "category"){
-                         category = ""
-                         }
-                         */
-                        //category = (category == "category") ? "" : category
+
                         let item = ItemDataModel(name: name, location: location, category: category, notes: notes)
                         item.image = imageData
-                        modelContext.insert(item)
+                        //modelContext.insert(item)
                         
                         print("Printing swiftdata address:")
                         //COMMENT THIS OUT WHEN DEBUGGING IS NOT NEEDED
@@ -129,35 +115,28 @@ struct AddItemView: View {
                         imageData = nil
                         avatarImage = nil
                         //sends user to BrowseView
+                        selection = 2
+                        //self.selection = 2
                     }
                     //input validation to ensure name and location are filled out
                     .disabled(name.isEmpty || location.isEmpty)
                     Spacer()
                 }
+                
             }
             .navigationTitle("Add Item")
+            
         }
         
     }
 }
 
 #Preview {
-    //AddItemView(pickerItems: Category())  //..and this
-    //AddItemView()
     let container = try! ModelContainer(for: CategoryDataModel.self, configurations: ModelConfiguration(isStoredInMemoryOnly: true))
     let tempArray = ["Miscellaneous"]
     let newCategory = CategoryDataModel(categoryList: tempArray)
     container.mainContext.insert(newCategory)
-    return AddItemView()
+    return AddItemView(selection: .constant(2))
         .modelContainer(container)
     
 }
-/*
- PhotosPickerView()
- .frame(maxWidth: .infinity)
- //this modifier fixes the row divider bug
- .alignmentGuide(.listRowSeparatorLeading) { viewDimensions in
- return 0
- }
- 
- */

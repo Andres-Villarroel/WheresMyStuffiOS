@@ -13,10 +13,8 @@ struct BrowseView: View {
     @Environment(\.modelContext) var modelContext
     @Query var items: [ItemDataModel]
     @Query var categories: [CategoryDataModel]
-    @Binding var selection: Int
     
-    //@ObservedObject var pickerItems: Category //to use the observed object, uncomment this...
-    
+    //used for adding a new category
     @State private var showingAlert = false
     @State private var newCategoryName = ""
     
@@ -27,6 +25,7 @@ struct BrowseView: View {
             VStack {
                 
                 Text("Browse")
+                //this section add the tool bar button to add a new category
                     .toolbar{
                         ToolbarItem(placement: .topBarTrailing){
                             Button("Add Category"){
@@ -45,12 +44,12 @@ struct BrowseView: View {
                         }
                     }
                 
-                //consider the ContentUnavailableView() here
+                //These show the recently viewed and added items views
                 RecentsCards()
                     .frame(maxHeight: 200)
                 
-                Text("Categories")
-                //add list here
+                //lists the categories
+                Text("Categories")  //Consider making this a tab selection view to choose to browse between items and categories
                  List(categories[0].categoryList, id:\.self){ cat in
                      Text(cat)
                  }
@@ -58,13 +57,9 @@ struct BrowseView: View {
         }
     }
     
+    
     func submit(){
         //add newCategoryName to categories array
-        //pickerOptions.append(newCategoryName)
-        //let newCategory = CategoryDataModel(name: newCategoryName)
-        //modelContext.insert(newCategory)
-        //pickerItems.categoryList.append(newCategoryName)
-        //pickerItems.appendNewCategory(newCat: newCategoryName)    //..and this
         categories[0].categoryList.append(newCategoryName)
         
         print("You entered \(newCategoryName)")
@@ -87,7 +82,7 @@ struct BrowseView: View {
     let tempArray = ["testMiscellaneous"]
     let newCategory = CategoryDataModel(categoryList: tempArray)
     container.mainContext.insert(newCategory)
-    return BrowseView(selection: .constant(2))
+    return BrowseView()
             .modelContainer(container)
     
 }

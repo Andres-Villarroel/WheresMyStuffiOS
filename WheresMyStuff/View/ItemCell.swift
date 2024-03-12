@@ -13,10 +13,19 @@ struct ItemCell: View {
                 .resizable()
                 .aspectRatio(contentMode: .fit)
                 .frame(maxWidth: 100)
-            Text(item.name)
-            
-            Text(item.location)
-            //Text(item.notes), add this when item is tapped. maybe notify that it has notes
+            Spacer()
+            VStack {
+                
+                Text(item.name)
+                    .font(.title2)
+                    .bold()
+                
+                Text(item.location)
+                    .font(.subheadline)
+                //Text(item.notes), add this when item is tapped. maybe notify that it has notes
+                
+            }
+            Spacer()
         }
         .padding()
         .background(Color.purple)

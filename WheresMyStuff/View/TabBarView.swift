@@ -10,21 +10,17 @@ import SwiftData
 
 struct TabBarView: View {
     @State var selection = 2
-    
-    //To use pickerItems again, uncomment the line below...
-    //@ObservedObject var pickerItems: Category
-    
+
     var body: some View {
         TabView(selection:$selection){
             
-            //AddItemView(pickerItems: pickerItems) //...and this
-            AddItemView()
+            AddItemView(selection: $selection)
                 .tabItem{
                     Label("Add", systemImage: "plus")
                 }
                 .tag(1)
-            //BrowseView(pickerItems: pickerItems)  //..and this
-            BrowseView(selection: $selection)
+
+            BrowseView()
                 .tabItem {
                     Label("Browse", systemImage: "list.dash")
                 }

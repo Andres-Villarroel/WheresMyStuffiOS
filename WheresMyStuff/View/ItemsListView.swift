@@ -9,43 +9,55 @@ import SwiftUI
 import SwiftData
 
 struct ItemsListView: View {
+    //TODO: Add item sheet code here
     
     //access to swiftdata model context and swiftdata model
     @Environment(\.modelContext) var context
+    @State var shouldPresentSheet = false
+    
     var items: [ItemDataModel]
     
     var body: some View {
-        
-        List{
-            ForEach(items) { item in
-                ItemCell(item: item)
-            }
-            .onDelete{ indexSet in
-                for index in indexSet{
-                    context.delete(items[index])
+        NavigationStack {
+            
+            List{
+                ForEach(items) { item in
+                    ItemCell(item: item)
+                        .onTapGesture {
+                            shouldPresentSheet.toggle()
+                            item.lastViewDate = Date.now
+                        }
+                        .sheet(isPresented: $shouldPresentSheet, content: {
+                            ItemSheetView(item: item)
+                        })
                 }
-            }
-            //making the item cells look better
-            .listRowSeparator(.hidden)
-            .listRowBackground(
-                RoundedRectangle(cornerRadius: 5)
-                    .background(.clear)
+                .onDelete{ indexSet in
+                    for index in indexSet{
+                        context.delete(items[index])
+                    }
+                }
+                //making the item cells look better
+                .listRowSeparator(.hidden)
+                .listRowBackground(
+                    RoundedRectangle(cornerRadius: 5)
+                        .background(.clear)
                     //.foregroundColor(.white)
-                    .padding(
-                        EdgeInsets(
-                            top: 2,
-                            leading: 10,
-                            bottom: 2, 
-                            trailing: 10
+                        .padding(
+                            EdgeInsets(
+                                top: 2,
+                                leading: 10,
+                                bottom: 2,
+                                trailing: 10
+                            )
                         )
-                    )
-            )
+                )
+                
+                
+            }
             
         }
-        
     }
 }
-
 #Preview {
     let container = try! ModelContainer(for: CategoryDataModel.self, ItemDataModel.self, configurations: ModelConfiguration(isStoredInMemoryOnly: true))
     
