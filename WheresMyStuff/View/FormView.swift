@@ -21,7 +21,7 @@ struct FormView: View {
     
     //these will be saved using Swift Data using ItemDataModel
     @State private var name = ""
-    @State private var category = ""
+    @State private var category = "Miscellaneous"
     @State private var location = ""
     @State private var notes = ""
     @State private var imageData: Data?

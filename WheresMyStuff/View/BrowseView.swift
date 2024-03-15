@@ -50,12 +50,25 @@ struct BrowseView: View {
                 
                 //lists the categories
                 Text("Categories")  //Consider making this a tab selection view to choose to browse between items and categories
-                 List(categories[0].categoryList, id:\.self){ cat in
-                     Text(cat)
-                 }
-            }
-        }
-    }
+                
+                //TODO: use navigation links to create a list of only the tapped category
+                List(categories[0].categoryList, id:\.self){ cat in
+                    //use cat to select the category
+                    
+                    NavigationLink {
+                        //navigation link/destination using cat
+                        CategoryItemsListView(chosenCategory: cat)
+                            .navigationTitle(cat)
+                    } label: {
+                        Text(cat)
+                    }
+                                                
+                }
+            }//end vstack
+            
+        }// end navigation stack
+        
+    }//end body
     
     
     func submit(){
@@ -65,9 +78,9 @@ struct BrowseView: View {
         print("You entered \(newCategoryName)")
         newCategoryName = ""
         
-        print("Printing swiftdata address:")
         //COMMENT THIS OUT WHEN DEBUGGING IS NOT NEEDED
-        print(modelContext.sqliteCommand)
+        //print("Printing swiftdata address:")
+        //print(modelContext.sqliteCommand)
     }
 
 }
@@ -76,7 +89,7 @@ struct BrowseView: View {
     let container = try! ModelContainer(for: CategoryDataModel.self, ItemDataModel.self, configurations: ModelConfiguration(isStoredInMemoryOnly: true))
     let image = UIImage(named: "tiltedParrot")!
     let data = image.pngData()
-    let newItem = ItemDataModel(name: "test name", location: "test location", category: "test category", notes: "test notes")
+    let newItem = ItemDataModel(name: "test name", location: "test location", category: "Miscellaneous", notes: "test notes")
     newItem.image = data
     container.mainContext.insert(newItem)
     let tempArray = ["testMiscellaneous"]

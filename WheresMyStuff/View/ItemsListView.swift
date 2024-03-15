@@ -9,7 +9,6 @@ import SwiftUI
 import SwiftData
 
 struct ItemsListView: View {
-    //TODO: Add item sheet code here
     
     //access to swiftdata model context and swiftdata model
     @Environment(\.modelContext) var context
