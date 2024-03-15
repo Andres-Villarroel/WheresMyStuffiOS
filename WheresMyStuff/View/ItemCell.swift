@@ -1,6 +1,6 @@
 
 import SwiftUI
-import SwiftData
+import SwiftData //note that this is only used in the preview
 
 struct ItemCell: View {
     var item: ItemDataModel

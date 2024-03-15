@@ -16,8 +16,8 @@ struct CategoryItemsListView: View {
     
     //setting up swiftdata prerequisites
     @Query var items: [ItemDataModel]
-    @State var shouldPresentSheet = false
     @Environment(\.modelContext) var context
+    @State var itemSelected: ItemDataModel?     //used to help implement sheet mechanic
     
     //initializing items by filtering out the items that do not match the chosen category
     init(chosenCategory: String) {
@@ -30,22 +30,20 @@ struct CategoryItemsListView: View {
         //creates the list
         List{
             ForEach(items) { item in
-                ItemCell(item: item)
                 //if an item it tapped upon, a detail sheet will appear
-                    .onTapGesture {
-                        shouldPresentSheet.toggle()
+                    Button {
+                        itemSelected = item
                         item.lastViewDate = Date.now
+                    } label: {
+                        ItemCell(item: item)
                     }
-                    .sheet(isPresented: $shouldPresentSheet, content: {
-                        ItemSheetView(item: item)
-                    })
+                    .buttonStyle(PlainButtonStyle())
             }
             .onDelete{ indexSet in
                 for index in indexSet{
                     context.delete(items[index])
                 }
             }
-            
             
             //making the item cells look better
             .listRowSeparator(.hidden)
@@ -62,9 +60,26 @@ struct CategoryItemsListView: View {
                         )
                     )
             )
-            
-            
+        }//end list
+        .sheet(item: $itemSelected) { item in
+            ItemSheetView(item: item)
         }
+        /*
+         let array = []
+
+             @State private var isPresentingUser: User? = nil
+
+             var body: some View {
+                 ForEach(array, id: \.id) { user in array
+                     Button(user.name) {
+                         isPresentingUser = user
+                     }
+                 }
+                 .sheet(item: $isPresentingUser) { user in
+                     SheetView(name: user.name)
+                 }
+             }
+         */
         
     }
 }

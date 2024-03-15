@@ -5,6 +5,8 @@
 //  Created by Andres Villarroel on 2/29/24.
 //
 
+//TODO: REFACTOR THIS FILE ALONG WITH CATEGORYITEMSLISTVIEW() AS THY APPEAR THE SAME AND USE THE SAME LAYOUT FOR THE SHEETS FEATURE
+
 import SwiftUI
 import SwiftData
 
@@ -12,7 +14,7 @@ struct ItemsListView: View {
     
     //access to swiftdata model context and swiftdata model
     @Environment(\.modelContext) var context
-    @State var shouldPresentSheet = false
+    @State var itemSelected: ItemDataModel? //to be used to help implement sheet feature
     
     var items: [ItemDataModel]
     
@@ -20,15 +22,16 @@ struct ItemsListView: View {
         NavigationStack {
             
             List{
+                //using ForEach due to its access to the .onDelete modifier
                 ForEach(items) { item in
-                    ItemCell(item: item)
-                        .onTapGesture {
-                            shouldPresentSheet.toggle()
+                        Button {
+                            itemSelected = item
                             item.lastViewDate = Date.now
+                        } label: {
+                            ItemCell(item: item)
+                            
                         }
-                        .sheet(isPresented: $shouldPresentSheet, content: {
-                            ItemSheetView(item: item)
-                        })
+                        .buttonStyle(PlainButtonStyle())
                 }
                 .onDelete{ indexSet in
                     for index in indexSet{
@@ -50,10 +53,10 @@ struct ItemsListView: View {
                             )
                         )
                 )
-                
-                
+            }//end list
+            .sheet(item: $itemSelected) { item in
+                ItemSheetView(item: item)
             }
-            
         }
     }
 }

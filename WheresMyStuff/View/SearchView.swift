@@ -33,7 +33,7 @@ struct SearchView: View {
     }
     
     var body: some View {
-        //ItemsListView()
+        
         NavigationStack {
             ItemsListView(items: searchResults)
                 .navigationTitle("Search Items")

@@ -89,9 +89,19 @@ struct BrowseView: View {
     let container = try! ModelContainer(for: CategoryDataModel.self, ItemDataModel.self, configurations: ModelConfiguration(isStoredInMemoryOnly: true))
     let image = UIImage(named: "tiltedParrot")!
     let data = image.pngData()
-    let newItem = ItemDataModel(name: "test name", location: "test location", category: "Miscellaneous", notes: "test notes")
+    
+    let newItem = ItemDataModel(name: "test name", location: "test location", category: "testMiscellaneous", notes: "test notes")
+    let secondItem = ItemDataModel(name: "second name", location: "second location", category: "testMiscellaneous", notes: "test notes")
+    let thirdItem = ItemDataModel(name: "third name", location: "third location", category: "testMiscellaneous", notes: "test notes")
+    
     newItem.image = data
+    secondItem.image = data
+    thirdItem.image = data
+    
     container.mainContext.insert(newItem)
+    container.mainContext.insert(secondItem)
+    container.mainContext.insert(thirdItem)
+    
     let tempArray = ["testMiscellaneous"]
     let newCategory = CategoryDataModel(categoryList: tempArray)
     container.mainContext.insert(newCategory)
