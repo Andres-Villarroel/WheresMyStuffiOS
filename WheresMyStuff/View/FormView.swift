@@ -14,6 +14,7 @@ struct FormView: View {
     
     @Query var categories: [CategoryDataModel]
     @Environment(\.modelContext) var modelContext
+    @FocusState private var isFocused: Bool
     
     //for the photo picker feature
     @State private var photoPickerItem: PhotosPickerItem?
@@ -38,8 +39,9 @@ struct FormView: View {
             Section(header: Text("Required")){
                 
                 TextField("Name", text: $name)
+//                    .focused($isFocused)
                 TextField("Location", text: $location)
-                
+//                    .focused($isFocused)
             }
             
             //this section is for the optional data fields
@@ -86,6 +88,7 @@ struct FormView: View {
                 
                 
                 TextField("Notes", text: $notes, axis: .vertical)
+//                    .focused($isFocused)
                     .padding()
             }
             
@@ -128,6 +131,9 @@ struct FormView: View {
             //putting the screen change button here does NOT work
             
         }//end form
+//        .onTapGesture {
+//            isFocused = false
+//        }
     }
 }
 

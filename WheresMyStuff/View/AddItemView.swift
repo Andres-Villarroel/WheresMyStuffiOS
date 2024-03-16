@@ -17,19 +17,51 @@ struct AddItemView: View {
     @Binding var selection: Int
     @State var item = ItemDataModel(name: "", location: "", category: "Miscellaneous", notes: "")
     
+    //used for adding a new category
+    @State private var showingAlert = false
+    @State private var newCategoryName = ""
     
     var body: some View {
         VStack {
             NavigationView {
                 
                 FormView(nextScreen: changeScreen, item: $item )
-                
-                .navigationTitle("Add Item")
+                    .navigationTitle("Add Item")
+                //this section add the tool bar button to add a new category
+                    .toolbar{
+                        ToolbarItem(placement: .topBarTrailing){
+                            Button("Add Category"){
+                                showingAlert.toggle()
+                                print(modelContext.sqliteCommand)
+                            }
+                            .alert("Enter Category Name", isPresented: $showingAlert){
+                                TextField("Enter Cateory Name", text: $newCategoryName)
+                                Button("OK", action: submit)
+                                Button("Cancel") {
+                                    newCategoryName = ""
+                                }
+                            } message: {
+                                Text("")
+                            }
+                        }
+                    }
                 
             } //end navigationView
         }// end vstack
+        
     }// end body
     
+    func submit(){
+        //add newCategoryName to categories array
+        categories[0].categoryList.append(newCategoryName)
+        
+        print("You entered \(newCategoryName)")
+        newCategoryName = ""
+        
+        //COMMENT THIS OUT WHEN DEBUGGING IS NOT NEEDED
+        //print("Printing swiftdata address:")
+        //print(modelContext.sqliteCommand)
+    }
     func changeScreen(){
         selection = 2
     }

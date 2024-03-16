@@ -64,23 +64,6 @@ struct CategoryItemsListView: View {
         .sheet(item: $itemSelected) { item in
             ItemSheetView(item: item)
         }
-        /*
-         let array = []
-
-             @State private var isPresentingUser: User? = nil
-
-             var body: some View {
-                 ForEach(array, id: \.id) { user in array
-                     Button(user.name) {
-                         isPresentingUser = user
-                     }
-                 }
-                 .sheet(item: $isPresentingUser) { user in
-                     SheetView(name: user.name)
-                 }
-             }
-         */
-        
     }
 }
 

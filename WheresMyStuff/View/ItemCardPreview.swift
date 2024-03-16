@@ -15,23 +15,26 @@ struct ItemCardPreview: View {
     //@Query(sort: \ItemDataModel.date, order: .reverse) var items: [ItemDataModel]
     let imageData: Data?
     let itemName: String
+    let itemLocation: String
     
     var body: some View {
         
-//        let itemImage = UIImage(data: items[0].image!)  //this is an optional
-//        let itemName = items[0].name
         let imageProcessed = UIImage(data: imageData!)
         VStack{
             Image(uiImage: imageProcessed!)
                 .resizable()
                 .scaledToFit()
-                .padding(.top)
+                //.scaledToFill()
+                .padding(/*@START_MENU_TOKEN@*/EdgeInsets()/*@END_MENU_TOKEN@*/)
             Text(itemName)
+                .bold()
+                .padding(.bottom, 1)
+            Text(itemLocation)
+            .padding(.bottom, 10)
         }
-        //.padding(/*@START_MENU_TOKEN@*/EdgeInsets()/*@END_MENU_TOKEN@*/)
-        .padding(5)
         .background(Color.gray)
         .cornerRadius(10.0)
+        
     }
 }
 
@@ -39,5 +42,5 @@ struct ItemCardPreview: View {
     let image = UIImage(named: "tiltedParrot")!
     let data = image.pngData()
     
-    return ItemCardPreview(imageData: data, itemName: "testName")
+    return ItemCardPreview(imageData: data, itemName: "testName", itemLocation: "bottom closet")
 }

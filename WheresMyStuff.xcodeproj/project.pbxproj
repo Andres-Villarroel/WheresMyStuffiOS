@@ -18,6 +18,7 @@
 		44592F702B9FDB980047E8B5 /* ItemSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44592F6F2B9FDB980047E8B5 /* ItemSheetView.swift */; };
 		44592F9A2BA139F50047E8B5 /* FormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44592F992BA139F50047E8B5 /* FormView.swift */; };
 		44592F9D2BA36D310047E8B5 /* CategoryItemsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44592F9C2BA36D310047E8B5 /* CategoryItemsListView.swift */; };
+		44592FA92BA52D6F0047E8B5 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44592FA82BA52D6F0047E8B5 /* SearchViewModel.swift */; };
 		44651AD02B8EB802009F2BFF /* ItemDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44651ACF2B8EB802009F2BFF /* ItemDataModel.swift */; };
 		44651AD32B91013A009F2BFF /* ItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44651AD22B91013A009F2BFF /* ItemCell.swift */; };
 		44651AD52B918664009F2BFF /* ItemsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44651AD42B918664009F2BFF /* ItemsListView.swift */; };
@@ -42,6 +43,7 @@
 		44592F6F2B9FDB980047E8B5 /* ItemSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemSheetView.swift; sourceTree = "<group>"; };
 		44592F992BA139F50047E8B5 /* FormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormView.swift; sourceTree = "<group>"; };
 		44592F9C2BA36D310047E8B5 /* CategoryItemsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryItemsListView.swift; sourceTree = SOURCE_ROOT; };
+		44592FA82BA52D6F0047E8B5 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		44651ACF2B8EB802009F2BFF /* ItemDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDataModel.swift; sourceTree = "<group>"; };
 		44651AD22B91013A009F2BFF /* ItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCell.swift; sourceTree = "<group>"; };
 		44651AD42B918664009F2BFF /* ItemsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsListView.swift; sourceTree = "<group>"; };
@@ -83,6 +85,7 @@
 		4450DE9D2B850654007C0841 /* WheresMyStuff */ = {
 			isa = PBXGroup;
 			children = (
+				44592FA72BA52D550047E8B5 /* View Model */,
 				44651ADE2B9687DF009F2BFF /* Model */,
 				44651ADF2B9687F6009F2BFF /* View */,
 				4450DEA22B850656007C0841 /* Assets.xcassets */,
@@ -97,6 +100,14 @@
 				4450DEA52B850656007C0841 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		44592FA72BA52D550047E8B5 /* View Model */ = {
+			isa = PBXGroup;
+			children = (
+				44592FA82BA52D6F0047E8B5 /* SearchViewModel.swift */,
+			);
+			path = "View Model";
 			sourceTree = "<group>";
 		};
 		44651ADE2B9687DF009F2BFF /* Model */ = {
@@ -114,9 +125,9 @@
 		44651ADF2B9687F6009F2BFF /* View */ = {
 			isa = PBXGroup;
 			children = (
+				44651AD22B91013A009F2BFF /* ItemCell.swift */,
 				44592F9C2BA36D310047E8B5 /* CategoryItemsListView.swift */,
 				44651AD82B93BA15009F2BFF /* ContentView.swift */,
-				44651AD22B91013A009F2BFF /* ItemCell.swift */,
 				4450DEA02B850654007C0841 /* BrowseView.swift */,
 				4450DEB62B85A1B7007C0841 /* RecentsCards.swift */,
 				44651AE42B97C5D7009F2BFF /* RecentlyViewedView.swift */,
@@ -205,6 +216,7 @@
 				44592F702B9FDB980047E8B5 /* ItemSheetView.swift in Sources */,
 				44651ADD2B93EDE7009F2BFF /* Category.swift in Sources */,
 				44592F9D2BA36D310047E8B5 /* CategoryItemsListView.swift in Sources */,
+				44592FA92BA52D6F0047E8B5 /* SearchViewModel.swift in Sources */,
 				44651AD92B93BA15009F2BFF /* ContentView.swift in Sources */,
 				44651AD32B91013A009F2BFF /* ItemCell.swift in Sources */,
 				4450DEA12B850654007C0841 /* BrowseView.swift in Sources */,
@@ -358,6 +370,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UIRequiresFullScreen = NO;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = UIInterfaceOrientationLandscapeLeft;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
@@ -388,6 +401,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UIRequiresFullScreen = NO;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = UIInterfaceOrientationLandscapeLeft;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;

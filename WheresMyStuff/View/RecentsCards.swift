@@ -32,7 +32,7 @@ struct RecentsCards: View {
                     }
                         .frame(width: 170, height: 150)
                 } else{
-                    ItemCardPreview(imageData: items[0].image, itemName: items[0].name)
+                    ItemCardPreview(imageData: items[0].image, itemName: items[0].name, itemLocation: items[0].location)
                 }
                 
             }
@@ -51,29 +51,6 @@ struct RecentsCards: View {
                 } else {
                     RecentlyViewedView()
                 }
-                /*
-                 Text("Recently Viewed")
-                 if(items.isEmpty){
-                     ContentUnavailableView {
-                         Image(systemName: "questionmark")
-                     } description: {
-                         Text("Recently Viewed")
-                     }
-                 } else {
-                     RecentlyViewedView()
-                 }
-                 */
-                /*
-                 Rectangle()
-                     .stroke(style: StrokeStyle(lineWidth: 2, dash: [5]))
-                     .foregroundColor(.black)
-                     .frame(width: 170, height: 150)
-                     .overlay {
-                         ContentUnavailableView {
-                             Image(systemName: "questionmark")
-                         }
-                     }
-                 */
             }
         
             Spacer()

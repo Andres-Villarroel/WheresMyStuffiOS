@@ -14,7 +14,7 @@ struct RecentlyViewedView: View {
     
     var body: some View {
         
-        ItemCardPreview(imageData: items[0].image, itemName: items[0].name)
+        ItemCardPreview(imageData: items[0].image, itemName: items[0].name, itemLocation: items[0].location)
     }
 }
 

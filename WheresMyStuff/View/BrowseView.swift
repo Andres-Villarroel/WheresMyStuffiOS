@@ -14,10 +14,6 @@ struct BrowseView: View {
     @Query var items: [ItemDataModel]
     @Query var categories: [CategoryDataModel]
     
-    //used for adding a new category
-    @State private var showingAlert = false
-    @State private var newCategoryName = ""
-    
     var body: some View {
         
         NavigationStack {
@@ -25,24 +21,6 @@ struct BrowseView: View {
             VStack {
                 
                 Text("Browse")
-                //this section add the tool bar button to add a new category
-                    .toolbar{
-                        ToolbarItem(placement: .topBarTrailing){
-                            Button("Add Category"){
-                                showingAlert.toggle()
-                                print(modelContext.sqliteCommand)
-                            }
-                            .alert("Enter Category Name", isPresented: $showingAlert){
-                                TextField("Enter Cateory Name", text: $newCategoryName)
-                                Button("OK", action: submit)
-                                Button("Cancel") {
-                                    newCategoryName = ""
-                                }
-                            } message: {
-                                Text("")
-                            }
-                        }
-                    }
                 
                 //These show the recently viewed and added items views
                 RecentsCards()
@@ -62,27 +40,10 @@ struct BrowseView: View {
                     } label: {
                         Text(cat)
                     }
-                                                
                 }
             }//end vstack
-            
         }// end navigation stack
-        
     }//end body
-    
-    
-    func submit(){
-        //add newCategoryName to categories array
-        categories[0].categoryList.append(newCategoryName)
-        
-        print("You entered \(newCategoryName)")
-        newCategoryName = ""
-        
-        //COMMENT THIS OUT WHEN DEBUGGING IS NOT NEEDED
-        //print("Printing swiftdata address:")
-        //print(modelContext.sqliteCommand)
-    }
-
 }
 
 #Preview {
