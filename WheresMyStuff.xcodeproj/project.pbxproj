@@ -19,6 +19,8 @@
 		44592F9A2BA139F50047E8B5 /* FormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44592F992BA139F50047E8B5 /* FormView.swift */; };
 		44592F9D2BA36D310047E8B5 /* CategoryItemsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44592F9C2BA36D310047E8B5 /* CategoryItemsListView.swift */; };
 		44592FA92BA52D6F0047E8B5 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44592FA82BA52D6F0047E8B5 /* SearchViewModel.swift */; };
+		44592FAB2BA67EC80047E8B5 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44592FAA2BA67EC80047E8B5 /* ImagePicker.swift */; };
+		44592FAD2BA682C90047E8B5 /* TestImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44592FAC2BA682C90047E8B5 /* TestImagePicker.swift */; };
 		44651AD02B8EB802009F2BFF /* ItemDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44651ACF2B8EB802009F2BFF /* ItemDataModel.swift */; };
 		44651AD32B91013A009F2BFF /* ItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44651AD22B91013A009F2BFF /* ItemCell.swift */; };
 		44651AD52B918664009F2BFF /* ItemsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44651AD42B918664009F2BFF /* ItemsListView.swift */; };
@@ -44,6 +46,8 @@
 		44592F992BA139F50047E8B5 /* FormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormView.swift; sourceTree = "<group>"; };
 		44592F9C2BA36D310047E8B5 /* CategoryItemsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryItemsListView.swift; sourceTree = SOURCE_ROOT; };
 		44592FA82BA52D6F0047E8B5 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
+		44592FAA2BA67EC80047E8B5 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ImagePicker.swift; path = WheresMyStuff/View/ImagePicker.swift; sourceTree = SOURCE_ROOT; };
+		44592FAC2BA682C90047E8B5 /* TestImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestImagePicker.swift; sourceTree = "<group>"; };
 		44651ACF2B8EB802009F2BFF /* ItemDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDataModel.swift; sourceTree = "<group>"; };
 		44651AD22B91013A009F2BFF /* ItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCell.swift; sourceTree = "<group>"; };
 		44651AD42B918664009F2BFF /* ItemsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsListView.swift; sourceTree = "<group>"; };
@@ -85,9 +89,9 @@
 		4450DE9D2B850654007C0841 /* WheresMyStuff */ = {
 			isa = PBXGroup;
 			children = (
-				44592FA72BA52D550047E8B5 /* View Model */,
 				44651ADE2B9687DF009F2BFF /* Model */,
 				44651ADF2B9687F6009F2BFF /* View */,
+				44592FA72BA52D550047E8B5 /* View Model */,
 				4450DEA22B850656007C0841 /* Assets.xcassets */,
 				4450DEA42B850656007C0841 /* Preview Content */,
 			);
@@ -105,6 +109,7 @@
 		44592FA72BA52D550047E8B5 /* View Model */ = {
 			isa = PBXGroup;
 			children = (
+				44592FAA2BA67EC80047E8B5 /* ImagePicker.swift */,
 				44592FA82BA52D6F0047E8B5 /* SearchViewModel.swift */,
 			);
 			path = "View Model";
@@ -137,6 +142,7 @@
 				4450DEAE2B8513F6007C0841 /* TabBarView.swift */,
 				4450DEB22B851790007C0841 /* AddItemView.swift */,
 				44592F992BA139F50047E8B5 /* FormView.swift */,
+				44592FAC2BA682C90047E8B5 /* TestImagePicker.swift */,
 				44592F6F2B9FDB980047E8B5 /* ItemSheetView.swift */,
 			);
 			path = View;
@@ -218,6 +224,7 @@
 				44592F9D2BA36D310047E8B5 /* CategoryItemsListView.swift in Sources */,
 				44592FA92BA52D6F0047E8B5 /* SearchViewModel.swift in Sources */,
 				44651AD92B93BA15009F2BFF /* ContentView.swift in Sources */,
+				44592FAB2BA67EC80047E8B5 /* ImagePicker.swift in Sources */,
 				44651AD32B91013A009F2BFF /* ItemCell.swift in Sources */,
 				4450DEA12B850654007C0841 /* BrowseView.swift in Sources */,
 				44651AE12B977DF7009F2BFF /* ItemCardPreview.swift in Sources */,
@@ -228,6 +235,7 @@
 				44651AD02B8EB802009F2BFF /* ItemDataModel.swift in Sources */,
 				44651ADB2B93C003009F2BFF /* CustomContainer.swift in Sources */,
 				44651AD52B918664009F2BFF /* ItemsListView.swift in Sources */,
+				44592FAD2BA682C90047E8B5 /* TestImagePicker.swift in Sources */,
 				44651AD72B93B93B009F2BFF /* CategoryDataModel.swift in Sources */,
 				44592F9A2BA139F50047E8B5 /* FormView.swift in Sources */,
 				4450DEB32B851790007C0841 /* AddItemView.swift in Sources */,
@@ -367,6 +375,7 @@
 				DEVELOPMENT_TEAM = 9Q257VGY8J;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "This app needs to capture images to show in the app.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -398,6 +407,7 @@
 				DEVELOPMENT_TEAM = 9Q257VGY8J;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "This app needs to capture images to show in the app.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
