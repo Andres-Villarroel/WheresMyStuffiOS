@@ -12,6 +12,7 @@ struct ItemSheetView: View {
     
     let item: ItemDataModel
     @Environment(\.dismiss) private var dismiss
+    @State private var showEditItem = false
     
     var body: some View {
         NavigationStack {
@@ -35,8 +36,19 @@ struct ItemSheetView: View {
                 
             }
             .toolbar{
-                Button("Dismiss"){
-                    dismiss()
+                ToolbarItem(placement: .topBarTrailing){
+                    Button("Edit"){
+                        showEditItem.toggle()
+                    }
+                    .sheet (isPresented: $showEditItem) {
+                        //TODO: ADD EDIT VIEW HERE
+                        EditItemView(item: item)
+                    }
+                }
+                ToolbarItem(placement: .topBarLeading){
+                    Button("Dismiss"){
+                        dismiss()
+                    }
                 }
             }
         }

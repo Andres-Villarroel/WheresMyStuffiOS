@@ -38,6 +38,7 @@ struct ItemsListView: View {
                         context.delete(items[index])
                     }
                 }
+                
                 //making the item cells look better
                 .listRowSeparator(.hidden)
                 .listRowBackground(

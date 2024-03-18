@@ -22,10 +22,12 @@ struct AddItemView: View {
     @State private var newCategoryName = ""
     
     var body: some View {
+        
         VStack {
-            NavigationView {
+            NavigationStack {
                 
                 FormView(nextScreen: changeScreen, item: $item )
+//                FormView(item: $item)
                     .navigationTitle("Add Item")
                 //this section add the tool bar button to add a new category
                     .toolbar{
@@ -46,7 +48,7 @@ struct AddItemView: View {
                         }
                     }
                 
-            } //end navigationView
+            } //end navigationStack
         }// end vstack
         
     }// end body
