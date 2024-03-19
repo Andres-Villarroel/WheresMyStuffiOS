@@ -8,8 +8,10 @@
 import SwiftUI
 import SwiftData
 import PhotosUI
+import SwiftUI_NotificationBanner
 
 struct FormView: View {
+    @EnvironmentObject var notificationBanner: DYNotificationHandler
     var nextScreen: () -> Void  //for switching tabview
     
     @Query var categories: [CategoryDataModel]
@@ -47,7 +49,6 @@ struct FormView: View {
             Section(header: Text("Optional")){
                 //--------this lets users choose an image they own---------------------
                 Menu {
-                    
                     Button ("Choose from library") {
                         shouldPresentPhotoPicker.toggle()
                     }// end menu button 1
@@ -70,20 +71,6 @@ struct FormView: View {
                 .sheet(isPresented: $useCamera) {
                     ImagePicker(sourceType: .camera, selectedImage: $avatarImage)
                 }
-                
-                // MARK: Photo Picker Section
-                //                PhotosPicker(selection: $photoPickerItem, matching: .images){
-                //
-                //                    let chosenImage: UIImage? = avatarImage
-                //                    if chosenImage != nil{
-                //                        Image(uiImage: avatarImage!)
-                //                            .resizable()
-                //                            .aspectRatio(contentMode: .fill)
-                //                            .frame(maxWidth: 80)
-                //                    } else{
-                //                        Text("Choose Image")
-                //                    }
-                //                }
                 .onChange(of: photoPickerItem){ _, _ in
                     Task{
                         if let photoPickerItem, //if photoPickerItem is not nil
@@ -123,42 +110,55 @@ struct FormView: View {
             //save button
             HStack{
                 Spacer()
-                
-                Button ("Save Item"){
-                    
-                    //let item = ItemDataModel(name: name, location: location, category: category, notes: notes)
-                    //item.image = imageData
-                    let emptyItem = ItemDataModel(name: "", location: "", category: "Miscellaneous", notes: "")
-                    item.name = name
-                    item.location = location
-                    item.category = category
-                    item.image = imageData
-                    item.notes = notes
-                    modelContext.insert(item)
-                    
-                    print("Printing swiftdata address:")
-                    //COMMENT THIS OUT WHEN DEBUGGING IS NOT NEEDED
-                    //TODO: Delete this line when publishing final product
-                    print(modelContext.sqliteCommand)
-                    
-                    //CLEAR FORM WHEN FINISHED
-                    name = ""
-                    category = ""
-                    location = ""
-                    notes = ""
-                    imageData = nil
-                    avatarImage = nil
-                    item = emptyItem
-                    
-                    nextScreen()
+                Button ( action: saveItem){
+                    Text("Save Item")
                 }
-                //input validation to ensure name and location are filled out
-                .disabled(name.isEmpty || location.isEmpty)
+                .disabled(name.isEmpty || location.isEmpty)     //input validation to ensure name and location are filled out
                 Spacer()
             }//end hstack
             
         }//end form
-    }//end view
+    }//end body
+    
+    private func saveItem() {
+        //let item = ItemDataModel(name: name, location: location, category: category, notes: notes)
+        //item.image = imageData
+        let emptyItem = ItemDataModel(name: "", location: "", category: "Miscellaneous", notes: "")
+        item.name = name
+        item.location = location
+        item.category = category
+        item.image = imageData
+        item.notes = notes
+        //modelContext.insert(item)
+        
+        print("Printing swiftdata address:")
+        //COMMENT THIS OUT WHEN DEBUGGING IS NOT NEEDED
+        //TODO: Delete this line when publishing final product
+        print(modelContext.sqliteCommand)
+        
+        //CLEAR FORM WHEN FINISHED
+        name = ""
+        category = ""
+        location = ""
+        notes = ""
+        imageData = nil
+        avatarImage = nil
+        item = emptyItem
+        
+        notificationBanner.show(notification: infoNotification)
+        
+        nextScreen()
+    }
+    
+    var infoNotification: DYNotification {
+        let message = "Successfully Added"
+        let type: DYNotificationType = .success
+        let displayDuration: TimeInterval = 1.5
+        let dismissOnTap = true
+        let displayEdge: Edge = .top
+        
+        return DYNotification(message: message, type: type, displayDuration: displayDuration, dismissOnTap: dismissOnTap, displayEdge: displayEdge, hapticFeedbackType: .success)
+    }
 }// end struct
 
 #Preview {
@@ -167,10 +167,7 @@ struct FormView: View {
     let newCategory = CategoryDataModel(categoryList: tempArray)
     let tempItem = ItemDataModel(name: "", location: "", category: "Miscellaneous", notes: "")
     container.mainContext.insert(newCategory)
-    func nextScreenPreview() {
-        
-    }
+    func nextScreenPreview() {}
     return FormView(nextScreen: nextScreenPreview, item: .constant(tempItem))
-//    return FormView(item: .constant(tempItem))
         .modelContainer(container)
 }

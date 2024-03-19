@@ -7,14 +7,17 @@
 
 import SwiftUI
 import SwiftData
+import SwiftUI_NotificationBanner
 
 @main
 struct WheresMyStuffApp: App {
+    @StateObject var notificationBanner = DYNotificationHandler()
     
     var body: some Scene {
         
         WindowGroup {
             ContentView()
+                .environmentObject(notificationBanner)
         }
         .modelContainer(CustomContainer.create())
     }

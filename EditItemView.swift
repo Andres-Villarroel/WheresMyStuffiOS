@@ -2,6 +2,7 @@
 import SwiftUI
 import SwiftData
 import PhotosUI
+import SwiftUI_NotificationBanner
 
 struct EditItemView: View {
     //used to dismiss all active sheets
@@ -16,6 +17,7 @@ struct EditItemView: View {
     @Query var categories: [CategoryDataModel]
     @Environment(\.modelContext) var modelContext
     @Environment(\.dismiss) private var dismiss
+    @EnvironmentObject var notificationBanner: DYNotificationHandler
     
     //for the category addition mechanic
     @State private var showingAlert = false
@@ -146,16 +148,8 @@ struct EditItemView: View {
                 HStack{
                     Spacer()
                     
-                    Button ("Save Item"){
-                        
-                        item.name = name
-                        item.location = location
-                        item.category = category
-                        item.image = imageData
-                        item.notes = notes
-                        
-                        //dismisses all sheets
-                        rootViewController?.dismiss(animated: true)
+                    Button (action: saveItemEdit) {
+                        Text("Save Item")
                     }
                     //input validation to ensure name and location are filled out
                     .disabled(name.isEmpty || location.isEmpty)
@@ -170,7 +164,7 @@ struct EditItemView: View {
                     }
                     .alert("Enter Category Name", isPresented: $showingAlert){
                         TextField("Enter Cateory Name", text: $newCategoryName)
-                        Button("OK", action: submit)
+                        Button("OK", action: submitCategory)
                         Button("Cancel") {
                             newCategoryName = ""
                         }
@@ -181,12 +175,33 @@ struct EditItemView: View {
             }
         } //end navigationStack
     }//end body
-    func submit(){
+    func saveItemEdit() {
+        item.name = name
+        item.location = location
+        item.category = category
+        item.image = imageData
+        item.notes = notes
+        
+        //dismisses all sheets
+        rootViewController?.dismiss(animated: true)
+        notificationBanner.show(notification: infoNotification)
+    }
+    func submitCategory(){
         //add newCategoryName to categories array
         categories[0].categoryList.append(newCategoryName)
         
         print("You entered \(newCategoryName)")
         newCategoryName = ""
+    }
+    
+    var infoNotification: DYNotification {
+        let message = "Edit Saved"
+        let type: DYNotificationType = .success
+        let displayDuration: TimeInterval = 1.5
+        let dismissOnTap = true
+        let displayEdge: Edge = .top
+        
+        return DYNotification(message: message, type: type, displayDuration: displayDuration, dismissOnTap: dismissOnTap, displayEdge: displayEdge, hapticFeedbackType: .success)
     }
     
 }//end struct

@@ -22,6 +22,7 @@
 		44592FAB2BA67EC80047E8B5 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44592FAA2BA67EC80047E8B5 /* ImagePicker.swift */; };
 		44592FAD2BA682C90047E8B5 /* TestImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44592FAC2BA682C90047E8B5 /* TestImagePicker.swift */; };
 		44592FB02BA7C43A0047E8B5 /* EditItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44592FAF2BA7C4390047E8B5 /* EditItemView.swift */; };
+		44592FC12BA9E3000047E8B5 /* SwiftUI_NotificationBanner in Frameworks */ = {isa = PBXBuildFile; productRef = 44592FC02BA9E3000047E8B5 /* SwiftUI_NotificationBanner */; };
 		44651AD02B8EB802009F2BFF /* ItemDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44651ACF2B8EB802009F2BFF /* ItemDataModel.swift */; };
 		44651AD32B91013A009F2BFF /* ItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44651AD22B91013A009F2BFF /* ItemCell.swift */; };
 		44651AD52B918664009F2BFF /* ItemsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44651AD42B918664009F2BFF /* ItemsListView.swift */; };
@@ -66,6 +67,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				44592FC12BA9E3000047E8B5 /* SwiftUI_NotificationBanner in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -120,10 +122,10 @@
 		44651ADE2B9687DF009F2BFF /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				4450DE9E2B850654007C0841 /* WheresMyStuffApp.swift */,
 				44651ACF2B8EB802009F2BFF /* ItemDataModel.swift */,
 				44651AD62B93B93B009F2BFF /* CategoryDataModel.swift */,
 				44651ADC2B93EDE7009F2BFF /* Category.swift */,
-				4450DE9E2B850654007C0841 /* WheresMyStuffApp.swift */,
 				44651ADA2B93C003009F2BFF /* CustomContainer.swift */,
 			);
 			path = Model;
@@ -167,6 +169,9 @@
 			dependencies = (
 			);
 			name = WheresMyStuff;
+			packageProductDependencies = (
+				44592FC02BA9E3000047E8B5 /* SwiftUI_NotificationBanner */,
+			);
 			productName = WheresMyStuff;
 			productReference = 4450DE9B2B850654007C0841 /* WheresMyStuff.app */;
 			productType = "com.apple.product-type.application";
@@ -195,6 +200,9 @@
 				Base,
 			);
 			mainGroup = 4450DE922B850654007C0841;
+			packageReferences = (
+				44592FBF2BA9E3000047E8B5 /* XCRemoteSwiftPackageReference "SwiftUI_NotificationBanner" */,
+			);
 			productRefGroup = 4450DE9C2B850654007C0841 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -454,6 +462,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		44592FBF2BA9E3000047E8B5 /* XCRemoteSwiftPackageReference "SwiftUI_NotificationBanner" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/DominikButz/SwiftUI_NotificationBanner.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.3.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		44592FC02BA9E3000047E8B5 /* SwiftUI_NotificationBanner */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 44592FBF2BA9E3000047E8B5 /* XCRemoteSwiftPackageReference "SwiftUI_NotificationBanner" */;
+			productName = SwiftUI_NotificationBanner;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 4450DE932B850654007C0841 /* Project object */;
 }

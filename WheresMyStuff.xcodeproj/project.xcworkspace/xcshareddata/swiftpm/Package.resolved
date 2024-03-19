@@ -1,0 +1,15 @@
+{
+  "originHash" : "66f4f0c2c64129bcc0b5cc526f08f13a497dcb6d00dab74d259bf10759e582bf",
+  "pins" : [
+    {
+      "identity" : "swiftui_notificationbanner",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/DominikButz/SwiftUI_NotificationBanner.git",
+      "state" : {
+        "revision" : "442f4ab1dcca5611c377336dfae90e03ecec5d74",
+        "version" : "0.3.0"
+      }
+    }
+  ],
+  "version" : 3
+}
