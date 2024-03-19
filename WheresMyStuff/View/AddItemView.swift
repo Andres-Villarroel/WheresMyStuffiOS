@@ -38,7 +38,7 @@ struct AddItemView: View {
                             }
                             .alert("Enter Category Name", isPresented: $showingAlert){
                                 TextField("Enter Cateory Name", text: $newCategoryName)
-                                Button("OK", action: submit)
+                                Button("OK", action: submitCategory)
                                 Button("Cancel") {
                                     newCategoryName = ""
                                 }
@@ -53,7 +53,7 @@ struct AddItemView: View {
         
     }// end body
     
-    func submit(){
+    func submitCategory(){
         //add newCategoryName to categories array
         categories[0].categoryList.append(newCategoryName)
         
