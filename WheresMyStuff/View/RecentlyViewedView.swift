@@ -11,10 +11,19 @@ import SwiftData
 struct RecentlyViewedView: View {
     
     @Query(sort: \ItemDataModel.lastViewDate, order: .reverse) var items: [ItemDataModel]
+    @State private var showRecViewSheet = false
     
     var body: some View {
-        
-        ItemCardPreview(imageData: items[0].image, itemName: items[0].name, itemLocation: items[0].location)
+        Button (action: {
+            showRecViewSheet.toggle()
+        },
+        label: {
+            ItemCardView(imageData: items[0].image, itemName: items[0].name, itemLocation: items[0].location)
+        })
+        .buttonStyle(PlainButtonStyle())
+        .sheet(isPresented: $showRecViewSheet) {
+            ItemSheetView(item: items[0])
+        }
     }
 }
 

@@ -24,10 +24,10 @@ struct BrowseView: View {
                 
                 //These show the recently viewed and added items views
                 RecentsCards()
-                    .frame(maxHeight: 200)
                 
                 //lists the categories
                 Text("Categories")  //Consider making this a tab selection view to choose to browse between items and categories
+                    .padding(.top)
                 
                 //TODO: use navigation links to create a list of only the tapped category
                 List(categories[0].categoryList, id:\.self){ cat in

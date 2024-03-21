@@ -6,18 +6,23 @@ struct ItemCell: View {
     var item: ItemDataModel
     
     var body: some View {
-        //image, name, location, notes
-        //Image(uiImage: image)
         HStack{
-            Image(uiImage: UIImage(data: item.image!)!)
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-                .frame(maxWidth: 100)
+            if item.image != nil {
+                Image(uiImage: UIImage(data: item.image!)!)
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(maxWidth: 100)
+            } else {
+                Image(systemName: "photo")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(maxWidth: 100)
+            }
             Spacer()
             VStack {
                 
                 Text(item.name)
-                    .font(.title2)
+                    .font(.title3)
                     .bold()
                 
                 Text(item.location)
@@ -27,6 +32,7 @@ struct ItemCell: View {
             }
             Spacer()
         }
+        .frame(height: 60)
         .padding()
         .background(Color.purple)
         .clipShape((RoundedRectangle(cornerRadius: 30)))

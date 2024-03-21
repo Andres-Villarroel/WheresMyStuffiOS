@@ -39,6 +39,7 @@ struct FormView: View {
         Form {
             
             //This section is for the required data fields
+            //MARK: required textfield/inputs
             Section(header: Text("Required")){
                 
                 TextField("Name", text: $name)
@@ -47,7 +48,18 @@ struct FormView: View {
             
             //this section is for the optional data fields
             Section(header: Text("Optional")){
-                //--------this lets users choose an image they own---------------------
+                
+                // MARK: Category Picker
+                Picker("Choose Category", selection: $category){
+                    ForEach(categories[0].categoryList, id: \.self) { cat in
+                        Text(cat)
+                    }
+                }
+                
+                TextField("Notes", text: $notes, axis: .vertical)
+                    .padding()
+            
+                //MARK: Image Picker section
                 Menu {
                     Button ("Choose from library") {
                         shouldPresentPhotoPicker.toggle()
@@ -95,21 +107,12 @@ struct FormView: View {
                 .alignmentGuide(.listRowSeparatorLeading) { viewDimensions in
                     return 0
                 }
-                
-                // MARK: Category Picker
-                Picker("Choose Category", selection: $category){
-                    ForEach(categories[0].categoryList, id: \.self) { cat in
-                        Text(cat)
-                    }
-                }
-                
-                TextField("Notes", text: $notes, axis: .vertical)
-                    .padding()
             }
             
-            //save button
+            //MARK: save button
             HStack{
                 Spacer()
+                //MARK: Save item button call
                 Button ( action: saveItem){
                     Text("Save Item")
                 }
@@ -123,13 +126,15 @@ struct FormView: View {
     private func saveItem() {
         //let item = ItemDataModel(name: name, location: location, category: category, notes: notes)
         //item.image = imageData
-        let emptyItem = ItemDataModel(name: "", location: "", category: "Miscellaneous", notes: "")
+        let emptyItem = ItemDataModel(name: "", location: "", category: "", notes: "")
         item.name = name
         item.location = location
         item.category = category
-        item.image = imageData
+        if item.image != nil {
+            item.image = imageData
+        }
         item.notes = notes
-        //modelContext.insert(item)
+        modelContext.insert(item)
         
         print("Printing swiftdata address:")
         //COMMENT THIS OUT WHEN DEBUGGING IS NOT NEEDED

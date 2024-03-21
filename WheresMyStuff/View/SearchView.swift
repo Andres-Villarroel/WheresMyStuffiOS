@@ -16,7 +16,6 @@ struct SearchView: View {
     @StateObject private var viewModel = SearchViewModel()
     
     var body: some View {
-        //ItemsListView()
         NavigationStack {
             ItemsListView(items: viewModel.calculateSearch())
                 .onAppear() {

@@ -16,6 +16,7 @@ import SwiftData
 struct RecentsCards: View {
     
     @Query(sort: \ItemDataModel.date, order: .reverse) var items: [ItemDataModel]
+    @State private var showRecAddSheet = false
     
     var body: some View {
         HStack{
@@ -32,7 +33,19 @@ struct RecentsCards: View {
                     }
                         .frame(width: 170, height: 150)
                 } else{
-                    ItemCardPreview(imageData: items[0].image, itemName: items[0].name, itemLocation: items[0].location)
+                    
+                    //making the item cards a button to trigger a sheet view
+                    Button (action: {
+                        showRecAddSheet.toggle()
+                    },
+                    label: {
+                        ItemCardView(imageData: items[0].image, itemName: items[0].name, itemLocation: items[0].location)
+                    })
+                    .buttonStyle(PlainButtonStyle())
+                    .sheet(isPresented: $showRecAddSheet) {
+                        ItemSheetView(item: items[0])
+                    }
+                    
                 }
                 
             }
@@ -51,13 +64,13 @@ struct RecentsCards: View {
                 } else {
                     RecentlyViewedView()
                 }
-            }
+            }// end vstack
         
             Spacer()
-        }
+        }// end Hstack
         
-    }
-}
+    }// end body
+}// end struct
 
 #Preview {
     //RecentsCards()
@@ -66,7 +79,7 @@ struct RecentsCards: View {
     let data = image.pngData()
     let newItem = ItemDataModel(name: "test name", location: "test location", category: "test category", notes: "test notes")
     newItem.image = data
-    //container.mainContext.insert(newItem)
+    container.mainContext.insert(newItem)
     return RecentsCards()
         .modelContainer(container)
 }

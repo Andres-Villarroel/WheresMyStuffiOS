@@ -27,10 +27,12 @@ struct CategoryItemsListView: View {
     }
     var body: some View {
         
-        //creates the list
-        List{
-            ForEach(items) { item in
-                //if an item it tapped upon, a detail sheet will appear
+        if items.isEmpty {
+            ContentUnavailableView.search
+        } else {
+            List{
+                ForEach(items) { item in
+                    //if an item it tapped upon, a detail sheet will appear
                     Button {
                         itemSelected = item
                         item.lastViewDate = Date.now
@@ -38,31 +40,32 @@ struct CategoryItemsListView: View {
                         ItemCell(item: item)
                     }
                     .buttonStyle(PlainButtonStyle())
-            }
-            .onDelete{ indexSet in
-                for index in indexSet{
-                    context.delete(items[index])
                 }
-            }
-            
-            //making the item cells look better
-            .listRowSeparator(.hidden)
-            .listRowBackground(
-                RoundedRectangle(cornerRadius: 5)
-                    .background(.clear)
-                //.foregroundColor(.white)
-                    .padding(
-                        EdgeInsets(
-                            top: 2,
-                            leading: 10,
-                            bottom: 2,
-                            trailing: 10
+                .onDelete{ indexSet in
+                    for index in indexSet{
+                        context.delete(items[index])
+                    }
+                }
+                
+                //making the item cells look better
+                .listRowSeparator(.hidden)
+                .listRowBackground(
+                    RoundedRectangle(cornerRadius: 5)
+                        .background(.clear)
+                    //.foregroundColor(.white)
+                        .padding(
+                            EdgeInsets(
+                                top: 2,
+                                leading: 10,
+                                bottom: 2,
+                                trailing: 10
+                            )
                         )
-                    )
-            )
-        }//end list
-        .sheet(item: $itemSelected) { item in
-            ItemSheetView(item: item)
+                )
+            }//end list
+            .sheet(item: $itemSelected) { item in
+                ItemSheetView(item: item)
+            }
         }
     }
 }

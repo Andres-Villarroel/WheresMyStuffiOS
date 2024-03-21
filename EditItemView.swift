@@ -73,8 +73,17 @@ struct EditItemView: View {
                         Button ("Choose from library") {
                             shouldPresentPhotoPicker.toggle()
                         }// end menu button 1
+                        
                         Button ("Take Photo"){
                             useCamera.toggle()
+                        }
+                        
+                        if imageData != nil {       //deletes the selected image
+                            Button ("Delete Image", role: .destructive) {
+                                imageData = nil
+                                item.image = nil
+                                avatarImage = nil
+                            }
                         }
                         
                     } label: {
@@ -92,20 +101,6 @@ struct EditItemView: View {
                     .sheet(isPresented: $useCamera) {
                         ImagePicker(sourceType: .camera, selectedImage: $avatarImage)
                     }
-                    
-                    // MARK: Photo Picker Section
-                    //                PhotosPicker(selection: $photoPickerItem, matching: .images){
-                    //
-                    //                    let chosenImage: UIImage? = avatarImage
-                    //                    if chosenImage != nil{
-                    //                        Image(uiImage: avatarImage!)
-                    //                            .resizable()
-                    //                            .aspectRatio(contentMode: .fill)
-                    //                            .frame(maxWidth: 80)
-                    //                    } else{
-                    //                        Text("Choose Image")
-                    //                    }
-                    //                }
                     .onChange(of: photoPickerItem){ _, _ in
                         Task{
                             if let photoPickerItem, //if photoPickerItem is not nil
@@ -142,7 +137,7 @@ struct EditItemView: View {
                     
                     TextField("Notes", text: $notes, axis: .vertical)
                         .padding()
-                }
+                }//end optional section
                 
                 //save button
                 HStack{
@@ -195,7 +190,7 @@ struct EditItemView: View {
     }
     
     var infoNotification: DYNotification {
-        let message = "Edit Saved"
+        let message = "Saved"
         let type: DYNotificationType = .success
         let displayDuration: TimeInterval = 1.5
         let dismissOnTap = true

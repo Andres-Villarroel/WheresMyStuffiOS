@@ -41,4 +41,5 @@ struct ContentView: View {
     container.mainContext.insert(newCategory)
     return ContentView()
         .modelContainer(container)
+        .environmentObject(DYNotificationHandler())
 }
