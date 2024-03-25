@@ -15,6 +15,7 @@
 		4450DEB12B8515DD007C0841 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4450DEB02B8515DD007C0841 /* SearchView.swift */; };
 		4450DEB32B851790007C0841 /* AddItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4450DEB22B851790007C0841 /* AddItemView.swift */; };
 		4450DEB72B85A1B7007C0841 /* RecentsCards.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4450DEB62B85A1B7007C0841 /* RecentsCards.swift */; };
+		4452A2032BB23A93004FE96D /* SwiftUI_NotificationBanner in Frameworks */ = {isa = PBXBuildFile; productRef = 4452A2022BB23A93004FE96D /* SwiftUI_NotificationBanner */; };
 		44592F702B9FDB980047E8B5 /* ItemSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44592F6F2B9FDB980047E8B5 /* ItemSheetView.swift */; };
 		44592F9A2BA139F50047E8B5 /* FormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44592F992BA139F50047E8B5 /* FormView.swift */; };
 		44592F9D2BA36D310047E8B5 /* CategoryItemsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44592F9C2BA36D310047E8B5 /* CategoryItemsListView.swift */; };
@@ -22,7 +23,6 @@
 		44592FAB2BA67EC80047E8B5 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44592FAA2BA67EC80047E8B5 /* ImagePicker.swift */; };
 		44592FAD2BA682C90047E8B5 /* TestImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44592FAC2BA682C90047E8B5 /* TestImagePicker.swift */; };
 		44592FB02BA7C43A0047E8B5 /* EditItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44592FAF2BA7C4390047E8B5 /* EditItemView.swift */; };
-		44592FC12BA9E3000047E8B5 /* SwiftUI_NotificationBanner in Frameworks */ = {isa = PBXBuildFile; productRef = 44592FC02BA9E3000047E8B5 /* SwiftUI_NotificationBanner */; };
 		44592FC32BACB2790047E8B5 /* ImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44592FC22BACB2790047E8B5 /* ImageView.swift */; };
 		44592FC52BACC8800047E8B5 /* NewEditFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44592FC42BACC8800047E8B5 /* NewEditFormView.swift */; };
 		44592FC72BACE20B0047E8B5 /* ZoomScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44592FC62BACE20B0047E8B5 /* ZoomScrollView.swift */; };
@@ -73,7 +73,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				44592FC12BA9E3000047E8B5 /* SwiftUI_NotificationBanner in Frameworks */,
+				4452A2032BB23A93004FE96D /* SwiftUI_NotificationBanner in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -179,7 +179,7 @@
 			);
 			name = WheresMyStuff;
 			packageProductDependencies = (
-				44592FC02BA9E3000047E8B5 /* SwiftUI_NotificationBanner */,
+				4452A2022BB23A93004FE96D /* SwiftUI_NotificationBanner */,
 			);
 			productName = WheresMyStuff;
 			productReference = 4450DE9B2B850654007C0841 /* WheresMyStuff.app */;
@@ -487,7 +487,7 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		44592FC02BA9E3000047E8B5 /* SwiftUI_NotificationBanner */ = {
+		4452A2022BB23A93004FE96D /* SwiftUI_NotificationBanner */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 44592FBF2BA9E3000047E8B5 /* XCRemoteSwiftPackageReference "SwiftUI_NotificationBanner" */;
 			productName = SwiftUI_NotificationBanner;
