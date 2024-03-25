@@ -105,8 +105,7 @@ struct NewEditFormView: View {
                             }
                         }
                         
-//                        TextField("Notes", text: $notes, axis: .vertical)
-                        TextField("Notes", text: $notes)
+                        TextField("Notes", text: $notes, axis: .vertical)
                     }
                     
                     //save button
@@ -120,7 +119,8 @@ struct NewEditFormView: View {
                         .disabled(name.isEmpty || location.isEmpty)
                         Spacer()
                     }//end hstack
-                }
+                }// end form
+                .scrollDismissesKeyboard(.immediately)
             }// end vstack
             .toolbar{
                 ToolbarItem(placement: .topBarTrailing){

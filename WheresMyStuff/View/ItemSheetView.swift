@@ -22,7 +22,11 @@ struct ItemSheetView: View {
                 if item.image != nil{
                     Image(uiImage: UIImage(data: item.image!)!)   //add try or if statements to check for an image. or just add a default image
                         .resizable()
-                        .scaledToFit()
+                    //                        .aspectRatio(contentMode: .fill)
+                        .scaledToFill()
+                        .frame(height: 300, alignment: .center)
+                        .clipped()
+                    
                         .onTapGesture {
                             showImageView.toggle()
                         }
@@ -41,8 +45,10 @@ struct ItemSheetView: View {
                 Divider()
                 Text(item.date, format: .dateTime.day().month().year().hour().minute())
                 if !item.notes.isEmpty {
+                    Divider()
                     Text("Notes: \(item.notes)")
                 }
+                Spacer()
                 
             }
             .toolbar{
@@ -51,7 +57,7 @@ struct ItemSheetView: View {
                         showEditItem.toggle()
                     }
                     .sheet (isPresented: $showEditItem) {
-//                        EditItemView(item: item)
+                        //                        EditItemView(item: item)
                         NewEditFormView(item: item)
                     }
                 }
@@ -66,6 +72,7 @@ struct ItemSheetView: View {
             }
         }
     }
+    
 }
 
 #Preview {

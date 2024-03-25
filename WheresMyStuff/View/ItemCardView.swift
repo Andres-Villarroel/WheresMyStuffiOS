@@ -34,7 +34,7 @@ struct ItemCardView: View {
         }
         .background(Color.gray)
         .clipShape(RoundedRectangle(cornerRadius: 25.0))
-        .shadow(radius: 8)
+//        .shadow(radius: 8)
     }
 }
 
