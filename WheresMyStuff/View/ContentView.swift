@@ -23,6 +23,7 @@ struct ContentView: View {
                     .dropShadow(color: self.colorScheme == .light ? .gray.opacity(0.4) : .clear, radius: 5, x: 0, y: notification.displayEdge == .top ? 5 : -5)
                     .cornerRadius(self.cornerRadius)
             })
+            
     }
     
     var cornerRadius: CGFloat {
@@ -42,5 +43,5 @@ struct ContentView: View {
     return ContentView()
         .modelContainer(container)
         .environmentObject(DYNotificationHandler())
-        .environment(\.locale, .init(identifier: "es"))
+//        .environment(\.locale, .init(identifier: "es"))
 }

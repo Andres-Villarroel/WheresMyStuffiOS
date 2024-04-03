@@ -24,14 +24,14 @@ struct ItemsListView: View {
             List{
                 //using ForEach due to its access to the .onDelete modifier
                 ForEach(items) { item in
-                        Button {
-                            itemSelected = item
-                            item.lastViewDate = Date.now
-                        } label: {
-                            ItemCell(item: item)
-                            
-                        }
-                        .buttonStyle(PlainButtonStyle())
+                    Button {
+                        itemSelected = item
+                        item.lastViewDate = Date.now
+                    } label: {
+                        ItemCell(item: item)
+                        
+                    }
+                    .buttonStyle(PlainButtonStyle())
                 }
                 .onDelete{ indexSet in
                     for index in indexSet{
@@ -44,7 +44,7 @@ struct ItemsListView: View {
                 .listRowBackground(
                     RoundedRectangle(cornerRadius: 5)
                         .background(.clear)
-                    //.foregroundColor(.white)
+                        .foregroundColor(.black)
                         .padding(
                             EdgeInsets(
                                 top: 2,
@@ -77,9 +77,9 @@ struct ItemsListView: View {
     thirdItem.image = data
     
     //container.mainContext.insert(newItem)
-//    container.mainContext.insert(firstItem)
-//    container.mainContext.insert(secondItem)
-//    container.mainContext.insert(thirdItem)
+    //    container.mainContext.insert(firstItem)
+    //    container.mainContext.insert(secondItem)
+    //    container.mainContext.insert(thirdItem)
     let itemsArray = [
         firstItem,
         secondItem,

@@ -15,36 +15,56 @@ struct BrowseView: View {
     @Query var categories: [CategoryDataModel]
     
     var body: some View {
-        
         NavigationStack {
-            
-            VStack {
+            ZStack {
                 
-                Text("Browse")
+                //MARK: Background Image
+                Image("modern app background")
+                .resizable()
+                .aspectRatio(contentMode: .fill)
+                .frame(minWidth: 0, maxWidth: .infinity)
+                .ignoresSafeArea(.all)
                 
-                //These show the recently viewed and added items views
-                RecentsCards()
-                
-                //lists the categories
-                Text("Categories")  //Consider making this a tab selection view to choose to browse between items and categories
-                    .padding(.top)
-                
-                //TODO: use navigation links to create a list of only the tapped category
-                List(categories[0].categoryList, id:\.self){ cat in
-                    //use cat to select the category
+                VStack {
+                    Text("Browse")
+                        .foregroundStyle(Color.white)
                     
-                    NavigationLink {
-                        //navigation link/destination using cat
-                        CategoryItemsListView(chosenCategory: cat)
-                            .navigationTitle(cat)
-                    } label: {
-                        Text(cat)
-                    }
-                }
-            }//end vstack
-        }// end navigation stack
+                    //These show the recently viewed and added items views
+                    RecentsCards()
+                    
+                    //lists the categories
+                    Text("Categories")  //Consider making this a tab selection view to choose to browse between items and categories
+                        .padding(.top)
+                        .foregroundStyle(Color.white)
+                    
+                    List(categories[0].categoryList, id:\.self){ cat in
+                        //use cat to select the category
+                        NavigationLink {
+                            //navigation link/destination using cat
+                            CategoryItemsListView(chosenCategory: cat)
+                                .navigationTitle(cat)
+                            
+                        } label: {
+                            Text(cat)
+                        }
+                        
+                    }// end list
+                    .scrollContentBackground(.hidden)
+                    .background(.ultraThinMaterial)
+                    .opacity(0.95)
+                    .cornerRadius(20)
+                    .padding([.leading, .trailing, .bottom], 40)
+                    
+                }//end vstack
+            }//end zstack
+        }
+        .scrollContentBackground(.hidden)
+        
     }//end body
 }
+/*
+
+ */
 
 #Preview {
     let container = try! ModelContainer(for: CategoryDataModel.self, ItemDataModel.self, configurations: ModelConfiguration(isStoredInMemoryOnly: true))
@@ -67,6 +87,6 @@ struct BrowseView: View {
     let newCategory = CategoryDataModel(categoryList: tempArray)
     container.mainContext.insert(newCategory)
     return BrowseView()
-            .modelContainer(container)
+        .modelContainer(container)
     
 }

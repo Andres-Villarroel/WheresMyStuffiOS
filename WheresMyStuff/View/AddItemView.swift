@@ -1,9 +1,4 @@
-//
-//  AddItemView.swift
-//  WheresMyStuff
-//
-//  Created by Andres Villarroel on 2/20/24.
-//
+//consider implementing a custom form to allow for the background image to show. it would probably look cooler anyways.
 
 import SwiftUI
 import SwiftData
@@ -23,33 +18,42 @@ struct AddItemView: View {
     
     var body: some View {
         
-        VStack {
-            NavigationStack {
+        NavigationStack {   //needed for the toolbar
+            ZStack{
+                //MARK: Background Image
+                Image("modern app background")
+                    .resizable()
+                    .aspectRatio(contentMode: .fill)
+                    .frame(minWidth: 0, maxWidth: .infinity)
+                    .ignoresSafeArea(.all)
                 
-                FormView(nextScreen: changeScreen, item: $item )
-//                FormView(item: $item)
-                    .navigationTitle("Add Item")
-                //this section add the tool bar button to add a new category
-                    .toolbar{
-                        ToolbarItem(placement: .topBarTrailing){
-                            Button("Add Category"){
-                                showingAlert.toggle()
-                                print(modelContext.sqliteCommand)
-                            }
-                            .alert("Enter Category Name", isPresented: $showingAlert){
-                                TextField("Enter Cateory Name", text: $newCategoryName)
-                                Button("OK", action: submitCategory)
-                                Button("Cancel") {
-                                    newCategoryName = ""
+                VStack {
+                    FormView(nextScreen: changeScreen, item: $item )
+                        .navigationTitle("Add Item")
+                        .preferredColorScheme(.dark)
+                        .scrollContentBackground(.hidden)
+                    //this section add the tool bar button to add a new category
+                        .toolbar{
+                            ToolbarItem(placement: .topBarTrailing){
+                                Button("Add Category"){
+                                    showingAlert.toggle()
+                                    print(modelContext.sqliteCommand)
                                 }
-                            } message: {
-                                Text("")
-                            }
-                        }
-                    }
-                
-            } //end navigationStack
-        }// end vstack
+                                .alert("Enter Category Name", isPresented: $showingAlert){
+                                    TextField("Enter Cateory Name", text: $newCategoryName)
+                                    Button("OK", action: submitCategory)
+                                    Button("Cancel") {
+                                        newCategoryName = ""
+                                    }
+                                } message: {
+                                    Text("")
+                                }
+                            }// end toolbaritem
+                        }// end tool bar
+                    
+                }// end vstack
+            }//end zstack
+        } //end navigationStack
         
     }// end body
     

@@ -10,7 +10,7 @@ import SwiftData
 
 struct TabBarView: View {
     @State var selection = 2
-
+    
     var body: some View {
         TabView(selection:$selection){
             
@@ -19,17 +19,29 @@ struct TabBarView: View {
                     Label("Add", systemImage: "plus")
                 }
                 .tag(1)
-
+            
             BrowseView()
                 .tabItem {
                     Label("Browse", systemImage: "list.dash")
                 }
                 .tag(2)
+            
+            
             SearchView()
                 .tabItem {
                     Label("Search", systemImage: "magnifyingglass")
                 }
                 .tag(3)
+        }// end tabview
+        .tint(.white)
+        .onAppear {
+            let appearance = UITabBarAppearance()
+            appearance.backgroundEffect = UIBlurEffect(style: .systemUltraThinMaterial)
+//            appearance.backgroundColor = UIColor(Color.orange.opacity(0.2))
+            
+            UITabBar.appearance().standardAppearance = appearance
+            
+            UITabBar.appearance().scrollEdgeAppearance = appearance
         }
     }
 }
@@ -40,8 +52,8 @@ struct TabBarView: View {
     let tempArray = ["Miscellaneous"]
     let newCategory = CategoryDataModel(categoryList: tempArray)
     container.mainContext.insert(newCategory)
-        return TabBarView()
-            .modelContainer(container)
-
+    return TabBarView()
+        .modelContainer(container)
+    
     
 }

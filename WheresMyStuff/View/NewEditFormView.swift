@@ -89,7 +89,37 @@ struct NewEditFormView: View {
 //                            .aspectRatio(contentMode: .fill)
                     }
                 }
+                // MARK: image selection section
+                .photosPicker(isPresented: $shouldPresentPhotoPicker, selection: $photoPickerItem, matching: .images)
+                .sheet(isPresented: $useCamera) {
+                    ImagePicker(sourceType: .camera, selectedImage: $avatarImage)
+                }
+                .onChange(of: photoPickerItem){ _, _ in
+                    Task{
+                        if let photoPickerItem, //if photoPickerItem is not nil
+                           let data = try? await photoPickerItem.loadTransferable(type: Data.self){     //convert photopickeritem into Data type and store it in data
+                            if let image = UIImage(data: data){     //if converting data into a UIImage results in a UIImage that is NOT nil....
+                                avatarImage = image     //...set avatarImage equal to image since it has now been verified to not be empty or nil...
+                                imageData = data        //...and then set imageData equal to image; imageData is what will be used to insert into swiftdata
+                            }
+                        }
+                        photoPickerItem = nil
+                    }
+                }
+                .onChange(of: avatarImage) { _, _ in
+                    Task {
+                        if let avatarImage,
+                           let data = avatarImage.pngData(){
+                            imageData = data
+                        }
+                    }
+                }
+                .frame(maxWidth: .infinity)
+                .alignmentGuide(.listRowSeparatorLeading) { viewDimensions in
+                    return 0
+                }
                 
+                //MARK: form section
                 Form {
                     //MARK: Required Section
                     Section (header: Text("Required")){

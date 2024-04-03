@@ -36,7 +36,6 @@ struct FormView: View {
     
     
     var body: some View {
-            
             Form {
                 
                 //This section is for the required data fields
@@ -69,6 +68,7 @@ struct FormView: View {
                             Text("Choose Image")
                         }
                     }
+                    //MARK: PhotoPicker section
                     .photosPicker(isPresented: $shouldPresentPhotoPicker, selection: $photoPickerItem, matching: .images)
                     .sheet(isPresented: $useCamera) {
                         ImagePicker(sourceType: .camera, selectedImage: $avatarImage)
@@ -130,16 +130,19 @@ struct FormView: View {
         item.name = name
         item.location = location
         item.category = category
-        if item.image != nil {
+        if imageData != nil {  //change this, it is not supposed to check item.image as that is what the image is saving to; it will always be nil
             item.image = imageData
+            print("Item is not nil")
+        } else {
+            print("item is nil")
         }
         item.notes = notes
         modelContext.insert(item)
-        
-        print("Printing swiftdata address:")
-        //COMMENT THIS OUT WHEN DEBUGGING IS NOT NEEDED
-        //TODO: Delete this line when publishing final product
-        print(modelContext.sqliteCommand)
+//        
+//        print("Printing swiftdata address:")
+//        //COMMENT THIS OUT WHEN DEBUGGING IS NOT NEEDED
+//        //TODO: Delete this line when publishing final product
+//        print(modelContext.sqliteCommand)
         
         //CLEAR FORM WHEN FINISHED
         name = ""
@@ -151,7 +154,6 @@ struct FormView: View {
         item = emptyItem
         
         notificationBanner.show(notification: infoNotification)
-        
         nextScreen()
     }
     

@@ -15,7 +15,7 @@ struct ItemCardView: View {
     
     var body: some View {
         
-        VStack{
+        VStack(spacing: 0){
             if(imageData != nil){
                 let image = UIImage(data: imageData!)
                 Image(uiImage: image!)
@@ -26,15 +26,17 @@ struct ItemCardView: View {
                     .resizable()
                     .frame(width: 200, height: 200)
             }
-            Text(itemName)
-                .bold()
-            //                .padding(.bottom, 1)
-            Text(itemLocation)
-                .padding(.bottom, 1.5)
+            VStack{
+                Text(itemName)
+                    .bold()
+                Text(itemLocation)
+                    .padding(.bottom, 1.5)
+            }
+            .frame(maxWidth: .infinity)
+            .background(.ultraThinMaterial)
+            .opacity(0.8)
         }
-        .background(Color.gray)
         .clipShape(RoundedRectangle(cornerRadius: 25.0))
-//        .shadow(radius: 8)
     }
 }
 

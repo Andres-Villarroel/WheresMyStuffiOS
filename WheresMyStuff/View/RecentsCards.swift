@@ -48,7 +48,7 @@ struct RecentsCards: View {
                     
                 }
                 
-            }
+            }   //card 1
             
             Spacer()
             VStack {
@@ -64,7 +64,7 @@ struct RecentsCards: View {
                 } else {
                     RecentlyViewedView()
                 }
-            }// end vstack
+            }// card 2
         
             Spacer()
         }// end Hstack

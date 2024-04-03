@@ -17,24 +17,32 @@ struct SearchView: View {
     
     var body: some View {
         NavigationStack {
-            ItemsListView(items: viewModel.calculateSearch())
-                .onAppear() {
-                    viewModel.items = items
-                    
-                }
-                .navigationTitle("Search Items")
-        }
+            ZStack {
+                //MARK: Background Image
+                Image("modern app background")
+                    .resizable()
+                    .aspectRatio(contentMode: .fill)
+                    .frame(minWidth: 0, maxWidth: .infinity)
+                    .ignoresSafeArea(.all)
+                
+                ItemsListView(items: viewModel.calculateSearch())
+                    .onAppear() {
+                        viewModel.items = items
+                    }
+                    .preferredColorScheme(.dark)
+                    .navigationTitle("Search Items")
+                    .scrollContentBackground(.hidden)
+            }
+        }// end navigation stack
         .searchable(text: $viewModel.searchText, prompt: "What do you want to find?")     //this provides the search function such as the built-in search bar
         .overlay {
             //should the search not find anything, this view will appear with a message notifying the user of search failure
             if viewModel.calculateSearch().isEmpty {
                 ContentUnavailableView.search
             }
-        }
-        
-    }
+        }// end overlay
+    }// end body
 }
-
 #Preview {
     let container = try! ModelContainer(for: CategoryDataModel.self, ItemDataModel.self, configurations: ModelConfiguration(isStoredInMemoryOnly: true))
     let image = UIImage(named: "tiltedParrot")!
