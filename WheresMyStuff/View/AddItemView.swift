@@ -21,7 +21,7 @@ struct AddItemView: View {
         NavigationStack {   //needed for the toolbar
             ZStack{
                 //MARK: Background Image
-                Image("modern app background")
+                Image("appBackground")
                     .resizable()
                     .aspectRatio(contentMode: .fill)
                     .frame(minWidth: 0, maxWidth: .infinity)

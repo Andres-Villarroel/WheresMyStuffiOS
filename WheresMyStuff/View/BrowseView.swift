@@ -19,7 +19,7 @@ struct BrowseView: View {
             ZStack {
                 
                 //MARK: Background Image
-                Image("modern app background")
+                Image("appBackground")
                 .resizable()
                 .aspectRatio(contentMode: .fill)
                 .frame(minWidth: 0, maxWidth: .infinity)
@@ -51,7 +51,7 @@ struct BrowseView: View {
                     }// end list
                     .scrollContentBackground(.hidden)
                     .background(.ultraThinMaterial)
-                    .opacity(0.95)
+//                    .opacity(0.95)
                     .cornerRadius(20)
                     .padding([.leading, .trailing, .bottom], 40)
                     
@@ -62,9 +62,6 @@ struct BrowseView: View {
         
     }//end body
 }
-/*
-
- */
 
 #Preview {
     let container = try! ModelContainer(for: CategoryDataModel.self, ItemDataModel.self, configurations: ModelConfiguration(isStoredInMemoryOnly: true))

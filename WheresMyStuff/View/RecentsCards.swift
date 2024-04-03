@@ -24,6 +24,7 @@ struct RecentsCards: View {
             VStack {
                 //.frame(width: 170, height: 150)
                 Text("Recently Added")
+                    .foregroundStyle(Color.white)
                 if items.isEmpty{
                     
                     ContentUnavailableView {
@@ -53,6 +54,7 @@ struct RecentsCards: View {
             Spacer()
             VStack {
                 Text("Recently Viewed")
+                    .foregroundStyle(Color.white)
                 if(items.isEmpty){
                     ContentUnavailableView {
                         Image(systemName: "questionmark")

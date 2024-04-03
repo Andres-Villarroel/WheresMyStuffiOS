@@ -49,6 +49,7 @@
 		4450DEB22B851790007C0841 /* AddItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItemView.swift; sourceTree = "<group>"; };
 		4450DEB62B85A1B7007C0841 /* RecentsCards.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentsCards.swift; sourceTree = "<group>"; };
 		4452A2052BB23D20004FE96D /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
+		445617B12BBDA93700C4FDE9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		44592F6F2B9FDB980047E8B5 /* ItemSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemSheetView.swift; sourceTree = "<group>"; };
 		44592F992BA139F50047E8B5 /* FormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormView.swift; sourceTree = "<group>"; };
 		44592F9C2BA36D310047E8B5 /* CategoryItemsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryItemsListView.swift; sourceTree = SOURCE_ROOT; };
@@ -101,6 +102,7 @@
 		4450DE9D2B850654007C0841 /* WheresMyStuff */ = {
 			isa = PBXGroup;
 			children = (
+				445617B12BBDA93700C4FDE9 /* Info.plist */,
 				44651ADE2B9687DF009F2BFF /* Model */,
 				44651ADF2B9687F6009F2BFF /* View */,
 				44592FA72BA52D550047E8B5 /* View Model */,
@@ -412,6 +414,7 @@
 				DEVELOPMENT_TEAM = 9Q257VGY8J;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = WheresMyStuff/Info.plist;
 				INFOPLIST_KEY_NSCameraUsageDescription = "This app needs to capture images to show in the app.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -419,6 +422,7 @@
 				INFOPLIST_KEY_UIRequiresFullScreen = NO;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = UIInterfaceOrientationLandscapeLeft;
+				INFOPLIST_KEY_UIUserInterfaceStyle = Dark;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -448,6 +452,7 @@
 				DEVELOPMENT_TEAM = 9Q257VGY8J;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = WheresMyStuff/Info.plist;
 				INFOPLIST_KEY_NSCameraUsageDescription = "This app needs to capture images to show in the app.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -455,6 +460,7 @@
 				INFOPLIST_KEY_UIRequiresFullScreen = NO;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = UIInterfaceOrientationLandscapeLeft;
+				INFOPLIST_KEY_UIUserInterfaceStyle = Dark;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

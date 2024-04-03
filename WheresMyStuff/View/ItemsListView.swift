@@ -1,9 +1,3 @@
-//
-//  ItemScrollView.swift
-//  WheresMyStuff
-//
-//  Created by Andres Villarroel on 2/29/24.
-//
 
 //TODO: REFACTOR THIS FILE ALONG WITH CATEGORYITEMSLISTVIEW() AS THY APPEAR THE SAME AND USE THE SAME LAYOUT FOR THE SHEETS FEATURE
 
@@ -19,46 +13,36 @@ struct ItemsListView: View {
     var items: [ItemDataModel]
     
     var body: some View {
-        NavigationStack {
-            
-            List{
-                //using ForEach due to its access to the .onDelete modifier
-                ForEach(items) { item in
-                    Button {
-                        itemSelected = item
-                        item.lastViewDate = Date.now
-                    } label: {
-                        ItemCell(item: item)
-                        
-                    }
-                    .buttonStyle(PlainButtonStyle())
+        //        NavigationStack {
+        
+        List{
+            //using ForEach due to its access to the .onDelete modifier
+            ForEach(items) { item in
+                Button {
+                    itemSelected = item
+                    item.lastViewDate = Date.now
+                } label: {
+                    ItemCell(item: item)
                 }
-                .onDelete{ indexSet in
-                    for index in indexSet{
-                        context.delete(items[index])
-                    }
-                }
-                
-                //making the item cells look better
-                .listRowSeparator(.hidden)
-                .listRowBackground(
-                    RoundedRectangle(cornerRadius: 5)
-                        .background(.clear)
-                        .foregroundColor(.black)
-                        .padding(
-                            EdgeInsets(
-                                top: 2,
-                                leading: 10,
-                                bottom: 2,
-                                trailing: 10
-                            )
-                        )
-                )
-            }//end list
-            .sheet(item: $itemSelected) { item in
-                ItemSheetView(item: item)
+                .buttonStyle(PlainButtonStyle())
             }
+            .onDelete{ indexSet in
+                for index in indexSet{
+                    context.delete(items[index])
+                }
+            }
+            .listRowInsets(.init(top: 10, leading: 0, bottom: 0, trailing: 0))
+            //                making the item cells look better
+            .listRowSeparator(.hidden)
+            .listRowBackground(
+                Color.clear
+            )
+        }//end list
+        .scrollContentBackground(.hidden)
+        .sheet(item: $itemSelected) { item in
+            ItemSheetView(item: item)
         }
+        //        } end navigation stack
     }
 }
 #Preview {

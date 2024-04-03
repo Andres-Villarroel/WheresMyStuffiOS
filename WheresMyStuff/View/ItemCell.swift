@@ -6,6 +6,7 @@ struct ItemCell: View {
     var item: ItemDataModel
     
     var body: some View {
+        
         HStack{
             if item.image != nil {
                 Image(uiImage: UIImage(data: item.image!)!)
@@ -31,10 +32,12 @@ struct ItemCell: View {
                 
             }
             Spacer()
-        }
+        }// end hstack
         .frame(height: 60)
         .padding()
-        .background(Color.purple)
+        .background(.ultraThinMaterial)
+//        .background(Color.purple)
+//        .blur(radius: 5)
         .clipShape((RoundedRectangle(cornerRadius: 30)))
     }
 }

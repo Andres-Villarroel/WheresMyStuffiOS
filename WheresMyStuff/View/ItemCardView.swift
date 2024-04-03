@@ -34,7 +34,8 @@ struct ItemCardView: View {
             }
             .frame(maxWidth: .infinity)
             .background(.ultraThinMaterial)
-            .opacity(0.8)
+//            .opacity(0.95)
+//            .blur(radius: 20)
         }
         .clipShape(RoundedRectangle(cornerRadius: 25.0))
     }
