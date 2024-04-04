@@ -24,41 +24,33 @@ struct SearchView: View {
                             viewModel.items = items
                         }
                         .preferredColorScheme(.dark)
-                    
-                    //                    .searchable(text: $viewModel.searchText, placement: .navigationBarDrawer(displayMode: .always), prompt: "What do you want to find?")
                         .searchable(text: $viewModel.searchText, prompt: "What do you want to find?")//this provides the search function such as the built-in search bar
                 }// end zstack
                 .ignoresSafeArea(.keyboard, edges: .bottom)
             }
             .navigationTitle("Search Items")
-            //            .toolbar(.hidden)
-            
-            //            .navigationBarTitleDisplayMode(.inline)
-            //
-            //            )
         }// end navigation stack
         
-        //should the search not find anything, this view will appear with a message notifying the user of search failure
+        //should the search not find anything or no items exist, this view will appear with a message notifying the user of search failure
         .overlay {
             if viewModel.calculateSearch().isEmpty {
-                ContentUnavailableView.search
+//                ContentUnavailableView.search
+                ContentUnavailableView {
+                    VStack{
+                        Image("notFoundRooster")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(maxWidth: 150)
+                        Text("No Results")
+                    }
+                } description: {
+                    Text("Check the spelling or try a new search.")
+                }
             }
         }// end overlay
-        //        .toolbarBackground(.visible, for: .navigationBar)
     }// end body
 }
 
-/*
- struct BlurView: UIViewRepresentable {
- var style: UIBlurEffect.Style
- 
- func makeUIView(context: Context) -> UIVisualEffectView {
- return UIVisualEffectView(effect: UIBlurEffect(style: style))
- }
- 
- func updateUIView(_ uiView: UIVisualEffectView, context: Context) {}
- }
- */
 #Preview {
     let container = try! ModelContainer(for: CategoryDataModel.self, ItemDataModel.self, configurations: ModelConfiguration(isStoredInMemoryOnly: true))
     let image = UIImage(named: "tiltedParrot")!
@@ -84,11 +76,11 @@ struct SearchView: View {
     container.mainContext.insert(firstItem)
     container.mainContext.insert(secondItem)
     container.mainContext.insert(thirdItem)
-    container.mainContext.insert(newItem)
-    container.mainContext.insert(fourthItem)
-    container.mainContext.insert(fifthItem)
-    container.mainContext.insert(sixthItem)
-    container.mainContext.insert(seventhItem)
+//    container.mainContext.insert(newItem)
+//    container.mainContext.insert(fourthItem)
+//    container.mainContext.insert(fifthItem)
+//    container.mainContext.insert(sixthItem)
+//    container.mainContext.insert(seventhItem)
     let tempArray = ["testMiscellaneous"]
     let newCategory = CategoryDataModel(categoryList: tempArray)
     container.mainContext.insert(newCategory)
