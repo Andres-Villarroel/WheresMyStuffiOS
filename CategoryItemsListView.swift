@@ -1,10 +1,3 @@
-//
-//  CategoryItemsListView.swift
-//  WheresMyStuff
-//
-//  Created by Andres Villarroel on 3/14/24.
-//
-
 import SwiftUI
 import SwiftData
 
@@ -18,56 +11,68 @@ struct CategoryItemsListView: View {
     @Query var items: [ItemDataModel]
     @Environment(\.modelContext) var context
     @State var itemSelected: ItemDataModel?     //used to help implement sheet mechanic
+    private var categoryName: String
     
     //initializing items by filtering out the items that do not match the chosen category
     init(chosenCategory: String) {
+        categoryName = chosenCategory   //TODO: Possible point of error in the future
+        
         _items = Query(filter: #Predicate<ItemDataModel> {item in
-            item.category == chosenCategory
+            item.category == chosenCategory //chosenCategory is provided, database is queried to match any item that has the matching category name
         })
     }
     var body: some View {
-        
-        if items.isEmpty {
-            ContentUnavailableView.search
-        } else {
-            List{
-                ForEach(items) { item in
-                    //if an item it tapped upon, a detail sheet will appear
-                    Button {
-                        itemSelected = item
-                        item.lastViewDate = Date.now
-                    } label: {
-                        ItemCell(item: item)
-                    }
-                    .buttonStyle(PlainButtonStyle())
-                }
-                .onDelete{ indexSet in
-                    for index in indexSet{
-                        context.delete(items[index])
-                    }
-                }
+        NavigationStack {
+            ZStack{
+                //MARK: Background Image
+                Image("appBackground")
+                    .resizable()
+                    .aspectRatio(contentMode: .fill)
+                    .frame(minWidth: 0, maxWidth: .infinity)
+                    .ignoresSafeArea(.all)
                 
-                //making the item cells look better
-                .listRowSeparator(.hidden)
-                .listRowBackground(
-                    RoundedRectangle(cornerRadius: 5)
-                        .background(.clear)
-                    //.foregroundColor(.white)
-                        .padding(
-                            EdgeInsets(
-                                top: 2,
-                                leading: 10,
-                                bottom: 2,
-                                trailing: 10
+                VStack{
+                    if items.isEmpty {
+                        ContentUnavailableView.search
+                    } else {
+                        List{
+                            ForEach(items) { item in
+                                //if an item it tapped upon, a detail sheet will appear
+                                Button {
+                                    itemSelected = item
+                                    item.lastViewDate = Date.now
+                                } label: {
+                                    ItemCell(item: item)
+                                }
+                                .buttonStyle(PlainButtonStyle())
+                            }
+                            .onDelete{ indexSet in
+                                for index in indexSet{
+                                    context.delete(items[index])
+                                }
+                            }
+                            
+                            //making the item cells look better
+                            
+                            .listRowInsets(.init(top: 10, leading: 0, bottom: 0, trailing: 0))
+                            //                making the item cells look better
+                            .listRowSeparator(.hidden)
+                            .listRowBackground(
+                                Color.clear
                             )
-                        )
-                )
-            }//end list
-            .sheet(item: $itemSelected) { item in
-                ItemSheetView(item: item)
-            }
-        }
-    }
+                            
+                        }//end list
+                        .sheet(item: $itemSelected) { item in
+                            ItemSheetView(item: item)
+                        }
+                        .scrollContentBackground(.hidden)
+                    }//end else
+                }//end vstack
+            }//end zstack
+            .navigationTitle(categoryName)
+            .navigationBarTitleDisplayMode(.large)
+        }//end navigation stack
+    }// end body
 }
 
 #Preview {
@@ -100,7 +105,7 @@ struct CategoryItemsListView: View {
     
     container.mainContext.insert(newCategory)
     
-    //
+    
     return CategoryItemsListView(chosenCategory: "Desk")
         .modelContainer(container)
 }

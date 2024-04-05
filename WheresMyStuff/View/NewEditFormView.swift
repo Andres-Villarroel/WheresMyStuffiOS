@@ -91,9 +91,13 @@ struct NewEditFormView: View {
                 }
                 // MARK: image selection section
                 .photosPicker(isPresented: $shouldPresentPhotoPicker, selection: $photoPickerItem, matching: .images)
-                .sheet(isPresented: $useCamera) {
+//                .sheet(isPresented: $useCamera) {
+//                    ImagePicker(sourceType: .camera, selectedImage: $avatarImage)
+//                }
+                .fullScreenCover(isPresented: $useCamera, content: {
                     ImagePicker(sourceType: .camera, selectedImage: $avatarImage)
-                }
+                        .ignoresSafeArea(.all)
+                })
                 .onChange(of: photoPickerItem){ _, _ in
                     Task{
                         if let photoPickerItem, //if photoPickerItem is not nil

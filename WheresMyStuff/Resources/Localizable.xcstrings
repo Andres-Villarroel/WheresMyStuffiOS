@@ -81,6 +81,9 @@
         }
       }
     },
+    "Check the spelling or try a new search." : {
+
+    },
     "Choose Category" : {
       "localizations" : {
         "es-419" : {
@@ -200,6 +203,9 @@
           }
         }
       }
+    },
+    "No Results" : {
+
     },
     "Notes" : {
       "localizations" : {

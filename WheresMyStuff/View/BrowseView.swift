@@ -26,8 +26,8 @@ struct BrowseView: View {
                 .ignoresSafeArea(.all)
                 
                 VStack {
-                    Text("Browse")
-                        .foregroundStyle(Color.white)
+//                    Text("Browse")
+//                        .foregroundStyle(Color.white)
                     
                     //These show the recently viewed and added items views
                     RecentsCards()
@@ -42,26 +42,28 @@ struct BrowseView: View {
                         NavigationLink {
                             //navigation link/destination using cat
                             CategoryItemsListView(chosenCategory: cat)
-                                .navigationTitle(cat)
+//                                .navigationTitle(cat)
                             
-                        } label: {
-                            Text(cat)
                         }
+                    label: {
+                        Text(cat)
+                            .listRowSeparatorTint(Color.white)
+                    }
+                    .listRowBackground(Color.indigo)
                         
                     }// end list
                     .scrollContentBackground(.hidden)
                     .background(.ultraThinMaterial)
-//                    .opacity(0.95)
                     .cornerRadius(20)
-                    .padding([.leading, .trailing, .bottom], 40)
+                    .padding([.leading, .trailing, .bottom], 38)
                     
                 }//end vstack
+                .navigationTitle("Browse")
+                .navigationBarTitleDisplayMode(.inline)
             }//end zstack
-        }
-        .scrollContentBackground(.hidden)
-        
+        }//end navigation stack
     }//end body
-}
+}//end body
 
 #Preview {
     let container = try! ModelContainer(for: CategoryDataModel.self, ItemDataModel.self, configurations: ModelConfiguration(isStoredInMemoryOnly: true))
@@ -80,7 +82,7 @@ struct BrowseView: View {
     container.mainContext.insert(secondItem)
     container.mainContext.insert(thirdItem)
     
-    let tempArray = ["testMiscellaneous"]
+    let tempArray = ["testMiscellaneous", "otherCategory"]
     let newCategory = CategoryDataModel(categoryList: tempArray)
     container.mainContext.insert(newCategory)
     return BrowseView()
