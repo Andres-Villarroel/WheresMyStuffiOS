@@ -39,16 +39,20 @@ struct BrowseView: View {
                     
                     List(categories[0].categoryList, id:\.self){ cat in
                         //use cat to select the category
-                        NavigationLink {
-                            //navigation link/destination using cat
+//                        NavigationLink {
+//                            //navigation link/destination using cat
+//                            CategoryItemsListView(chosenCategory: cat)
+////                                .navigationTitle(cat)
+//                            
+//                        }
+//                    label: {
+//                        Text(cat)
+//                            .listRowSeparatorTint(Color.white)
+//                    }
+                        NavigationLink (cat){
                             CategoryItemsListView(chosenCategory: cat)
-//                                .navigationTitle(cat)
-                            
                         }
-                    label: {
-                        Text(cat)
-                            .listRowSeparatorTint(Color.white)
-                    }
+                        .listRowSeparatorTint(Color.white)
                     .listRowBackground(Color.indigo)
                         
                     }// end list

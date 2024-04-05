@@ -29,10 +29,11 @@ struct ItemCardView: View {
             VStack{
                 Text(itemName)
                     .bold()
+                    .padding(.top, 10)
                 Text(itemLocation)
-                    .padding(.bottom, 1.5)
+                    .padding([.bottom, .leading, .trailing], 10)
             }
-            .frame(maxWidth: .infinity)
+            .frame(maxWidth: .infinity, maxHeight: 50)
             .background(.ultraThinMaterial)
 //            .opacity(0.95)
 //            .blur(radius: 20)

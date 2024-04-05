@@ -33,7 +33,17 @@ struct CategoryItemsListView: View {
                 
                 VStack{
                     if items.isEmpty {
-                        ContentUnavailableView.search
+                        ContentUnavailableView {
+                            VStack{
+                                Image("notFoundRooster")
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fit)
+                                    .frame(maxWidth: 150)
+                                Text("No Items Here...")
+                            }
+                        } description: {
+                            Text("Add items under the '\(categoryName)' category to fill this page.")
+                        }
                     } else {
                         List{
                             ForEach(items) { item in
@@ -90,10 +100,10 @@ struct CategoryItemsListView: View {
     let thirdItem = ItemDataModel(name: "Dehumidifier", location: "Chloe's Crate", category: "Desk", notes: "Third added")
     thirdItem.image = data
     
-    container.mainContext.insert(newItem)
-    container.mainContext.insert(firstItem)
-    container.mainContext.insert(secondItem)
-    container.mainContext.insert(thirdItem)
+//    container.mainContext.insert(newItem)
+//    container.mainContext.insert(firstItem)
+//    container.mainContext.insert(secondItem)
+//    container.mainContext.insert(thirdItem)
 //    let itemsArray = [
 //        firstItem,
 //        secondItem,

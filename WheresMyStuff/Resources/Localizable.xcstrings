@@ -36,7 +36,17 @@
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Agregar Objeto"
+            "value" : "Agregar artículos"
+          }
+        }
+      }
+    },
+    "Add items under the '%@' category to fill this page" : {
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Agregue artículos a la categoría \"%@\" para llenar esta página."
           }
         }
       }
@@ -82,7 +92,14 @@
       }
     },
     "Check the spelling or try a new search." : {
-
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Revisa la ortografía o intenta una nueva búsqueda"
+          }
+        }
+      }
     },
     "Choose Category" : {
       "localizations" : {
@@ -204,8 +221,25 @@
         }
       }
     },
+    "No Items Here..." : {
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aquí no hay nada..."
+          }
+        }
+      }
+    },
     "No Results" : {
-
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No hay resultados"
+          }
+        }
+      }
     },
     "Notes" : {
       "localizations" : {
@@ -248,6 +282,7 @@
       }
     },
     "Photo Library" : {
+      "extractionState" : "stale",
       "localizations" : {
         "es-419" : {
           "stringUnit" : {
