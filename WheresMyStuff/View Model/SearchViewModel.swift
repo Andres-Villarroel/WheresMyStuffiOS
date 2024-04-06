@@ -13,7 +13,7 @@ final class SearchViewModel: ObservableObject {
             let filteredItems = items.compactMap { item in
                 let titleContainsSearch = item.name.range(of: searchText, options: .caseInsensitive) != nil
                 let locationTitle = item.location.range(of: searchText, options: .caseInsensitive) != nil
-                return (titleContainsSearch || locationTitle) ? item : nil
+                return (titleContainsSearch || locationTitle) ? item : nil  //returns the item to filteredItems if it is not nil
             }
             return filteredItems
         }

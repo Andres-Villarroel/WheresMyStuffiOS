@@ -16,6 +16,7 @@ struct FormView: View {
     var nextScreen: () -> Void  //for switching tabview
     
     @Query var categories: [CategoryDataModel]
+    @Query var items: [ItemDataModel]
     @Environment(\.modelContext) var modelContext
     
     //for the photo picker feature
@@ -142,13 +143,9 @@ struct FormView: View {
             print("item is nil")
         }
         item.notes = notes
+        print("LOG Before ADDING, Items has \(items.count) items")
         modelContext.insert(item)
-//        
-//        print("Printing swiftdata address:")
-//        //COMMENT THIS OUT WHEN DEBUGGING IS NOT NEEDED
-//        //TODO: Delete this line when publishing final product
-//        print(modelContext.sqliteCommand)
-        
+        try? modelContext.save()
         //CLEAR FORM WHEN FINISHED
         name = ""
         category = ""
@@ -158,6 +155,7 @@ struct FormView: View {
         avatarImage = nil
         item = emptyItem
         
+        print("LOG After ADDING, Items has \(items.count) items")
         notificationBanner.show(notification: infoNotification)
         nextScreen()
     }

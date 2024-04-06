@@ -42,6 +42,17 @@
       }
     },
     "Add items under the '%@' category to fill this page" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Agregue artículos a la categoría \"%@\" para llenar esta página."
+          }
+        }
+      }
+    },
+    "Add items under the '%@' category to fill this page." : {
       "localizations" : {
         "es-419" : {
           "stringUnit" : {

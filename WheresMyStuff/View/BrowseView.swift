@@ -37,23 +37,20 @@ struct BrowseView: View {
                         .padding(.top)
                         .foregroundStyle(Color.white)
                     
-                    List(categories[0].categoryList, id:\.self){ cat in
-                        //use cat to select the category
-//                        NavigationLink {
-//                            //navigation link/destination using cat
-//                            CategoryItemsListView(chosenCategory: cat)
-////                                .navigationTitle(cat)
-//                            
-//                        }
-//                    label: {
-//                        Text(cat)
-//                            .listRowSeparatorTint(Color.white)
-//                    }
-                        NavigationLink (cat){
-                            CategoryItemsListView(chosenCategory: cat)
+                    List{
+                        ForEach(categories[0].categoryList, id:\.self){ cat in
+                            
+                            NavigationLink (cat){
+                                CategoryItemsListView(chosenCategory: cat)
+                            }
+                            .listRowSeparatorTint(Color.white)
+                            .listRowBackground(Color.indigo)
                         }
-                        .listRowSeparatorTint(Color.white)
-                    .listRowBackground(Color.indigo)
+                        .onDelete{ indexSet in
+                            for index in indexSet{
+                                categories[0].categoryList.remove(at: index)        //deletes the category
+                            }
+                        }
                         
                     }// end list
                     .scrollContentBackground(.hidden)

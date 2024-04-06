@@ -43,7 +43,7 @@ struct ItemSheetView: View {
                 Divider()
                 Text("Category: \(item.category)")
                 Divider()
-                Text(item.date, format: .dateTime.day().month().year().hour().minute())
+                Text(item.date!, format: .dateTime.day().month().year().hour().minute())
                 if !item.notes.isEmpty {
                     Divider()
                     Text("Notes: \(item.notes)")

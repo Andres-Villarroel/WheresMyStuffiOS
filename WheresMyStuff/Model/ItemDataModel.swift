@@ -11,14 +11,14 @@ import SwiftData
 @Model
 class ItemDataModel {
     
-    @Attribute(.unique) var id: String = UUID().uuidString
+    var id: String = UUID().uuidString
     @Attribute(.externalStorage) var image : Data?
-    let date: Date
-    var name: String
-    var location: String
-    var category: String
-    var notes: String
-    var lastViewDate: Date
+    let date: Date?
+    var name: String = ""
+    var location: String = ""
+    var category: String = ""
+    var notes: String = ""
+    var lastViewDate: Date?
     
     /*
      init(id: String = UUID().uuidString, date: Date = .now, name: String, location: String, category: String, notes: String) {

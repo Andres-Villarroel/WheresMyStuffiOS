@@ -58,7 +58,10 @@ struct CategoryItemsListView: View {
                             }
                             .onDelete{ indexSet in
                                 for index in indexSet{
+                                    print("LOG Before deleting in categoryItemsList, Items has \(items.count) items")
                                     context.delete(items[index])
+                                    try? context.save()
+                                    print("LOG After deleting in categoryItemsList, Items has \(items.count) items")
                                 }
                             }
                             
