@@ -20,7 +20,6 @@
 		44592F702B9FDB980047E8B5 /* ItemSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44592F6F2B9FDB980047E8B5 /* ItemSheetView.swift */; };
 		44592F9A2BA139F50047E8B5 /* FormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44592F992BA139F50047E8B5 /* FormView.swift */; };
 		44592F9D2BA36D310047E8B5 /* CategoryItemsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44592F9C2BA36D310047E8B5 /* CategoryItemsListView.swift */; };
-		44592FA92BA52D6F0047E8B5 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44592FA82BA52D6F0047E8B5 /* SearchViewModel.swift */; };
 		44592FAB2BA67EC80047E8B5 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44592FAA2BA67EC80047E8B5 /* ImagePicker.swift */; };
 		44592FAD2BA682C90047E8B5 /* TestImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44592FAC2BA682C90047E8B5 /* TestImagePicker.swift */; };
 		44592FB02BA7C43A0047E8B5 /* EditItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44592FAF2BA7C4390047E8B5 /* EditItemView.swift */; };
@@ -55,8 +54,7 @@
 		44592F6F2B9FDB980047E8B5 /* ItemSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemSheetView.swift; sourceTree = "<group>"; };
 		44592F992BA139F50047E8B5 /* FormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormView.swift; sourceTree = "<group>"; };
 		44592F9C2BA36D310047E8B5 /* CategoryItemsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryItemsListView.swift; sourceTree = SOURCE_ROOT; };
-		44592FA82BA52D6F0047E8B5 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
-		44592FAA2BA67EC80047E8B5 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ImagePicker.swift; path = WheresMyStuff/View/ImagePicker.swift; sourceTree = SOURCE_ROOT; };
+		44592FAA2BA67EC80047E8B5 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ImagePicker.swift; path = WheresMyStuff/Model/ImagePicker.swift; sourceTree = SOURCE_ROOT; };
 		44592FAC2BA682C90047E8B5 /* TestImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestImagePicker.swift; sourceTree = "<group>"; };
 		44592FAF2BA7C4390047E8B5 /* EditItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditItemView.swift; sourceTree = SOURCE_ROOT; };
 		44592FC22BACB2790047E8B5 /* ImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageView.swift; sourceTree = "<group>"; };
@@ -109,7 +107,6 @@
 				445617B12BBDA93700C4FDE9 /* Info.plist */,
 				44651ADE2B9687DF009F2BFF /* Model */,
 				44651ADF2B9687F6009F2BFF /* View */,
-				44592FA72BA52D550047E8B5 /* View Model */,
 				4452A2042BB23D0D004FE96D /* Resources */,
 				4450DEA22B850656007C0841 /* Assets.xcassets */,
 				44E2EC682BC0736C00860D63 /* LaunchScreen.storyboard */,
@@ -134,18 +131,10 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
-		44592FA72BA52D550047E8B5 /* View Model */ = {
-			isa = PBXGroup;
-			children = (
-				44592FAA2BA67EC80047E8B5 /* ImagePicker.swift */,
-				44592FA82BA52D6F0047E8B5 /* SearchViewModel.swift */,
-			);
-			path = "View Model";
-			sourceTree = "<group>";
-		};
 		44651ADE2B9687DF009F2BFF /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				44592FAA2BA67EC80047E8B5 /* ImagePicker.swift */,
 				4450DE9E2B850654007C0841 /* WheresMyStuffApp.swift */,
 				44651ACF2B8EB802009F2BFF /* ItemDataModel.swift */,
 				44651AD62B93B93B009F2BFF /* CategoryDataModel.swift */,
@@ -263,7 +252,6 @@
 				44592F702B9FDB980047E8B5 /* ItemSheetView.swift in Sources */,
 				44651ADD2B93EDE7009F2BFF /* Category.swift in Sources */,
 				44592F9D2BA36D310047E8B5 /* CategoryItemsListView.swift in Sources */,
-				44592FA92BA52D6F0047E8B5 /* SearchViewModel.swift in Sources */,
 				44651AD92B93BA15009F2BFF /* ContentView.swift in Sources */,
 				44592FAB2BA67EC80047E8B5 /* ImagePicker.swift in Sources */,
 				44651AD32B91013A009F2BFF /* ItemCell.swift in Sources */,

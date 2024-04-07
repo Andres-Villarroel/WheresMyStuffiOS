@@ -37,6 +37,7 @@ struct BrowseView: View {
                         .padding(.top)
                         .foregroundStyle(Color.white)
                     
+                    //MARK: category list
                     List{
                         ForEach(categories[0].categoryList, id:\.self){ cat in
                             
@@ -44,7 +45,10 @@ struct BrowseView: View {
                                 CategoryItemsListView(chosenCategory: cat)
                             }
                             .listRowSeparatorTint(Color.white)
-                            .listRowBackground(Color.indigo)
+                            .listRowBackground(Color.clear)
+                            .listRowBackground(border(Color.white))
+//                            .listRowInsets(.init(top: 5, leading: 5, bottom: 0, trailing: 5))
+//                            .listRowInsets(EdgeInsets())
                         }
                         .onDelete{ indexSet in
                             for index in indexSet{
@@ -53,8 +57,10 @@ struct BrowseView: View {
                         }
                         
                     }// end list
+                    .listStyle(.plain)  //without this, the first row starts too low
                     .scrollContentBackground(.hidden)
                     .background(.ultraThinMaterial)
+                    .background(Color.clear)
                     .cornerRadius(20)
                     .padding([.leading, .trailing, .bottom], 38)
                     

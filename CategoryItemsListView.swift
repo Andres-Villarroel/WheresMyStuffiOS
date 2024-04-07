@@ -47,14 +47,17 @@ struct CategoryItemsListView: View {
                     } else {
                         List{
                             ForEach(items) { item in
-                                //if an item it tapped upon, a detail sheet will appear
-                                Button {
-                                    itemSelected = item
-                                    item.lastViewDate = Date.now
-                                } label: {
-                                    ItemCell(item: item)
+                                Section{
+                                    //if an item it tapped upon, a detail sheet will appear
+                                    Button {
+                                        itemSelected = item
+                                        item.lastViewDate = Date.now
+                                    } label: {
+                                        ItemCell(item: item)
+                                    }
+                                    .buttonStyle(PlainButtonStyle())
                                 }
-                                .buttonStyle(PlainButtonStyle())
+                                
                             }
                             .onDelete{ indexSet in
                                 for index in indexSet{
@@ -66,10 +69,10 @@ struct CategoryItemsListView: View {
                             }
                             
                             //making the item cells look better
-                            
-                            .listRowInsets(.init(top: 10, leading: 0, bottom: 0, trailing: 0))
+                            .listSectionSpacing(10)
+                            .listRowInsets(.init(top: 0, leading: 0, bottom: 0, trailing: 0))
                             //                making the item cells look better
-                            .listRowSeparator(.hidden)
+//                            .listRowSeparator(.hidden)
                             .listRowBackground(
                                 Color.clear
                             )
@@ -103,10 +106,10 @@ struct CategoryItemsListView: View {
     let thirdItem = ItemDataModel(name: "Dehumidifier", location: "Chloe's Crate", category: "Desk", notes: "Third added")
     thirdItem.image = data
     
-//    container.mainContext.insert(newItem)
-//    container.mainContext.insert(firstItem)
-//    container.mainContext.insert(secondItem)
-//    container.mainContext.insert(thirdItem)
+    container.mainContext.insert(newItem)
+    container.mainContext.insert(firstItem)
+    container.mainContext.insert(secondItem)
+    container.mainContext.insert(thirdItem)
 //    let itemsArray = [
 //        firstItem,
 //        secondItem,

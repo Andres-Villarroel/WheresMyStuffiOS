@@ -38,7 +38,7 @@ struct ItemCell: View {
         .background(.ultraThinMaterial)
 //        .background(Color.purple)
 //        .blur(radius: 5)
-        .clipShape((RoundedRectangle(cornerRadius: 30)))
+//        .clipShape((RoundedRectangle(cornerRadius: 30)))
     }
 }
 

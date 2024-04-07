@@ -38,7 +38,7 @@ struct AddItemView: View {
                                 ToolbarItem(placement: .topBarTrailing){
                                     Button("Add Category"){
                                         showingAlert.toggle()
-                                        print(modelContext.sqliteCommand)
+//                                        print(modelContext.sqliteCommand)
                                     }
                                     .alert("Enter Category Name", isPresented: $showingAlert){
                                         TextField("Enter Cateory Name", text: $newCategoryName)
