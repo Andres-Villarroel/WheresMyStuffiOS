@@ -60,8 +60,10 @@ struct SearchView: View {
 //    container.mainContext.insert(sixthItem)
 //    container.mainContext.insert(seventhItem)
     let tempArray = ["testMiscellaneous"]
-    let newCategory = CategoryDataModel(categoryList: tempArray)
-    container.mainContext.insert(newCategory)
+    for cat in tempArray{
+        let newCategory = CategoryDataModel(name: cat)
+        container.mainContext.insert(newCategory)
+    }
     return SearchView()
         .modelContainer(container)
 }

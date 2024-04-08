@@ -37,8 +37,8 @@ struct ContentView: View {
 #Preview {
     
     let container = try! ModelContainer(for: CategoryDataModel.self, ItemDataModel.self, configurations: ModelConfiguration(isStoredInMemoryOnly: true))
-    let tempArray = ["Miscellaneous"]
-    let newCategory = CategoryDataModel(categoryList: tempArray)
+    let tempName = "Miscellaneous"
+    let newCategory = CategoryDataModel(name: tempName)
     container.mainContext.insert(newCategory)
     return ContentView()
         .modelContainer(container)

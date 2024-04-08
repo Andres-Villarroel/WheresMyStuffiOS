@@ -50,10 +50,10 @@ struct TabBarView: View {
     
     let container = try! ModelContainer(for: CategoryDataModel.self, ItemDataModel.self, configurations: ModelConfiguration(isStoredInMemoryOnly: true))
     let tempArray = ["Miscellaneous"]
-    let newCategory = CategoryDataModel(categoryList: tempArray)
-    container.mainContext.insert(newCategory)
+    for cat in tempArray{
+        let newCategory = CategoryDataModel(name: cat)
+        container.mainContext.insert(newCategory)
+    }
     return TabBarView()
         .modelContainer(container)
-    
-    
 }

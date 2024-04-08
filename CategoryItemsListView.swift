@@ -117,9 +117,10 @@ struct CategoryItemsListView: View {
 //    ]
     
     let tempArray = ["testMiscellaneous"]
-    let newCategory = CategoryDataModel(categoryList: tempArray)
-    
-    container.mainContext.insert(newCategory)
+    for cat in tempArray{
+        let newCategory = CategoryDataModel(name: cat)
+        container.mainContext.insert(newCategory)
+    }
     
     
     return CategoryItemsListView(chosenCategory: "Desk")

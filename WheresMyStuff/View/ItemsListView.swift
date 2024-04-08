@@ -87,10 +87,13 @@ struct ItemsListView: View {
     thirdItem.image = data
     
     let tempArray = ["testMiscellaneous"]
-    let newCategory = CategoryDataModel(categoryList: tempArray)
+    for cat in tempArray{
+        let newCategory = CategoryDataModel(name: cat)
+        container.mainContext.insert(newCategory)
+    }
+    
     container.mainContext.insert(newItem)
     container.mainContext.insert(firstItem)
-    container.mainContext.insert(newCategory)
     container.mainContext.insert(secondItem)
     container.mainContext.insert(thirdItem)
     return ItemsListView(filterString: "")

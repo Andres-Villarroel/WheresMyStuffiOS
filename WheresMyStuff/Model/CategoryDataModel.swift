@@ -1,12 +1,4 @@
-//
-//  CategoryDataModel.swift
-//  WheresMyStuff
-//
-//  Created by Andres Villarroel on 3/2/24.
-//
 
-//REMINDER: data models should only contain abstract code, nothing hardcoded such as the case for default values.
-// Default values can be added through the model container context
 import Foundation
 import SwiftData
 
@@ -14,9 +6,10 @@ import SwiftData
 class CategoryDataModel {
     
     //var name: String
-    var categoryList: [String] = []
+    var name = ""
+    var id: String = UUID().uuidString
     
-    init(categoryList: [String]) {
-        self.categoryList = categoryList
+    init(name: String = "", id: String = UUID().uuidString) {
+        self.name = name
     }
 }

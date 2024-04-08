@@ -15,14 +15,12 @@
 		4450DEB12B8515DD007C0841 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4450DEB02B8515DD007C0841 /* SearchView.swift */; };
 		4450DEB32B851790007C0841 /* AddItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4450DEB22B851790007C0841 /* AddItemView.swift */; };
 		4450DEB72B85A1B7007C0841 /* RecentsCards.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4450DEB62B85A1B7007C0841 /* RecentsCards.swift */; };
-		4452A2032BB23A93004FE96D /* SwiftUI_NotificationBanner in Frameworks */ = {isa = PBXBuildFile; productRef = 4452A2022BB23A93004FE96D /* SwiftUI_NotificationBanner */; };
 		4452A2062BB23D20004FE96D /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 4452A2052BB23D20004FE96D /* Localizable.xcstrings */; };
 		44592F702B9FDB980047E8B5 /* ItemSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44592F6F2B9FDB980047E8B5 /* ItemSheetView.swift */; };
 		44592F9A2BA139F50047E8B5 /* FormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44592F992BA139F50047E8B5 /* FormView.swift */; };
 		44592F9D2BA36D310047E8B5 /* CategoryItemsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44592F9C2BA36D310047E8B5 /* CategoryItemsListView.swift */; };
 		44592FAB2BA67EC80047E8B5 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44592FAA2BA67EC80047E8B5 /* ImagePicker.swift */; };
 		44592FAD2BA682C90047E8B5 /* TestImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44592FAC2BA682C90047E8B5 /* TestImagePicker.swift */; };
-		44592FB02BA7C43A0047E8B5 /* EditItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44592FAF2BA7C4390047E8B5 /* EditItemView.swift */; };
 		44592FC32BACB2790047E8B5 /* ImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44592FC22BACB2790047E8B5 /* ImageView.swift */; };
 		44592FC52BACC8800047E8B5 /* NewEditFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44592FC42BACC8800047E8B5 /* NewEditFormView.swift */; };
 		44592FC72BACE20B0047E8B5 /* ZoomScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44592FC62BACE20B0047E8B5 /* ZoomScrollView.swift */; };
@@ -36,6 +34,7 @@
 		44651AE12B977DF7009F2BFF /* ItemCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44651AE02B977DF7009F2BFF /* ItemCardView.swift */; };
 		44651AE52B97C5D7009F2BFF /* RecentlyViewedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44651AE42B97C5D7009F2BFF /* RecentlyViewedView.swift */; };
 		44E2EC692BC0736C00860D63 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 44E2EC682BC0736C00860D63 /* LaunchScreen.storyboard */; };
+		44E836D02BC33306007A19FE /* SwiftUI_NotificationBanner in Frameworks */ = {isa = PBXBuildFile; productRef = 44E836CF2BC33306007A19FE /* SwiftUI_NotificationBanner */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,7 +55,6 @@
 		44592F9C2BA36D310047E8B5 /* CategoryItemsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryItemsListView.swift; sourceTree = SOURCE_ROOT; };
 		44592FAA2BA67EC80047E8B5 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ImagePicker.swift; path = WheresMyStuff/Model/ImagePicker.swift; sourceTree = SOURCE_ROOT; };
 		44592FAC2BA682C90047E8B5 /* TestImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestImagePicker.swift; sourceTree = "<group>"; };
-		44592FAF2BA7C4390047E8B5 /* EditItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditItemView.swift; sourceTree = SOURCE_ROOT; };
 		44592FC22BACB2790047E8B5 /* ImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageView.swift; sourceTree = "<group>"; };
 		44592FC42BACC8800047E8B5 /* NewEditFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewEditFormView.swift; sourceTree = "<group>"; };
 		44592FC62BACE20B0047E8B5 /* ZoomScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZoomScrollView.swift; sourceTree = "<group>"; };
@@ -77,7 +75,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4452A2032BB23A93004FE96D /* SwiftUI_NotificationBanner in Frameworks */,
+				44E836D02BC33306007A19FE /* SwiftUI_NotificationBanner in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -151,7 +149,6 @@
 				4450DEA02B850654007C0841 /* BrowseView.swift */,
 				44592F9C2BA36D310047E8B5 /* CategoryItemsListView.swift */,
 				44651AD82B93BA15009F2BFF /* ContentView.swift */,
-				44592FAF2BA7C4390047E8B5 /* EditItemView.swift */,
 				44592F992BA139F50047E8B5 /* FormView.swift */,
 				44651AE02B977DF7009F2BFF /* ItemCardView.swift */,
 				44651AD22B91013A009F2BFF /* ItemCell.swift */,
@@ -186,7 +183,7 @@
 			);
 			name = WheresMyStuff;
 			packageProductDependencies = (
-				4452A2022BB23A93004FE96D /* SwiftUI_NotificationBanner */,
+				44E836CF2BC33306007A19FE /* SwiftUI_NotificationBanner */,
 			);
 			productName = WheresMyStuff;
 			productReference = 4450DE9B2B850654007C0841 /* WheresMyStuff.app */;
@@ -266,7 +263,6 @@
 				44651AD02B8EB802009F2BFF /* ItemDataModel.swift in Sources */,
 				44651ADB2B93C003009F2BFF /* CustomContainer.swift in Sources */,
 				44651AD52B918664009F2BFF /* ItemsListView.swift in Sources */,
-				44592FB02BA7C43A0047E8B5 /* EditItemView.swift in Sources */,
 				44592FAD2BA682C90047E8B5 /* TestImagePicker.swift in Sources */,
 				44651AD72B93B93B009F2BFF /* CategoryDataModel.swift in Sources */,
 				44592F9A2BA139F50047E8B5 /* FormView.swift in Sources */,
@@ -514,7 +510,7 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		4452A2022BB23A93004FE96D /* SwiftUI_NotificationBanner */ = {
+		44E836CF2BC33306007A19FE /* SwiftUI_NotificationBanner */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 44592FBF2BA9E3000047E8B5 /* XCRemoteSwiftPackageReference "SwiftUI_NotificationBanner" */;
 			productName = SwiftUI_NotificationBanner;

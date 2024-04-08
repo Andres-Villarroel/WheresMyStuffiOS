@@ -134,8 +134,8 @@ struct NewEditFormView: View {
                     //MARK: Optional Section
                     Section (header: Text("Optional")){
                         Picker("Choose Category", selection: $category){
-                            ForEach(categories[0].categoryList, id: \.self) { cat in
-                                Text(cat)
+                            ForEach(categories, id: \.self) { cat in
+                                Text(cat.name)
                             }
                         }
                         
@@ -194,7 +194,8 @@ struct NewEditFormView: View {
     
     func submitCategory(){
         //add newCategoryName to categories array
-        categories[0].categoryList.append(newCategoryName)
+//        categories[0].categoryList.append(newCategoryName)
+        modelContext.insert(CategoryDataModel(name: newCategoryName))
         
         print("You entered \(newCategoryName)")
         newCategoryName = ""
@@ -217,9 +218,12 @@ struct NewEditFormView: View {
     
     let image = UIImage(named: "tiltedParrot")!
     let data = image.pngData()
+    
     let tempArray = ["Miscellaneous", "Desk"]
-    let newCategory = CategoryDataModel(categoryList: tempArray)
-    container.mainContext.insert(newCategory)
+    for cat in tempArray{
+        let newCategory = CategoryDataModel(name: cat)
+        container.mainContext.insert(newCategory)
+    }
     let newItem = ItemDataModel(name: "test name", location: "test location", category: "test category", notes: "test notes")
     newItem.image = data
     

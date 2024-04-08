@@ -83,9 +83,14 @@ struct ItemSheetView: View {
     let catArray = ["Miscellaneous", "Desk"]
     let newItem = ItemDataModel(name: "test name", location: "test location", category: "test category", notes: "test notes")
     newItem.image = data
-    let newCategory = CategoryDataModel(categoryList: catArray)
+//    let newCategory = CategoryDataModel(categoryList: catArray)
     container.mainContext.insert(newItem)
-    container.mainContext.insert(newCategory)
+    
+    for cat in catArray{
+        let newCategory = CategoryDataModel(name: cat)
+        container.mainContext.insert(newCategory)
+    }
+//    container.mainContext.insert(newCategory)
     return ItemSheetView(item: newItem)
         .modelContainer(container)
         .environmentObject(DYNotificationHandler())

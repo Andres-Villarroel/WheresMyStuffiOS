@@ -62,14 +62,11 @@ struct AddItemView: View {
     
     func submitCategory(){
         //add newCategoryName to categories array
-        categories[0].categoryList.append(newCategoryName)
+//        categories[0].categoryList.append(newCategoryName)
+        modelContext.insert(CategoryDataModel(name: newCategoryName))
         
         print("You entered \(newCategoryName)")
         newCategoryName = ""
-        
-        //COMMENT THIS OUT WHEN DEBUGGING IS NOT NEEDED
-        //print("Printing swiftdata address:")
-        //print(modelContext.sqliteCommand)
     }
     func changeScreen(){
         selection = 2
@@ -80,8 +77,10 @@ struct AddItemView: View {
 
 #Preview {
     let container = try! ModelContainer(for: CategoryDataModel.self, ItemDataModel.self, configurations: ModelConfiguration(isStoredInMemoryOnly: true))
-    let tempArray = ["Miscellaneous"]
-    let newCategory = CategoryDataModel(categoryList: tempArray)
+//    let tempArray = ["Miscellaneous"]
+    let tempName = "Miscellaneous"
+//    let newCategory = CategoryDataModel(categoryList: tempArray)
+    let newCategory = CategoryDataModel(name: tempName)
     container.mainContext.insert(newCategory)
     return AddItemView(selection: .constant(2))
         .modelContainer(container)

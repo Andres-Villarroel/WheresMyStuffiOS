@@ -106,8 +106,8 @@ struct FormView: View {
                     
                     // MARK: Category Picker
                     Picker("Choose Category", selection: $category){
-                        ForEach(categories[0].categoryList, id: \.self) { cat in
-                            Text(cat)
+                        ForEach(categories, id: \.self) { cat in
+                            Text(cat.name).tag(cat.name)
                         }
                     }
                     
@@ -174,9 +174,14 @@ struct FormView: View {
 #Preview {
     let container = try! ModelContainer(for: CategoryDataModel.self, ItemDataModel.self, configurations: ModelConfiguration(isStoredInMemoryOnly: true))
     let tempArray = ["Miscellaneous", "Desk", "Kitchen"]
-    let newCategory = CategoryDataModel(categoryList: tempArray)
+//    let newCategory = CategoryDataModel(categoryList: tempArray)
     let tempItem = ItemDataModel(name: "", location: "", category: "Miscellaneous", notes: "")
-    container.mainContext.insert(newCategory)
+    
+    for cat in tempArray{
+        let newCategory = CategoryDataModel(name: cat)
+        container.mainContext.insert(newCategory)
+    }
+//    container.mainContext.insert(newCategory)
     func nextScreenPreview() {}
     return FormView(nextScreen: nextScreenPreview, item: .constant(tempItem))
         .modelContainer(container)

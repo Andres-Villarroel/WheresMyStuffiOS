@@ -39,20 +39,20 @@ struct BrowseView: View {
                     
                     //MARK: category list
                     List{
-                        ForEach(categories[0].categoryList, id:\.self){ cat in
+//                        ForEach(categories[0].categoryList, id:\.self){ cat in
+                        ForEach(categories, id: \.self){ cat in
                             
-                            NavigationLink (cat){
-                                CategoryItemsListView(chosenCategory: cat)
+                            NavigationLink (cat.name){
+                                CategoryItemsListView(chosenCategory: cat.name)
                             }
                             .listRowSeparatorTint(Color.white)
                             .listRowBackground(Color.clear)
                             .listRowBackground(border(Color.white))
-//                            .listRowInsets(.init(top: 5, leading: 5, bottom: 0, trailing: 5))
-//                            .listRowInsets(EdgeInsets())
                         }
                         .onDelete{ indexSet in
                             for index in indexSet{
-                                categories[0].categoryList.remove(at: index)        //deletes the category
+//                                categories[0].categoryList.remove(at: index)        //deletes the category
+                                modelContext.delete(categories[index])
                             }
                         }
                         
@@ -89,9 +89,13 @@ struct BrowseView: View {
     container.mainContext.insert(secondItem)
     container.mainContext.insert(thirdItem)
     
-    let tempArray = ["testMiscellaneous", "otherCategory"]
-    let newCategory = CategoryDataModel(categoryList: tempArray)
+    let tempName = "testMiscellaneous"
+    let otherName = "otherCategory"
+//    let newCategory = CategoryDataModel(categoryList: tempArray)
+    let newCategory = CategoryDataModel(name: tempName)
+    let otherCategory = CategoryDataModel(name: otherName)
     container.mainContext.insert(newCategory)
+    container.mainContext.insert(otherCategory)
     return BrowseView()
         .modelContainer(container)
     
