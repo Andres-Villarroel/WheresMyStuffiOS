@@ -9,7 +9,7 @@ import SwiftUI
 import SwiftData
 import PhotosUI
 import SwiftUI_NotificationBanner
-
+import AVFoundation
 
 struct FormView: View {
     @EnvironmentObject var notificationBanner: DYNotificationHandler
@@ -24,6 +24,8 @@ struct FormView: View {
     @State private var shouldPresentPhotoPicker = false
     @State var avatarImage: UIImage?
     @State private var useCamera = false
+    @StateObject var cManager = CameraManager()
+    @State var showCameraPermissionAlert = false
     
     
     //these will be saved using Swift Data using ItemDataModel
@@ -55,9 +57,18 @@ struct FormView: View {
                             shouldPresentPhotoPicker.toggle()
                         }// end menu button 1
                         Button ("Take Photo"){
-                            useCamera.toggle()
+                            Task{
+                                await cManager.getPermission()
+                                
+                                if cManager.authStatus{
+                                    useCamera.toggle()
+                                    print("PERMISSION HAS OR HAS ALREADY BEEN GRANTED")
+                                } else {
+                                    showCameraPermissionAlert.toggle()
+                                    print("PERMISSION HAS BEEN DENIED")
+                                }
+                            }
                         }
-                        
                     } label: {
                         
                         if avatarImage != nil {
@@ -71,9 +82,6 @@ struct FormView: View {
                     }
                     //MARK: PhotoPicker section
                     .photosPicker(isPresented: $shouldPresentPhotoPicker, selection: $photoPickerItem, matching: .images)
-//                    .sheet(isPresented: $useCamera) {
-//                        ImagePicker(sourceType: .camera, selectedImage: $avatarImage)
-//                    }
                     .fullScreenCover(isPresented: $useCamera, content: {
                         ImagePicker(sourceType: .camera, selectedImage: $avatarImage)
                             .ignoresSafeArea(.all)
@@ -113,6 +121,12 @@ struct FormView: View {
                     
                     TextField("Notes", text: $notes, axis: .vertical)
                         .padding()
+                }//end section
+                .alert("Please enable camera access", isPresented: $showCameraPermissionAlert){
+                    Button("OK", role: .cancel){}
+                } message: {
+                    Text("Settings > WheresMyStuff > toggle camera")
+                        .frame(maxWidth: .infinity, alignment: .leading)
                 }
                 
                 //MARK: save button
@@ -133,16 +147,16 @@ struct FormView: View {
         //let item = ItemDataModel(name: name, location: location, category: category, notes: notes)
         //item.image = imageData
         let emptyItem = ItemDataModel(name: "", location: "", category: "", notes: "")
-        item.name = name
-        item.location = location
-        item.category = category
+        item.name = name.trimmingCharacters(in: .whitespacesAndNewlines)
+        item.location = location.trimmingCharacters(in: .whitespacesAndNewlines)
+        item.category = category.trimmingCharacters(in: .whitespacesAndNewlines)
         if imageData != nil {  //change this, it is not supposed to check item.image as that is what the image is saving to; it will always be nil
             item.image = imageData
             print("Item is not nil")
         } else {
             print("item is nil")
         }
-        item.notes = notes
+        item.notes = notes.trimmingCharacters(in: .whitespacesAndNewlines)
         print("LOG Before ADDING, Items has \(items.count) items")
         modelContext.insert(item)
         try? modelContext.save()
@@ -170,6 +184,8 @@ struct FormView: View {
         return DYNotification(message: message, type: type, displayDuration: displayDuration, dismissOnTap: dismissOnTap, displayEdge: displayEdge, hapticFeedbackType: .success)
     }
 }// end struct
+
+
 
 #Preview {
     let container = try! ModelContainer(for: CategoryDataModel.self, ItemDataModel.self, configurations: ModelConfiguration(isStoredInMemoryOnly: true))

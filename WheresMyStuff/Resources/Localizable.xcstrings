@@ -193,7 +193,14 @@
       }
     },
     "hi yall" : {
-
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : ""
+          }
+        }
+      }
     },
     "Location" : {
       "localizations" : {
@@ -306,6 +313,16 @@
         }
       }
     },
+    "Please enable camera access" : {
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Por favor permita el acceso a la cámara"
+          }
+        }
+      }
+    },
     "Recently Added" : {
       "localizations" : {
         "es-419" : {
@@ -362,6 +379,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Buscar"
+          }
+        }
+      }
+    },
+    "Settings > WheresMyApp > use camera" : {
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Configuracíones > WheresMyStuff > permitir camera"
           }
         }
       }
