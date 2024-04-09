@@ -1,15 +1,10 @@
-//
-//  ItemSheetView.swift
-//  WheresMyStuff
-//
-//  Created by Andres Villarroel on 3/11/24.
-//
-
 import SwiftUI
 import SwiftData    //note that this is only used in the preview
 import SwiftUI_NotificationBanner
+import OSLog
 
 struct ItemSheetView: View {
+    let log = Logger(subsystem: "WheresMyStuff", category: "ItemSheetView")  //creating an instance of the Logger for the logging system
     
     let item: ItemDataModel
     @Environment(\.dismiss) private var dismiss
@@ -22,15 +17,13 @@ struct ItemSheetView: View {
                 if item.image != nil{
                     Image(uiImage: UIImage(data: item.image!)!)   //add try or if statements to check for an image. or just add a default image
                         .resizable()
-                    //                        .aspectRatio(contentMode: .fill)
                         .scaledToFill()
                         .frame(height: 300, alignment: .center)
-                        .clipped()
-                    
+                        .contentShape(Rectangle())
                         .onTapGesture {
                             showImageView.toggle()
                         }
-                    //TODO: make image tappable to view full image, then do the same for EditView but add a delete button for the image
+                        .clipped()
                 } else {
                     Image("tiltedParrot")
                         .resizable()
@@ -57,8 +50,7 @@ struct ItemSheetView: View {
                         showEditItem.toggle()
                     }
                     .sheet (isPresented: $showEditItem) {
-                        //                        EditItemView(item: item)
-                        NewEditFormView(item: item)
+                        EditFormView(item: item)
                     }
                 }
                 ToolbarItem(placement: .topBarLeading){
@@ -95,3 +87,15 @@ struct ItemSheetView: View {
         .modelContainer(container)
         .environmentObject(DYNotificationHandler())
 }
+/*
+ CUSTOM LOG:
+ let customLog = Logger(subsystem: "com.your_company.your_subsystem",
+           category: "your_category_name")
+    customLog.error("An error occurred!")
+ 
+ Debug  [not saved to disk]         Captures information during development that is useful only for debugging your code.
+ Info   [only using a log tool]     Captures information that is helpful, but not essential, to troubleshoot problems
+ Error  [Yes, storage limit]        Captures errors seen during the execution of your code. If an activity object exists, the system captures information for the related process chain.
+ Notice [Yes, storage limit]        Captures information that is essential for troubleshooting problems. For example, capture information that might result in a failure.
+ Fault  [Yes, storage limit]        Captures information about faults and bugs in your code. If an activity object exists, the system captures information for the related process chain.
+ */

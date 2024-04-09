@@ -21,7 +21,7 @@
 		44592F9D2BA36D310047E8B5 /* CategoryItemsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44592F9C2BA36D310047E8B5 /* CategoryItemsListView.swift */; };
 		44592FAB2BA67EC80047E8B5 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44592FAA2BA67EC80047E8B5 /* ImagePicker.swift */; };
 		44592FC32BACB2790047E8B5 /* ImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44592FC22BACB2790047E8B5 /* ImageView.swift */; };
-		44592FC52BACC8800047E8B5 /* NewEditFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44592FC42BACC8800047E8B5 /* NewEditFormView.swift */; };
+		44592FC52BACC8800047E8B5 /* EditFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44592FC42BACC8800047E8B5 /* EditFormView.swift */; };
 		44592FC72BACE20B0047E8B5 /* ZoomScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44592FC62BACE20B0047E8B5 /* ZoomScrollView.swift */; };
 		44651AD02B8EB802009F2BFF /* ItemDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44651ACF2B8EB802009F2BFF /* ItemDataModel.swift */; };
 		44651AD32B91013A009F2BFF /* ItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44651AD22B91013A009F2BFF /* ItemCell.swift */; };
@@ -53,7 +53,7 @@
 		44592F9C2BA36D310047E8B5 /* CategoryItemsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryItemsListView.swift; sourceTree = SOURCE_ROOT; };
 		44592FAA2BA67EC80047E8B5 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ImagePicker.swift; path = WheresMyStuff/Model/ImagePicker.swift; sourceTree = SOURCE_ROOT; };
 		44592FC22BACB2790047E8B5 /* ImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageView.swift; sourceTree = "<group>"; };
-		44592FC42BACC8800047E8B5 /* NewEditFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewEditFormView.swift; sourceTree = "<group>"; };
+		44592FC42BACC8800047E8B5 /* EditFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditFormView.swift; sourceTree = "<group>"; };
 		44592FC62BACE20B0047E8B5 /* ZoomScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZoomScrollView.swift; sourceTree = "<group>"; };
 		44651ACF2B8EB802009F2BFF /* ItemDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDataModel.swift; sourceTree = "<group>"; };
 		44651AD22B91013A009F2BFF /* ItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCell.swift; sourceTree = "<group>"; };
@@ -150,7 +150,7 @@
 				44651AE02B977DF7009F2BFF /* ItemCardView.swift */,
 				44651AD22B91013A009F2BFF /* ItemCell.swift */,
 				44592F6F2B9FDB980047E8B5 /* ItemSheetView.swift */,
-				44592FC42BACC8800047E8B5 /* NewEditFormView.swift */,
+				44592FC42BACC8800047E8B5 /* EditFormView.swift */,
 				44592FC22BACB2790047E8B5 /* ImageView.swift */,
 				44592FC62BACE20B0047E8B5 /* ZoomScrollView.swift */,
 				44651AD42B918664009F2BFF /* ItemsListView.swift */,
@@ -263,7 +263,7 @@
 				44651AD72B93B93B009F2BFF /* CategoryDataModel.swift in Sources */,
 				44592F9A2BA139F50047E8B5 /* FormView.swift in Sources */,
 				4450DEB32B851790007C0841 /* AddItemView.swift in Sources */,
-				44592FC52BACC8800047E8B5 /* NewEditFormView.swift in Sources */,
+				44592FC52BACC8800047E8B5 /* EditFormView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -193,6 +193,7 @@
       }
     },
     "hi yall" : {
+      "extractionState" : "stale",
       "localizations" : {
         "es-419" : {
           "stringUnit" : {
@@ -353,6 +354,9 @@
         }
       }
     },
+    "Save Changes" : {
+
+    },
     "Save Item" : {
       "localizations" : {
         "es-419" : {
@@ -384,6 +388,7 @@
       }
     },
     "Settings > WheresMyApp > use camera" : {
+      "extractionState" : "stale",
       "localizations" : {
         "es-419" : {
           "stringUnit" : {
@@ -392,6 +397,9 @@
           }
         }
       }
+    },
+    "Settings > WheresMyStuff > toggle camera" : {
+
     },
     "Take Photo" : {
       "localizations" : {

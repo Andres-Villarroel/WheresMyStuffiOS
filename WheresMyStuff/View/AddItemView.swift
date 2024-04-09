@@ -63,7 +63,7 @@ struct AddItemView: View {
     func submitCategory(){
         //add newCategoryName to categories array
 //        categories[0].categoryList.append(newCategoryName)
-        modelContext.insert(CategoryDataModel(name: newCategoryName))
+        modelContext.insert(CategoryDataModel(name: newCategoryName.trimmingCharacters(in: .whitespacesAndNewlines)))
         
         print("You entered \(newCategoryName)")
         newCategoryName = ""

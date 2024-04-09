@@ -1,11 +1,9 @@
-
-
 import SwiftUI
 import SwiftData
 import PhotosUI
 import SwiftUI_NotificationBanner
 
-struct NewEditFormView: View {
+struct EditFormView: View {
     let item: ItemDataModel
     @Environment(\.dismiss) private var dismiss
     @State private var showImageView = false
@@ -31,6 +29,7 @@ struct NewEditFormView: View {
     @State private var shouldPresentPhotoPicker = false
     @State var avatarImage: UIImage?
     @State private var useCamera = false
+    @State private var tempImageHolder: UIImage?
     
     //these will be saved using Swift Data using ItemDataModel
     @State private var name: String
@@ -43,11 +42,14 @@ struct NewEditFormView: View {
         self.item = item!
         
         self._name = State(initialValue: item?.name ?? "")
-        self._category = State(initialValue: item?.category ?? "")
+        self._category = State<String>(initialValue: item?.category ?? "")
         self._location = State(initialValue: item?.location ?? "")
         self._notes = State(initialValue: item?.notes ?? "")
+        print("Current item category: \(category)")
         
+        //if the item has an image
         if item?.image != nil{
+            self._tempImageHolder = State(initialValue: UIImage(data: item!.image!)) //incase the user changes their mind on changing the image, this will be used to undo change
             self._imageData = State(initialValue: item?.image)
             self._avatarImage = State(initialValue: UIImage(data: item!.image!))
         }
@@ -68,34 +70,34 @@ struct NewEditFormView: View {
                     
                     if imageData != nil {       //deletes the selected image
                         Button ("Delete Image", role: .destructive) {
-                            imageData = nil
-                            item.image = nil
-                            avatarImage = nil
+//                            imageData = nil
+//                            item.image = nil
+//                            avatarImage = nil
+                            tempImageHolder = nil   //triggers the .onChange(tempImageHolder) modifier which will also set imageData to nil which will then be used to set item.image to nil when the user presses the save button.
                         }
                     }
                     
-                } label: {
-                    if avatarImage != nil {
-                        Image(uiImage: avatarImage!)
+                } label: {  //displays the image of the item
+//                    if avatarImage != nil {
+                    if tempImageHolder != nil {
+//                        Image(uiImage: avatarImage!)
+                        Image(uiImage: tempImageHolder!)    //MARK: FATAL CRASH
                             .resizable()
-//                            .aspectRatio(contentMode: .fill)
                             .scaledToFit()
-//                            .scaledToFill()
                             .frame(maxHeight: 300)
                     } else {
                         //if the item has no image, display this image as default
                         Image("tiltedParrot")
                             .resizable()
-//                            .aspectRatio(contentMode: .fill)
                     }
                 }
-                // MARK: image selection section
+                // MARK: photo picker section
                 .photosPicker(isPresented: $shouldPresentPhotoPicker, selection: $photoPickerItem, matching: .images)
-//                .sheet(isPresented: $useCamera) {
-//                    ImagePicker(sourceType: .camera, selectedImage: $avatarImage)
-//                }
+                
+                // MARK: camera launch section
                 .fullScreenCover(isPresented: $useCamera, content: {
-                    ImagePicker(sourceType: .camera, selectedImage: $avatarImage)
+//                    ImagePicker(sourceType: .camera, selectedImage: $avatarImage)
+                    ImagePicker(sourceType: .camera, selectedImage: $tempImageHolder)
                         .ignoresSafeArea(.all)
                 })
                 .onChange(of: photoPickerItem){ _, _ in
@@ -103,17 +105,21 @@ struct NewEditFormView: View {
                         if let photoPickerItem, //if photoPickerItem is not nil
                            let data = try? await photoPickerItem.loadTransferable(type: Data.self){     //convert photopickeritem into Data type and store it in data
                             if let image = UIImage(data: data){     //if converting data into a UIImage results in a UIImage that is NOT nil....
-                                avatarImage = image     //...set avatarImage equal to image since it has now been verified to not be empty or nil...
+//                                avatarImage = image     //...set avatarImage equal to image since it has now been verified to not be empty or nil...
+                                tempImageHolder = image     //...set avatarImage equal to image since it has now been verified to not be empty or nil...
                                 imageData = data        //...and then set imageData equal to image; imageData is what will be used to insert into swiftdata
                             }
                         }
                         photoPickerItem = nil
                     }
                 }
-                .onChange(of: avatarImage) { _, _ in
+//                .onChange(of: avatarImage) { _, _ in
+                .onChange(of: tempImageHolder) { _, _ in
                     Task {
-                        if let avatarImage,
-                           let data = avatarImage.pngData(){
+                        //if let avatarImage,
+                        if let tempImageHolder,
+//                           let data = avatarImage.pngData(){
+                           let data = tempImageHolder.pngData(){
                             imageData = data
                         }
                     }
@@ -135,7 +141,7 @@ struct NewEditFormView: View {
                     Section (header: Text("Optional")){
                         Picker("Choose Category", selection: $category){
                             ForEach(categories, id: \.self) { cat in
-                                Text(cat.name)
+                                Text(cat.name).tag(cat.name)
                             }
                         }
                         
@@ -147,7 +153,7 @@ struct NewEditFormView: View {
                         Spacer()
                         
                         Button (action: saveItem) {
-                            Text("Save Item")
+                            Text("Save Changes")
                         }
                         //input validation to ensure name and location are filled out
                         .disabled(name.isEmpty || location.isEmpty)
@@ -219,7 +225,7 @@ struct NewEditFormView: View {
     let image = UIImage(named: "tiltedParrot")!
     let data = image.pngData()
     
-    let tempArray = ["Miscellaneous", "Desk"]
+    let tempArray = ["Miscellaneous", "Desk", "test category"]
     for cat in tempArray{
         let newCategory = CategoryDataModel(name: cat)
         container.mainContext.insert(newCategory)
@@ -227,7 +233,7 @@ struct NewEditFormView: View {
     let newItem = ItemDataModel(name: "test name", location: "test location", category: "test category", notes: "test notes")
     newItem.image = data
     
-    return NewEditFormView(item: newItem)
+    return EditFormView(item: newItem)
         .modelContainer(container)
         .environmentObject(DYNotificationHandler())
         

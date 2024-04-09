@@ -1,10 +1,3 @@
-//
-//  ImageView.swift
-//  WheresMyStuff
-//
-//  Created by Andres Villarroel on 3/21/24.
-//
-
 import SwiftUI
 import SwiftData
 
@@ -35,7 +28,6 @@ struct ImageView: View {
             .toolbar {
                 if isInEditMode {
                     Button(action: deleteImage, label: {
-//                        Image(systemName: "trash").foregroundColor(.white)
                         Image(systemName: "trash")
                             .foregroundStyle(Color.white)
                     })
