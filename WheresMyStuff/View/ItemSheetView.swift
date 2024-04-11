@@ -12,59 +12,71 @@ struct ItemSheetView: View {
     @State private var showImageView = false
     
     var body: some View {
-        NavigationStack {
-            VStack {
-                if item.image != nil{
-                    Image(uiImage: UIImage(data: item.image!)!)   //add try or if statements to check for an image. or just add a default image
+            NavigationStack {
+                ZStack{
+                    //MARK: Background Image
+                    Image("appBackground")
                         .resizable()
-                        .scaledToFill()
-                        .frame(height: 300, alignment: .center)
-                        .contentShape(Rectangle())
-                        .onTapGesture {
-                            showImageView.toggle()
-                        }
-                        .clipped()
-                } else {
-                    Image("tiltedParrot")
-                        .resizable()
+                        .aspectRatio(contentMode: .fill)
+                        .frame(minWidth: 0, maxWidth: .infinity)
+                        .ignoresSafeArea(.all)
+                VStack {
+                    if item.image != nil{
+                        Image(uiImage: UIImage(data: item.image!)!)   //add try or if statements to check for an image. or just add a default image
+                            .resizable()
+                            .scaledToFill()
+                            .frame(height: 300, alignment: .center)
+                            .contentShape(Rectangle())
+                            .onTapGesture {
+                                showImageView.toggle()
+                            }
+                            .clipped()
+                    } else {
+                        Image("tiltedParrot")
+                            .resizable()
+                            .scaledToFit()
+                    }
+                    
+//                    Text("Name: \(item.name)")
+//                    Divider()
+//                    Text("Location: \(item.location)")
+//                    Divider()
+//                    Text("Category: \(item.category)")
+//                    Divider()
+//                    Text(item.creationDate!, format: .dateTime.day().month().year().hour().minute())
+//                    if !item.notes.isEmpty {
+//                        Divider()
+//                        Text("Notes: \(item.notes)")
+//                    }
+//                    Spacer()
+                    ItemTextDisplayView(item: item)
+                        .frame(width: 350)
                         .scaledToFit()
+//                        .background(Color.red)
                 }
-                
-                Text("Name: \(item.name)")
-                Divider()
-                Text("Location: \(item.location)")
-                Divider()
-                Text("Category: \(item.category)")
-                Divider()
-                Text(item.date!, format: .dateTime.day().month().year().hour().minute())
-                if !item.notes.isEmpty {
-                    Divider()
-                    Text("Notes: \(item.notes)")
-                }
-                Spacer()
-                
-            }
-            .toolbar{
-                ToolbarItem(placement: .topBarTrailing){
-                    Button("Edit"){
-                        showEditItem.toggle()
+                .background(Color.clear)
+                .toolbar{
+                    ToolbarItem(placement: .topBarTrailing){
+                        Button("Edit"){
+                            showEditItem.toggle()
+                        }
+                        .sheet (isPresented: $showEditItem) {
+                            EditFormView(item: item)
+                        }
                     }
-                    .sheet (isPresented: $showEditItem) {
-                        EditFormView(item: item)
+                    ToolbarItem(placement: .topBarLeading){
+                        Button("Dismiss"){
+                            dismiss()
+                        }
                     }
                 }
-                ToolbarItem(placement: .topBarLeading){
-                    Button("Dismiss"){
-                        dismiss()
-                    }
+                .sheet(isPresented: $showImageView){
+                    ImageView(item: item, isInEditMode: false)
                 }
-            }
-            .sheet(isPresented: $showImageView){
-                ImageView(item: item, isInEditMode: false)
-            }
-        }
-    }
-    
+            }// end zstack
+        }// end navigation stack
+        
+    }//end body
 }
 
 #Preview {
@@ -73,7 +85,7 @@ struct ItemSheetView: View {
     let image = UIImage(named: "tiltedParrot")!
     let data = image.pngData()
     let catArray = ["Miscellaneous", "Desk"]
-    let newItem = ItemDataModel(name: "test name", location: "test location", category: "test category", notes: "test notes")
+    let newItem = ItemDataModel(name: "test name", location: "test location", category: "test category", notes: "Lorem ipsum dolor sit ametLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.")
     newItem.image = data
 //    let newCategory = CategoryDataModel(categoryList: catArray)
     container.mainContext.insert(newItem)
@@ -87,15 +99,3 @@ struct ItemSheetView: View {
         .modelContainer(container)
         .environmentObject(DYNotificationHandler())
 }
-/*
- CUSTOM LOG:
- let customLog = Logger(subsystem: "com.your_company.your_subsystem",
-           category: "your_category_name")
-    customLog.error("An error occurred!")
- 
- Debug  [not saved to disk]         Captures information during development that is useful only for debugging your code.
- Info   [only using a log tool]     Captures information that is helpful, but not essential, to troubleshoot problems
- Error  [Yes, storage limit]        Captures errors seen during the execution of your code. If an activity object exists, the system captures information for the related process chain.
- Notice [Yes, storage limit]        Captures information that is essential for troubleshooting problems. For example, capture information that might result in a failure.
- Fault  [Yes, storage limit]        Captures information about faults and bugs in your code. If an activity object exists, the system captures information for the related process chain.
- */

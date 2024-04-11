@@ -12,7 +12,14 @@
       }
     },
     "+ Add Category" : {
-
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "+ Categoría"
+          }
+        }
+      }
     },
     "Add" : {
       "localizations" : {
@@ -95,7 +102,18 @@
         }
       }
     },
+    "Category" : {
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Categoría"
+          }
+        }
+      }
+    },
     "Category: %@" : {
+      "extractionState" : "stale",
       "localizations" : {
         "es-419" : {
           "stringUnit" : {
@@ -145,6 +163,16 @@
         }
       }
     },
+    "Created: %@" : {
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Creado: %@"
+          }
+        }
+      }
+    },
     "Delete Image" : {
       "localizations" : {
         "es-419" : {
@@ -156,7 +184,14 @@
       }
     },
     "Delete Item" : {
-
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Borrar artículo"
+          }
+        }
+      }
     },
     "Dismiss" : {
       "localizations" : {
@@ -209,6 +244,16 @@
         }
       }
     },
+    "Last Updated: %@" : {
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Modificado: %@"
+          }
+        }
+      }
+    },
     "Location" : {
       "localizations" : {
         "es-419" : {
@@ -220,6 +265,7 @@
       }
     },
     "Location: %@" : {
+      "extractionState" : "stale",
       "localizations" : {
         "es-419" : {
           "stringUnit" : {
@@ -240,6 +286,7 @@
       }
     },
     "Name: %@" : {
+      "extractionState" : "stale",
       "localizations" : {
         "es-419" : {
           "stringUnit" : {
@@ -280,6 +327,7 @@
       }
     },
     "Notes: %@" : {
+      "extractionState" : "stale",
       "localizations" : {
         "es-419" : {
           "stringUnit" : {
@@ -361,7 +409,14 @@
       }
     },
     "Save Changes" : {
-
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Guardar cambios"
+          }
+        }
+      }
     },
     "Save Item" : {
       "localizations" : {
@@ -405,7 +460,14 @@
       }
     },
     "Settings > WheresMyStuff > toggle camera" : {
-
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Configuracíones > WheresMyStuff > permitir camera"
+          }
+        }
+      }
     },
     "Take Photo" : {
       "localizations" : {
@@ -432,7 +494,7 @@
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "El último objeto agregado aparecerá aquí"
+            "value" : "El último artículo agregado aparecerá aquí"
           }
         }
       }
@@ -442,7 +504,7 @@
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "El último objeto visto aparecerá aquí"
+            "value" : "El último artículo visto aparecerá aquí"
           }
         }
       }

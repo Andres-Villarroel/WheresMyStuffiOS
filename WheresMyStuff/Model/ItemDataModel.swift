@@ -13,27 +13,18 @@ class ItemDataModel {
     
     var id: String = UUID().uuidString
     @Attribute(.externalStorage) var image : Data?
-    let date: Date?
+    var lastUpdatedDate: Date?
+    let creationDate: Date?
     var name: String = ""
     var location: String = ""
     var category: String = ""
     var notes: String = ""
     var lastViewDate: Date?
     
-    /*
-     init(id: String = UUID().uuidString, date: Date = .now, name: String, location: String, category: String, notes: String) {
-     self.id = id
-     self.date = date
-     self.name = name
-     self.location = location
-     self.category = category
-     self.notes = notes
-     }
-     
-     */
-    init(id: String = UUID().uuidString, date: Date = .now, name: String, location: String, category: String, notes: String, lastViewDate: Date = .now) {
+    init(id: String = UUID().uuidString, date: Date = .now, lastUpdatedDate: Date = .now, name: String, location: String, category: String, notes: String, lastViewDate: Date = .now) {
         self.id = id
-        self.date = date
+        self.creationDate = date
+        self.lastUpdatedDate = lastUpdatedDate
         self.name = name
         self.location = location
         self.category = category

@@ -15,7 +15,7 @@ import SwiftData
 
 struct RecentsCards: View {
     
-    @Query(sort: \ItemDataModel.date, order: .reverse) var items: [ItemDataModel]
+    @Query(sort: \ItemDataModel.creationDate, order: .reverse) var items: [ItemDataModel]
     @State private var showRecAddSheet = false
     
     var body: some View {
