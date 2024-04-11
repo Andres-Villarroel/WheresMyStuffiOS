@@ -19,7 +19,8 @@ struct SearchView: View {
                         .ignoresSafeArea(.all)
                     
                     ItemsListView(filterString: searchTerm)
-                    
+//                        .clipShape(RoundedRectangle(cornerRadius: 5))
+//                        .padding(.top, 5)
                         .searchable(text: $searchTerm, placement: .navigationBarDrawer(displayMode: .always), prompt: "What do you want to find?")//this provides the search function such as the built-in search bar
                 }// end zstack
                 .ignoresSafeArea(.keyboard, edges: .bottom)

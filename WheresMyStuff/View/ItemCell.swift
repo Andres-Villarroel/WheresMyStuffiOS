@@ -34,8 +34,9 @@ struct ItemCell: View {
             Spacer()
         }// end hstack
         .frame(height: 60)
-        .padding()
-        .background(.ultraThinMaterial)
+//        .padding()
+//        .background(.ultraThinMaterial)
+        .background(Color.clear)
 //        .background(Color.purple)
 //        .blur(radius: 5)
 //        .clipShape((RoundedRectangle(cornerRadius: 30)))

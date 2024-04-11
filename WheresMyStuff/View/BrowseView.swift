@@ -26,51 +26,54 @@ struct BrowseView: View {
                 .ignoresSafeArea(.all)
                 
                 VStack {
-//                    Text("Browse")
-//                        .foregroundStyle(Color.white)
-                    
                     //These show the recently viewed and added items views
                     RecentsCards()
                     
                     //lists the categories
                     Text("Categories")  //Consider making this a tab selection view to choose to browse between items and categories
-                        .padding(.top)
+                        .padding([.top, .bottom])
                         .foregroundStyle(Color.white)
                     
                     //MARK: category list
-                    List{
-//                        ForEach(categories[0].categoryList, id:\.self){ cat in
-                        ForEach(categories, id: \.self){ cat in
+                    if(!categories.isEmpty){
+                        List{
+                            ForEach(categories, id: \.self){ cat in
+                                
+                                NavigationLink (cat.name){
+                                    CategoryItemsListView(chosenCategory: cat.name)
+                                }
+                                .listRowSeparatorTint(Color.white)
+                                .listRowBackground(Color.clear)
+//                                .listRowBackground(border(Color.red))
+                            }
+                            .onDelete{ indexSet in
+                                for index in indexSet{
+                                    modelContext.delete(categories[index])
+                                }
+                            }
                             
-                            NavigationLink (cat.name){
-                                CategoryItemsListView(chosenCategory: cat.name)
-                            }
-                            .listRowSeparatorTint(Color.white)
-                            .listRowBackground(Color.clear)
-                            .listRowBackground(border(Color.white))
-                        }
-                        .onDelete{ indexSet in
-                            for index in indexSet{
-//                                categories[0].categoryList.remove(at: index)        //deletes the category
-                                modelContext.delete(categories[index])
-                            }
-                        }
-                        
-                    }// end list
-                    .listStyle(.plain)  //without this, the first row starts too low
-                    .scrollContentBackground(.hidden)
-                    .background(.ultraThinMaterial)
-                    .background(Color.clear)
-                    .cornerRadius(20)
-                    .padding([.leading, .trailing, .bottom], 38)
-                    
+                        }// end list
+                        .listStyle(.plain)  //without this, the first row starts too low
+//                        .scrollContentBackground(.hidden)
+                        .background(.ultraThinMaterial)
+                        .background(Color.clear)
+                        .cornerRadius(20)
+                        .padding([.leading, .trailing, .bottom], 38)
+                    } else {
+                        //MARK: Add category button
+                        AddCategoryView()
+                            .padding(100)
+                        .background(.ultraThinMaterial)
+                        .cornerRadius(20)
+                        Spacer()
+                    }
                 }//end vstack
                 .navigationTitle("Browse")
                 .navigationBarTitleDisplayMode(.inline)
             }//end zstack
         }//end navigation stack
     }//end body
-}//end body
+}
 
 #Preview {
     let container = try! ModelContainer(for: CategoryDataModel.self, ItemDataModel.self, configurations: ModelConfiguration(isStoredInMemoryOnly: true))

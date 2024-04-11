@@ -51,7 +51,7 @@ struct FormView: View {
                 TextField("Name", text: $name)
                 TextField("Location", text: $location)
             }
-            //                .listRowBackground(formBackgroundColor)
+            .listRowBackground(Color.form)
             
             //this section is for the optional data fields
             Section(header: Text("Optional")){
@@ -107,7 +107,8 @@ struct FormView: View {
                 .onChange(of: avatarImage) { _, _ in
                     Task {
                         if let avatarImage,
-                           let data = avatarImage.pngData(){
+//                           let data = avatarImage.pngData(){
+                           let data = avatarImage.jpegData(compressionQuality: 0.5){    //switching to jpeg for better file compression
                             imageData = data
                         }
                     }
@@ -127,7 +128,7 @@ struct FormView: View {
                 TextField("Notes", text: $notes, axis: .vertical)
                     .padding()
             }//end section
-            //                .listRowBackground(formBackgroundColor)
+            .listRowBackground(Color.form)
             .alert("Please enable camera access", isPresented: $showCameraPermissionAlert){
                 Button("OK", role: .cancel){}
             } message: {
@@ -138,7 +139,7 @@ struct FormView: View {
             //MARK: save button section
             HStack{
                 Spacer()
-                Button ( action: debugButton/*saveItem*/){
+                Button ( action: saveItem){
                     Text("Save Item")
                         .foregroundStyle(buttonColor)
                 }

@@ -11,6 +11,9 @@
         }
       }
     },
+    "+ Add Category" : {
+
+    },
     "Add" : {
       "localizations" : {
         "es-419" : {
@@ -151,6 +154,9 @@
           }
         }
       }
+    },
+    "Delete Item" : {
+
     },
     "Dismiss" : {
       "localizations" : {

@@ -31,13 +31,15 @@ struct ItemCardView: View {
                     .bold()
                     .padding(.top, 10)
                 Text(itemLocation)
-                    .padding([.bottom, .leading, .trailing], 10)
+                    .padding([.bottom/*, .leading, .trailing*/], 10)
             }
-            .frame(maxWidth: .infinity, maxHeight: 50)
-            .background(.ultraThinMaterial)
+//            .frame(maxWidth: .infinity, maxHeight: 50)
+            .frame(maxWidth: 200, maxHeight: 50)
+//            .background(.ultraThinMaterial)
 //            .opacity(0.95)
 //            .blur(radius: 20)
         }
+        .background(.ultraThinMaterial)
         .clipShape(RoundedRectangle(cornerRadius: 25.0))
     }
 }

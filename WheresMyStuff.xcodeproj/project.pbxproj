@@ -35,6 +35,7 @@
 		44E2EC692BC0736C00860D63 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 44E2EC682BC0736C00860D63 /* LaunchScreen.storyboard */; };
 		44E836D02BC33306007A19FE /* SwiftUI_NotificationBanner in Frameworks */ = {isa = PBXBuildFile; productRef = 44E836CF2BC33306007A19FE /* SwiftUI_NotificationBanner */; };
 		44E836D82BC37986007A19FE /* CameraManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44E836D72BC37986007A19FE /* CameraManager.swift */; };
+		44E836DA2BC6EDB6007A19FE /* AddCategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44E836D92BC6EDB6007A19FE /* AddCategoryView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -66,6 +67,7 @@
 		44651AE42B97C5D7009F2BFF /* RecentlyViewedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentlyViewedView.swift; sourceTree = "<group>"; };
 		44E2EC682BC0736C00860D63 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		44E836D72BC37986007A19FE /* CameraManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraManager.swift; sourceTree = "<group>"; };
+		44E836D92BC6EDB6007A19FE /* AddCategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCategoryView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,8 +85,8 @@
 		4450DE922B850654007C0841 = {
 			isa = PBXGroup;
 			children = (
-				4450DE9D2B850654007C0841 /* WheresMyStuff */,
 				4450DE9C2B850654007C0841 /* Products */,
+				4450DE9D2B850654007C0841 /* WheresMyStuff */,
 			);
 			sourceTree = "<group>";
 		};
@@ -142,22 +144,23 @@
 		44651ADF2B9687F6009F2BFF /* View */ = {
 			isa = PBXGroup;
 			children = (
+				44E836D92BC6EDB6007A19FE /* AddCategoryView.swift */,
 				4450DEB22B851790007C0841 /* AddItemView.swift */,
 				4450DEA02B850654007C0841 /* BrowseView.swift */,
 				44592F9C2BA36D310047E8B5 /* CategoryItemsListView.swift */,
 				44651AD82B93BA15009F2BFF /* ContentView.swift */,
+				44592FC42BACC8800047E8B5 /* EditFormView.swift */,
 				44592F992BA139F50047E8B5 /* FormView.swift */,
+				44592FC22BACB2790047E8B5 /* ImageView.swift */,
 				44651AE02B977DF7009F2BFF /* ItemCardView.swift */,
 				44651AD22B91013A009F2BFF /* ItemCell.swift */,
 				44592F6F2B9FDB980047E8B5 /* ItemSheetView.swift */,
-				44592FC42BACC8800047E8B5 /* EditFormView.swift */,
-				44592FC22BACB2790047E8B5 /* ImageView.swift */,
-				44592FC62BACE20B0047E8B5 /* ZoomScrollView.swift */,
 				44651AD42B918664009F2BFF /* ItemsListView.swift */,
 				44651AE42B97C5D7009F2BFF /* RecentlyViewedView.swift */,
 				4450DEB62B85A1B7007C0841 /* RecentsCards.swift */,
 				4450DEB02B8515DD007C0841 /* SearchView.swift */,
 				4450DEAE2B8513F6007C0841 /* TabBarView.swift */,
+				44592FC62BACE20B0047E8B5 /* ZoomScrollView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -259,6 +262,7 @@
 				44651AE52B97C5D7009F2BFF /* RecentlyViewedView.swift in Sources */,
 				44651AD02B8EB802009F2BFF /* ItemDataModel.swift in Sources */,
 				44651ADB2B93C003009F2BFF /* CustomContainer.swift in Sources */,
+				44E836DA2BC6EDB6007A19FE /* AddCategoryView.swift in Sources */,
 				44651AD52B918664009F2BFF /* ItemsListView.swift in Sources */,
 				44651AD72B93B93B009F2BFF /* CategoryDataModel.swift in Sources */,
 				44592F9A2BA139F50047E8B5 /* FormView.swift in Sources */,

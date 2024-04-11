@@ -13,12 +13,12 @@ actor CustomContainer {
     
     @MainActor
     static func create() -> ModelContainer {
-        @AppStorage("isFirstTimeLaunch") var shouldCreateDefaults: Bool = true
+//        @AppStorage("isFirstTimeLaunch") var shouldCreateDefaults: Bool = true
         let schema = Schema([
             ItemDataModel.self,
             CategoryDataModel.self
         ])
-        let config = ModelConfiguration()
+        let config = ModelConfiguration()// to opt out of automatic icloud sync, add 'cloudKitDatabase: .none' in ModelConfiguration constructor
         let container = try! ModelContainer(for: schema, configurations: config)
         /*
          If a list of data needs to be pre-loaded, this statement could be used:
@@ -27,25 +27,13 @@ actor CustomContainer {
          */
         
         //the default values defined in the container file runs all the time upon startup. if the user were to delete the Miscellaneous category, it would continue to show up which would be annoying.
-        if shouldCreateDefaults {
-//            let tempStringArray = ["Miscellaneous"]
-            let defaultCategory = "Miscellaneous"
-//            container.mainContext.insert(CategoryDataModel(categoryList: tempStringArray))
-            container.mainContext.insert(CategoryDataModel(name: defaultCategory))
-            shouldCreateDefaults = false
-        }
+//        if shouldCreateDefaults {
+////            let tempStringArray = ["Miscellaneous"]
+//            let defaultCategory = "Miscellaneous"
+////            container.mainContext.insert(CategoryDataModel(categoryList: tempStringArray))
+//            container.mainContext.insert(CategoryDataModel(name: defaultCategory))
+//            shouldCreateDefaults = false
+//        }
         return container
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-//                      CONSIDER REMOVING THE NEED FOR THE DEFAULT 'MISCELLANEOUS' CATEGORY TO BEGIN WITH, CLOUDKIT IS ANNOYING TO DEAL WITH.

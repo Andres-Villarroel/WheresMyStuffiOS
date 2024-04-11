@@ -25,37 +25,39 @@ struct ItemsListView: View {
             List{
                 //using ForEach due to its access to the .onDelete modifier
                 ForEach(items) { item in
-                    Section{
-                        Button {
-                            itemSelected = item
-                            item.lastViewDate = Date.now
-                        } label: {
-                            ItemCell(item: item)
-                        }
-                        .buttonStyle(PlainButtonStyle())
+                    Button {
+                        itemSelected = item
+                        item.lastViewDate = Date.now
+                    } label: {
+                        ItemCell(item: item)
                     }
-                    .listSectionSpacing(10)
-                }
+                    .listRowSeparatorTint(Color.white)
+                    .buttonStyle(PlainButtonStyle())
+                    .alignmentGuide(.listRowSeparatorLeading) { _ in
+                        100
+                    }
+                    .listRowBackground(Color.clear)
+                }//end ForEach
                 .onDelete{ indexSet in
                     for index in indexSet{
                         print("LOG Before deleting in ItemsListView, Items has \(items.count) items")
                         context.delete(items[index])
                         print("LOG After deleting in ItemsListView, Items has \(items.count) items")
                     }
-                }
-                //making the item cells look better
-                .listRowInsets(.init(top: 0, leading: 0, bottom: 0, trailing: 0))
-                .listRowBackground(
-                    Color.clear
-                )
-                .tint(Color.red)
-                
+                }//end onDelete
+//                .listRowBackground(
+//                    Color.lightPurple.blur(radius: 100, opaque: false)
+//                )
             }//end list
+//            .background(.ultraThinMaterial)
+            .background(Color.clear)
             .scrollContentBackground(.hidden)
+//            .background(.ultraThinMaterial) //this sets the entire view blurry
             .sheet(item: $itemSelected) { item in
                 ItemSheetView(item: item)
             }
         }//end if
+        //set blurry background here
         else {
             ContentUnavailableView {
                 VStack{
@@ -69,7 +71,8 @@ struct ItemsListView: View {
                 Text("Check the spelling or try a new search.")
             }
         }
-    }
+    }//end body
+    
 }
 #Preview {
     let container = try! ModelContainer(for: CategoryDataModel.self, ItemDataModel.self, configurations: ModelConfiguration(isStoredInMemoryOnly: true))

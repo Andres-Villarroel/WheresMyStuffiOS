@@ -2,8 +2,9 @@ import SwiftUI
 import SwiftData
 import PhotosUI
 import SwiftUI_NotificationBanner
-
+import os
 struct EditFormView: View {
+    let log = Logger(subsystem: "WheresMyStuff", category: "Edit Item")
     let item: ItemDataModel
     @Environment(\.dismiss) private var dismiss
     @State private var showImageView = false
@@ -17,6 +18,7 @@ struct EditFormView: View {
     
     
     @Query var categories: [CategoryDataModel]
+    @Query var items: [ItemDataModel]
     @Environment(\.modelContext) var modelContext
     @EnvironmentObject var notificationBanner: DYNotificationHandler
     
@@ -70,18 +72,18 @@ struct EditFormView: View {
                     
                     if imageData != nil {       //deletes the selected image
                         Button ("Delete Image", role: .destructive) {
-//                            imageData = nil
-//                            item.image = nil
-//                            avatarImage = nil
+                            //                            imageData = nil
+                            //                            item.image = nil
+                            //                            avatarImage = nil
                             tempImageHolder = nil   //triggers the .onChange(tempImageHolder) modifier which will also set imageData to nil which will then be used to set item.image to nil when the user presses the save button.
                         }
                     }
                     
                 } label: {  //displays the image of the item
-//                    if avatarImage != nil {
+                    //                    if avatarImage != nil {
                     if tempImageHolder != nil {
-//                        Image(uiImage: avatarImage!)
-                        Image(uiImage: tempImageHolder!)    //MARK: FATAL CRASH
+                        //                        Image(uiImage: avatarImage!)
+                        Image(uiImage: tempImageHolder!) 
                             .resizable()
                             .scaledToFit()
                             .frame(maxHeight: 300)
@@ -96,7 +98,7 @@ struct EditFormView: View {
                 
                 // MARK: camera launch section
                 .fullScreenCover(isPresented: $useCamera, content: {
-//                    ImagePicker(sourceType: .camera, selectedImage: $avatarImage)
+                    //                    ImagePicker(sourceType: .camera, selectedImage: $avatarImage)
                     ImagePicker(sourceType: .camera, selectedImage: $tempImageHolder)
                         .ignoresSafeArea(.all)
                 })
@@ -105,21 +107,22 @@ struct EditFormView: View {
                         if let photoPickerItem, //if photoPickerItem is not nil
                            let data = try? await photoPickerItem.loadTransferable(type: Data.self){     //convert photopickeritem into Data type and store it in data
                             if let image = UIImage(data: data){     //if converting data into a UIImage results in a UIImage that is NOT nil....
-//                                avatarImage = image     //...set avatarImage equal to image since it has now been verified to not be empty or nil...
-                                tempImageHolder = image     //...set avatarImage equal to image since it has now been verified to not be empty or nil...
+                                //                                avatarImage = image     //...set avatarImage equal to image since it has now been verified to not be empty or nil...
+                                tempImageHolder = image     //...set tempImageHolder equal to image since it has now been verified to not be empty or nil...
                                 imageData = data        //...and then set imageData equal to image; imageData is what will be used to insert into swiftdata
                             }
                         }
                         photoPickerItem = nil
                     }
                 }
-//                .onChange(of: avatarImage) { _, _ in
+                //                .onChange(of: avatarImage) { _, _ in
                 .onChange(of: tempImageHolder) { _, _ in
                     Task {
                         //if let avatarImage,
                         if let tempImageHolder,
-//                           let data = avatarImage.pngData(){
-                           let data = tempImageHolder.pngData(){
+                           //                           let data = avatarImage.pngData(){
+//                           let data = tempImageHolder.pngData(){
+                            let data = tempImageHolder.jpegData(compressionQuality: 0.5){    //switching to jpeg for better file compression
                             imageData = data
                         }
                     }
@@ -159,8 +162,20 @@ struct EditFormView: View {
                         .disabled(name.isEmpty || location.isEmpty)
                         Spacer()
                     }//end hstack
+                    
+                    //MARK: Delete item button
+                    Section {
+                        HStack{
+                            Spacer()
+                            Button(role: .destructive, action: deleteItem, label: {
+                                Text("Delete Item")
+                            })
+                            Spacer()
+                        }
+                    }
                 }// end form
                 .scrollDismissesKeyboard(.immediately)
+                
             }// end vstack
             .toolbar{
                 ToolbarItem(placement: .topBarTrailing){
@@ -198,43 +213,65 @@ struct EditFormView: View {
         notificationBanner.show(notification: infoNotification)
     }
     
-    func submitCategory(){
+    private func submitCategory(){
         //add newCategoryName to categories array
-//        categories[0].categoryList.append(newCategoryName)
+        //        categories[0].categoryList.append(newCategoryName)
         modelContext.insert(CategoryDataModel(name: newCategoryName))
         
         print("You entered \(newCategoryName)")
         newCategoryName = ""
     }
     
-    var infoNotification: DYNotification {
-        let message = "Saved"
-        let type: DYNotificationType = .success
+    private func deleteItem() {
+        log.info("delete button pressed")
+        for i in items {
+            if i.id == self.item.id{
+                modelContext.delete(i)
+                log.info("Item deleted")
+            }
+        }
+        rootViewController?.dismiss(animated: true)
+        notificationBanner.show(notification: deleteNotification)
+    }
+    
+    var deleteNotification: DYNotification {
+        let message = "Deleted"
+        let type: DYNotificationType = .error
         let displayDuration: TimeInterval = 1.5
         let dismissOnTap = true
         let displayEdge: Edge = .top
         
         return DYNotification(message: message, type: type, displayDuration: displayDuration, dismissOnTap: dismissOnTap, displayEdge: displayEdge, hapticFeedbackType: .success)
     }
-
-}
-
-#Preview {
-    let container = try! ModelContainer(for: CategoryDataModel.self, ItemDataModel.self, configurations: ModelConfiguration(isStoredInMemoryOnly: true))
     
-    let image = UIImage(named: "tiltedParrot")!
-    let data = image.pngData()
-    
-    let tempArray = ["Miscellaneous", "Desk", "test category"]
-    for cat in tempArray{
-        let newCategory = CategoryDataModel(name: cat)
-        container.mainContext.insert(newCategory)
-    }
-    let newItem = ItemDataModel(name: "test name", location: "test location", category: "test category", notes: "test notes")
-    newItem.image = data
-    
-    return EditFormView(item: newItem)
-        .modelContainer(container)
-        .environmentObject(DYNotificationHandler())
+    var infoNotification: DYNotification {
+        let message = "Saved"
+        let type: DYNotificationType = .success
+        let displayDuration: TimeInterval = 0.9
+        let dismissOnTap = true
+        let displayEdge: Edge = .top
         
+        return DYNotification(message: message, type: type, displayDuration: displayDuration, dismissOnTap: dismissOnTap, displayEdge: displayEdge, hapticFeedbackType: .success)
+    }
+    
 }
+    
+    #Preview {
+        let container = try! ModelContainer(for: CategoryDataModel.self, ItemDataModel.self, configurations: ModelConfiguration(isStoredInMemoryOnly: true))
+        
+        let image = UIImage(named: "tiltedParrot")!
+        let data = image.pngData()
+        
+        let tempArray = ["Miscellaneous", "Desk", "test category"]
+        for cat in tempArray{
+            let newCategory = CategoryDataModel(name: cat)
+            container.mainContext.insert(newCategory)
+        }
+        let newItem = ItemDataModel(name: "test name", location: "test location", category: "test category", notes: "test notes")
+        newItem.image = data
+        
+        return EditFormView(item: newItem)
+            .modelContainer(container)
+            .environmentObject(DYNotificationHandler())
+        
+    }
