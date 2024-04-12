@@ -73,7 +73,7 @@ struct CategoryItemsListView: View {
                             
                         }//end list
                         .sheet(item: $itemSelected) { item in
-                            ItemSheetView(item: item)
+                            ItemSheetView(item: item, canEdit: true)
                         }
                         .scrollContentBackground(.hidden)
                     }//end else

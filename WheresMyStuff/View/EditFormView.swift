@@ -75,6 +75,7 @@ struct EditFormView: View {
                             //                            imageData = nil
                             //                            item.image = nil
                             //                            avatarImage = nil
+                            log.info("Delete button triggered for image menu")
                             tempImageHolder = nil   //triggers the .onChange(tempImageHolder) modifier which will also set imageData to nil which will then be used to set item.image to nil when the user presses the save button.
                         }
                     }
@@ -117,15 +118,27 @@ struct EditFormView: View {
                 }
                 //                .onChange(of: avatarImage) { _, _ in
                 .onChange(of: tempImageHolder) { _, _ in
+                    log.info("onChange triggered for tempImageHolder.")
+                    if(tempImageHolder == nil){
+                        log.info("tempImageHolder is currently nil in onChange of tempImageHolder closure")
+                    } else {
+                        log.info("tempImageHolder is currently not nil before Task{} in onChangeClosure")
+                    }
                     Task {
                         //if let avatarImage,
                         if let tempImageHolder,
                            //                           let data = avatarImage.pngData(){
 //                           let data = tempImageHolder.pngData(){
                             let data = tempImageHolder.jpegData(compressionQuality: 0.5){    //switching to jpeg for better file compression
+                            log.info("Inside Task{} for onChange of tempImageHolder, tempImageHolder has been converted to jpegData")
                             imageData = data
+                        } else {
+                            log.info("else condition met for if let tempImageHolder, imageData will now be set to nil")
+                            imageData = nil
                         }
                     }
+                    log.info("Now exiting onChange of tempImageHolder")
+                    
                 }
                 .frame(maxWidth: .infinity)
                 .alignmentGuide(.listRowSeparatorLeading) { viewDimensions in
@@ -207,7 +220,11 @@ struct EditFormView: View {
         item.category = category
         item.image = imageData
         item.notes = notes
-        
+        if imageData == nil{
+            log.info("setting item.image to nil")
+        } else {
+            log.info("setting item.image to a non-nil image")
+        }
         //dismisses all sheets
         rootViewController?.dismiss(animated: true)
         notificationBanner.show(notification: infoNotification)
@@ -238,17 +255,6 @@ struct EditFormView: View {
         }
         log.info("Items in database AFTER deletion: \(items.count) as of \(Date.now)")
         rootViewController?.dismiss(animated: true)
-        notificationBanner.show(notification: deleteNotification)
-    }
-    
-    var deleteNotification: DYNotification {
-        let message = "Deleted"
-        let type: DYNotificationType = .error
-        let displayDuration: TimeInterval = 1.5
-        let dismissOnTap = true
-        let displayEdge: Edge = .top
-        
-        return DYNotification(message: message, type: type, displayDuration: displayDuration, dismissOnTap: dismissOnTap, displayEdge: displayEdge, hapticFeedbackType: .success)
     }
     
     var infoNotification: DYNotification {

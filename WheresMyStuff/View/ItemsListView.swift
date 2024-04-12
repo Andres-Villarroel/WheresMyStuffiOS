@@ -2,11 +2,13 @@
 
 import SwiftUI
 import SwiftData
+import SwiftUI_NotificationBanner
 
 struct ItemsListView: View {
     
     //access to swiftdata model context and swiftdata model
     @Environment(\.modelContext) var context
+    @EnvironmentObject var notificationBanner: DYNotificationHandler
     @State var itemSelected: ItemDataModel? //to be used to help implement sheet feature
     @Query var items: [ItemDataModel]
     
@@ -45,16 +47,13 @@ struct ItemsListView: View {
                         print("LOG After deleting in ItemsListView, Items has \(items.count) items")
                     }
                 }//end onDelete
-//                .listRowBackground(
-//                    Color.lightPurple.blur(radius: 100, opaque: false)
-//                )
             }//end list
 //            .background(.ultraThinMaterial)
             .background(Color.clear)
             .scrollContentBackground(.hidden)
 //            .background(.ultraThinMaterial) //this sets the entire view blurry
             .sheet(item: $itemSelected) { item in
-                ItemSheetView(item: item)
+                ItemSheetView(item: item, canEdit: true)
             }
         }//end if
         //set blurry background here

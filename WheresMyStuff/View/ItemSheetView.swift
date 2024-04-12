@@ -1,12 +1,11 @@
 import SwiftUI
 import SwiftData    //note that this is only used in the preview
-import SwiftUI_NotificationBanner
 import OSLog
 
 struct ItemSheetView: View {
     let log = Logger(subsystem: "WheresMyStuff", category: "ItemSheetView")  //creating an instance of the Logger for the logging system
-    
     let item: ItemDataModel
+    let canEdit: Bool
     @Environment(\.dismiss) private var dismiss
     @State private var showEditItem = false
     @State private var showImageView = false
@@ -44,28 +43,14 @@ struct ItemSheetView: View {
                 .background(Color.clear)
                 .toolbar{
                     ToolbarItem(placement: .topBarTrailing){
-                        Button("Edit"){
-                            showEditItem.toggle()
-                            
-                            /*
-                             show sheet
-                             while sheet is shown, set screen to searchView
-                             when delete button is pressed, return to browseView
-                             dismiss sheet
-                             
-                             OR
-                             
-                             try to avoid using sheet is switch to navigation link or something
-                             */
+                        if canEdit{
+                            Button("Edit"){
+                                showEditItem.toggle()
+                            }
+                            .sheet (isPresented: $showEditItem) {
+                                EditFormView(item: item)
+                            }
                         }
-//                        .sheet (isPresented: $showEditItem) {
-//                            EditFormView(item: item)
-//                        }
-                        .sheet(isPresented: $showEditItem, onDismiss: {
-                            
-                        }, content: {
-                            EditFormView(item: item)
-                        })
                     }
                     ToolbarItem(placement: .topBarLeading){
                         Button("Dismiss"){
@@ -98,7 +83,7 @@ struct ItemSheetView: View {
         container.mainContext.insert(newCategory)
     }
 //    container.mainContext.insert(newCategory)
-    return ItemSheetView(item: newItem)
+    return ItemSheetView(item: newItem, canEdit: true)
         .modelContainer(container)
-        .environmentObject(DYNotificationHandler())
+//        .environmentObject(DYNotificationHandler())
 }

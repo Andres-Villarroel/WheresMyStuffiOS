@@ -22,7 +22,7 @@ struct RecentlyViewedView: View {
         })
         .buttonStyle(PlainButtonStyle())
         .sheet(isPresented: $showRecViewSheet) {
-            ItemSheetView(item: items[0])
+            ItemSheetView(item: items[0], canEdit: false)
         }
     }
 }

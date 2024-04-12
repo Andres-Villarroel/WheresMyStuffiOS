@@ -32,10 +32,10 @@
 		44651AE12B977DF7009F2BFF /* ItemCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44651AE02B977DF7009F2BFF /* ItemCardView.swift */; };
 		44651AE52B97C5D7009F2BFF /* RecentlyViewedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44651AE42B97C5D7009F2BFF /* RecentlyViewedView.swift */; };
 		44E2EC692BC0736C00860D63 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 44E2EC682BC0736C00860D63 /* LaunchScreen.storyboard */; };
-		44E836D02BC33306007A19FE /* SwiftUI_NotificationBanner in Frameworks */ = {isa = PBXBuildFile; productRef = 44E836CF2BC33306007A19FE /* SwiftUI_NotificationBanner */; };
 		44E836D82BC37986007A19FE /* CameraManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44E836D72BC37986007A19FE /* CameraManager.swift */; };
 		44E836DA2BC6EDB6007A19FE /* AddCategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44E836D92BC6EDB6007A19FE /* AddCategoryView.swift */; };
 		44E836DE2BC83923007A19FE /* ItemTextDisplayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44E836DD2BC83923007A19FE /* ItemTextDisplayView.swift */; };
+		44E836E82BC988BC007A19FE /* SwiftUI_NotificationBanner in Frameworks */ = {isa = PBXBuildFile; productRef = 44E836E72BC988BC007A19FE /* SwiftUI_NotificationBanner */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -75,7 +75,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				44E836D02BC33306007A19FE /* SwiftUI_NotificationBanner in Frameworks */,
+				44E836E82BC988BC007A19FE /* SwiftUI_NotificationBanner in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -182,7 +182,7 @@
 			);
 			name = WheresMyStuff;
 			packageProductDependencies = (
-				44E836CF2BC33306007A19FE /* SwiftUI_NotificationBanner */,
+				44E836E72BC988BC007A19FE /* SwiftUI_NotificationBanner */,
 			);
 			productName = WheresMyStuff;
 			productReference = 4450DE9B2B850654007C0841 /* WheresMyStuff.app */;
@@ -416,7 +416,7 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = UIInterfaceOrientationLandscapeLeft;
 				INFOPLIST_KEY_UIUserInterfaceStyle = Dark;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -457,7 +457,7 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = UIInterfaceOrientationLandscapeLeft;
 				INFOPLIST_KEY_UIUserInterfaceStyle = Dark;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -510,7 +510,7 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		44E836CF2BC33306007A19FE /* SwiftUI_NotificationBanner */ = {
+		44E836E72BC988BC007A19FE /* SwiftUI_NotificationBanner */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 44592FBF2BA9E3000047E8B5 /* XCRemoteSwiftPackageReference "SwiftUI_NotificationBanner" */;
 			productName = SwiftUI_NotificationBanner;

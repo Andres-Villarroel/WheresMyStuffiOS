@@ -35,7 +35,7 @@ struct RecentsCards: View {
                     })
                     .buttonStyle(PlainButtonStyle())
                     .sheet(isPresented: $showRecAddSheet) {
-                        ItemSheetView(item: items[0])
+                        ItemSheetView(item: items[0], canEdit: false)
                     }
                     
                 }
