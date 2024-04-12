@@ -1,22 +1,11 @@
-//
-//  RecentsCards.swift
-//  WheresMyStuff
-//
-//  Created by Andres Villarroel on 2/20/24.
-//
-
-
-/*
- Try turning these default cards into views for a more seamless implmentation
- in the future when you have to add the default behavior functionality
- */
 import SwiftUI
 import SwiftData
-
+import os
 struct RecentsCards: View {
     
     @Query(sort: \ItemDataModel.creationDate, order: .reverse) var items: [ItemDataModel]
     @State private var showRecAddSheet = false
+    let log = Logger()
     
     var body: some View {
         HStack{
@@ -26,21 +15,23 @@ struct RecentsCards: View {
                 Text("Recently Added")
                     .foregroundStyle(Color.white)
                 if items.isEmpty{
-                    
                     ContentUnavailableView {
                         Image(systemName: "questionmark")
                     } description: {
                         Text("Your most recently added item will appear here")
                     }
                         .frame(width: 170, height: 150)
+                        
                 } else{
                     
                     //making the item cards a button to trigger a sheet view
                     Button (action: {
-                        showRecAddSheet.toggle()
+                        showRecAddSheet.toggle()    //TODO: consider replacing this with a navigation link
+                        log.info("Button pressed to show recently added item SHEET. RecentsCards.swift")
+                        log.info("Current items count: \(items.count) as of \(Date.now) RecentsCards.swift")
                     },
                     label: {
-                        ItemCardView(imageData: items[0].image, itemName: items[0].name, itemLocation: items[0].location)
+                        ItemCardView(imageData: items[0].image, itemName: items[0].name, itemLocation: items[0].location)   //crash happens here when item is deleted through the delete button in EditItemView when accessing it through the 'Recently Viewed' card
                     })
                     .buttonStyle(PlainButtonStyle())
                     .sheet(isPresented: $showRecAddSheet) {

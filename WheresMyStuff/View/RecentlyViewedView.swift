@@ -7,7 +7,7 @@
 
 import SwiftUI
 import SwiftData
-
+import os
 struct RecentlyViewedView: View {
     
     @Query(sort: \ItemDataModel.lastViewDate, order: .reverse) var items: [ItemDataModel]

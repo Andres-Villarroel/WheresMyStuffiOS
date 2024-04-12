@@ -47,16 +47,19 @@ struct CategoryItemsListView: View {
                     } else {
                         List{
                             ForEach(items) { item in
-                                Section{
                                     //if an item it tapped upon, a detail sheet will appear
-                                    Button {
-                                        itemSelected = item
-                                        item.lastViewDate = Date.now
-                                    } label: {
-                                        ItemCell(item: item)
-                                    }
-                                    .buttonStyle(PlainButtonStyle())
+                                Button {
+                                    itemSelected = item
+                                    item.lastViewDate = Date.now
+                                } label: {
+                                    ItemCell(item: item)
                                 }
+                                .listRowSeparatorTint(Color.white)
+                                .buttonStyle(PlainButtonStyle())
+                                .alignmentGuide(.listRowSeparatorLeading) { _ in
+                                    100
+                                }
+                                .listRowBackground(Color.clear)
                                 
                             }
                             .onDelete{ indexSet in
@@ -67,15 +70,6 @@ struct CategoryItemsListView: View {
                                     print("LOG After deleting in categoryItemsList, Items has \(items.count) items")
                                 }
                             }
-                            
-                            //making the item cells look better
-                            .listSectionSpacing(10)
-                            .listRowInsets(.init(top: 0, leading: 0, bottom: 0, trailing: 0))
-                            //                making the item cells look better
-//                            .listRowSeparator(.hidden)
-                            .listRowBackground(
-                                Color.clear
-                            )
                             
                         }//end list
                         .sheet(item: $itemSelected) { item in

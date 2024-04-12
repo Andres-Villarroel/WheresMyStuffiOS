@@ -29,7 +29,6 @@
 		44651AD72B93B93B009F2BFF /* CategoryDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44651AD62B93B93B009F2BFF /* CategoryDataModel.swift */; };
 		44651AD92B93BA15009F2BFF /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44651AD82B93BA15009F2BFF /* ContentView.swift */; };
 		44651ADB2B93C003009F2BFF /* CustomContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44651ADA2B93C003009F2BFF /* CustomContainer.swift */; };
-		44651ADD2B93EDE7009F2BFF /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44651ADC2B93EDE7009F2BFF /* Category.swift */; };
 		44651AE12B977DF7009F2BFF /* ItemCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44651AE02B977DF7009F2BFF /* ItemCardView.swift */; };
 		44651AE52B97C5D7009F2BFF /* RecentlyViewedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44651AE42B97C5D7009F2BFF /* RecentlyViewedView.swift */; };
 		44E2EC692BC0736C00860D63 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 44E2EC682BC0736C00860D63 /* LaunchScreen.storyboard */; };
@@ -63,7 +62,6 @@
 		44651AD62B93B93B009F2BFF /* CategoryDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryDataModel.swift; sourceTree = "<group>"; };
 		44651AD82B93BA15009F2BFF /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		44651ADA2B93C003009F2BFF /* CustomContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomContainer.swift; sourceTree = "<group>"; };
-		44651ADC2B93EDE7009F2BFF /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		44651AE02B977DF7009F2BFF /* ItemCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCardView.swift; sourceTree = "<group>"; };
 		44651AE42B97C5D7009F2BFF /* RecentlyViewedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentlyViewedView.swift; sourceTree = "<group>"; };
 		44E2EC682BC0736C00860D63 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -136,7 +134,6 @@
 				4450DE9E2B850654007C0841 /* WheresMyStuffApp.swift */,
 				44651ACF2B8EB802009F2BFF /* ItemDataModel.swift */,
 				44651AD62B93B93B009F2BFF /* CategoryDataModel.swift */,
-				44651ADC2B93EDE7009F2BFF /* Category.swift */,
 				44651ADA2B93C003009F2BFF /* CustomContainer.swift */,
 				44E836D72BC37986007A19FE /* CameraManager.swift */,
 			);
@@ -249,7 +246,6 @@
 			files = (
 				4450DEB12B8515DD007C0841 /* SearchView.swift in Sources */,
 				44592F702B9FDB980047E8B5 /* ItemSheetView.swift in Sources */,
-				44651ADD2B93EDE7009F2BFF /* Category.swift in Sources */,
 				44592F9D2BA36D310047E8B5 /* CategoryItemsListView.swift in Sources */,
 				44651AD92B93BA15009F2BFF /* ContentView.swift in Sources */,
 				44592FAB2BA67EC80047E8B5 /* ImagePicker.swift in Sources */,

@@ -10,17 +10,18 @@ import SwiftData
 
 struct ItemTextDisplayView: View {
     let item: ItemDataModel
+    private let cRadius = CGFloat(5)
     
     var body: some View {
 //        Spacer()
         ScrollView {
-            VStack{
+            VStack {
                 Text("Name")
                     .bold()
                 Text(item.name)
                     .padding(10)
                     .background(.ultraThinMaterial)
-                    .clipShape(RoundedRectangle(cornerRadius: 20))
+                    .clipShape(RoundedRectangle(cornerRadius: cRadius))
             }
             .padding(.top)
             //        Spacer()
@@ -30,7 +31,7 @@ struct ItemTextDisplayView: View {
                 Text(item.location)
                     .padding(10)
                     .background(.ultraThinMaterial)
-                    .clipShape(RoundedRectangle(cornerRadius: 20))
+                    .clipShape(RoundedRectangle(cornerRadius: cRadius))
             }
             
             if(!item.category.isEmpty){
@@ -41,7 +42,7 @@ struct ItemTextDisplayView: View {
                     Text(item.category)
                         .padding(10)
                         .background(.ultraThinMaterial)
-                        .clipShape(RoundedRectangle(cornerRadius: 20))
+                        .clipShape(RoundedRectangle(cornerRadius: cRadius))
                 }
             }
             
@@ -53,7 +54,7 @@ struct ItemTextDisplayView: View {
                         Text(item.notes)
                             .padding()
                             .background(.ultraThinMaterial)
-                            .clipShape(RoundedRectangle(cornerRadius: 20))
+                            .clipShape(RoundedRectangle(cornerRadius: cRadius))
                     }
                 }
                 .frame(maxHeight: 150)
@@ -63,11 +64,11 @@ struct ItemTextDisplayView: View {
                 Text("Created: \(item.creationDate!, format: .dateTime.day().month().year().hour().minute())")
                     .padding(5)
                     .background(.ultraThinMaterial)
-                    .clipShape(RoundedRectangle(cornerRadius: 20))
+                    .clipShape(RoundedRectangle(cornerRadius: cRadius))
                 Text("Last Updated: \(item.lastUpdatedDate!, format: .dateTime.day().month().year().hour().minute())")
                     .padding(5)
                     .background(.ultraThinMaterial)
-                    .clipShape(RoundedRectangle(cornerRadius: 20))
+                    .clipShape(RoundedRectangle(cornerRadius: cRadius))
             }
         }//end vstack
         Spacer()

@@ -224,12 +224,19 @@ struct EditFormView: View {
     
     private func deleteItem() {
         log.info("delete button pressed")
+        log.info("Items in database BEFORE deletion: \(items.count) as of \(Date.now)")
         for i in items {
             if i.id == self.item.id{
                 modelContext.delete(i)
                 log.info("Item deleted")
+                do{
+                    try modelContext.save() //helps prevent views from loading the previous database state before the deletion
+                } catch {
+                    log.error("Error saving: \(error.localizedDescription)")
+                }
             }
         }
+        log.info("Items in database AFTER deletion: \(items.count) as of \(Date.now)")
         rootViewController?.dismiss(animated: true)
         notificationBanner.show(notification: deleteNotification)
     }

@@ -37,32 +37,35 @@ struct ItemSheetView: View {
                             .scaledToFit()
                     }
                     
-//                    Text("Name: \(item.name)")
-//                    Divider()
-//                    Text("Location: \(item.location)")
-//                    Divider()
-//                    Text("Category: \(item.category)")
-//                    Divider()
-//                    Text(item.creationDate!, format: .dateTime.day().month().year().hour().minute())
-//                    if !item.notes.isEmpty {
-//                        Divider()
-//                        Text("Notes: \(item.notes)")
-//                    }
-//                    Spacer()
                     ItemTextDisplayView(item: item)
                         .frame(width: 350)
                         .scaledToFit()
-//                        .background(Color.red)
                 }
                 .background(Color.clear)
                 .toolbar{
                     ToolbarItem(placement: .topBarTrailing){
                         Button("Edit"){
                             showEditItem.toggle()
+                            
+                            /*
+                             show sheet
+                             while sheet is shown, set screen to searchView
+                             when delete button is pressed, return to browseView
+                             dismiss sheet
+                             
+                             OR
+                             
+                             try to avoid using sheet is switch to navigation link or something
+                             */
                         }
-                        .sheet (isPresented: $showEditItem) {
+//                        .sheet (isPresented: $showEditItem) {
+//                            EditFormView(item: item)
+//                        }
+                        .sheet(isPresented: $showEditItem, onDismiss: {
+                            
+                        }, content: {
                             EditFormView(item: item)
-                        }
+                        })
                     }
                     ToolbarItem(placement: .topBarLeading){
                         Button("Dismiss"){
