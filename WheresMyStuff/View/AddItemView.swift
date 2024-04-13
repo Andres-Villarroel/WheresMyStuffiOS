@@ -41,7 +41,7 @@ struct AddItemView: View {
 //                                        print(modelContext.sqliteCommand)
                                     }
                                     .alert("Enter Category Name", isPresented: $showingAlert){
-                                        TextField("Enter Cateory Name", text: $newCategoryName)
+                                        TextField("Enter Cateory Name", text: $newCategoryName)     //TODO: input validation to ensure no spaces or whitespace-only inputs typed in
                                         Button("OK", action: submitCategory)
                                         Button("Cancel") {
                                             newCategoryName = ""

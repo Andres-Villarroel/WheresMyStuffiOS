@@ -55,6 +55,11 @@ struct ItemSheetView: View {
                     ToolbarItem(placement: .topBarLeading){
                         Button("Dismiss"){
                             dismiss()
+                            log.info("Item:")
+                            log.info("Name: \(item.name)")
+                            log.info("Location: \(item.location)")
+                            log.info("Category: \(item.category)")
+                            log.info("Notes: \(item.notes)")
                         }
                     }
                 }

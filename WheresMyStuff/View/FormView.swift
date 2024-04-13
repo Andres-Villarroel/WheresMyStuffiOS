@@ -16,6 +16,7 @@ struct FormView: View {
     @EnvironmentObject var notificationBanner: DYNotificationHandler
     var nextScreen: () -> Void  //for switching tabview
     let buttonColor = Color.lightPurple
+    let noCategoryTag = "bvhqfpy9qfnprwio"
     
     @Query var categories: [CategoryDataModel]
     @Query var items: [ItemDataModel]
@@ -33,7 +34,7 @@ struct FormView: View {
     
     //these will be saved using Swift Data using ItemDataModel
     @State private var name = ""
-    @State private var category = "Miscellaneous"
+    @State private var category = ""
     @State private var location = ""
     @State private var notes = ""
     @State private var imageData: Data?
@@ -120,6 +121,7 @@ struct FormView: View {
                 
                 // MARK: Category Picker
                 Picker("Choose Category", selection: $category){
+                    Text("None").tag(noCategoryTag)
                     ForEach(categories, id: \.self) { cat in
                         Text(cat.name).tag(cat.name)
                     }
@@ -167,7 +169,11 @@ struct FormView: View {
         let emptyItem = ItemDataModel(name: "", location: "", category: "", notes: "")
         item.name = name.trimmingCharacters(in: .whitespacesAndNewlines)
         item.location = location.trimmingCharacters(in: .whitespacesAndNewlines)
-        item.category = category.trimmingCharacters(in: .whitespacesAndNewlines)
+        if(category != noCategoryTag){
+            item.category = category.trimmingCharacters(in: .whitespacesAndNewlines)
+        } else {
+            item.category = ""
+        }
         if imageData != nil {  //change this, it is not supposed to check item.image as that is what the image is saving to; it will always be nil
             item.image = imageData
             log.info("imageData is not nil")

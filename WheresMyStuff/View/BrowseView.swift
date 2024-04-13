@@ -61,7 +61,7 @@ struct BrowseView: View {
                         .padding([.leading, .trailing, .bottom], 38)
                     } else {
                         //MARK: Add category button
-                        AddCategoryView()
+                        AddCategoryView()       //TODO: input validation to ensure no spaces or whitespace-only inputs typed in
                             .padding(100)
                         .background(.ultraThinMaterial)
                         .cornerRadius(20)

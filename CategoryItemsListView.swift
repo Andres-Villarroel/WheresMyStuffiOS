@@ -91,7 +91,7 @@ struct CategoryItemsListView: View {
     let image = UIImage(named: "tiltedParrot")!
     let data = image.pngData()
     
-    let newItem = ItemDataModel(name: "test name", location: "test location", category: "test category", notes: "test notes")
+    let newItem = ItemDataModel(name: "test name", location: "test location", category: "you should not see this", notes: "test notes")
     newItem.image = data
     let firstItem = ItemDataModel(name: "Pen", location: "Desk", category: "Desk", notes: "First added")
     firstItem.image = data
