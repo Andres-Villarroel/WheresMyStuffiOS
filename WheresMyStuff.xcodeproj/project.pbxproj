@@ -36,6 +36,7 @@
 		44E836DA2BC6EDB6007A19FE /* AddCategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44E836D92BC6EDB6007A19FE /* AddCategoryView.swift */; };
 		44E836DE2BC83923007A19FE /* ItemTextDisplayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44E836DD2BC83923007A19FE /* ItemTextDisplayView.swift */; };
 		44E836E82BC988BC007A19FE /* SwiftUI_NotificationBanner in Frameworks */ = {isa = PBXBuildFile; productRef = 44E836E72BC988BC007A19FE /* SwiftUI_NotificationBanner */; };
+		44E836EB2BCAD728007A19FE /* AddCategoryAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44E836EA2BCAD727007A19FE /* AddCategoryAlertView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -68,6 +69,7 @@
 		44E836D72BC37986007A19FE /* CameraManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraManager.swift; sourceTree = "<group>"; };
 		44E836D92BC6EDB6007A19FE /* AddCategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCategoryView.swift; sourceTree = "<group>"; };
 		44E836DD2BC83923007A19FE /* ItemTextDisplayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemTextDisplayView.swift; sourceTree = "<group>"; };
+		44E836EA2BCAD727007A19FE /* AddCategoryAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCategoryAlertView.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -143,6 +145,7 @@
 		44651ADF2B9687F6009F2BFF /* View */ = {
 			isa = PBXGroup;
 			children = (
+				44E836EA2BCAD727007A19FE /* AddCategoryAlertView.swift */,
 				44E836D92BC6EDB6007A19FE /* AddCategoryView.swift */,
 				4450DEB22B851790007C0841 /* AddItemView.swift */,
 				4450DEA02B850654007C0841 /* BrowseView.swift */,
@@ -246,6 +249,7 @@
 			files = (
 				4450DEB12B8515DD007C0841 /* SearchView.swift in Sources */,
 				44592F702B9FDB980047E8B5 /* ItemSheetView.swift in Sources */,
+				44E836EB2BCAD728007A19FE /* AddCategoryAlertView.swift in Sources */,
 				44592F9D2BA36D310047E8B5 /* CategoryItemsListView.swift in Sources */,
 				44651AD92B93BA15009F2BFF /* ContentView.swift in Sources */,
 				44592FAB2BA67EC80047E8B5 /* ImagePicker.swift in Sources */,

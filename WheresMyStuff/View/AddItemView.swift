@@ -9,6 +9,7 @@ struct AddItemView: View {
     //SwiftData
     @Query var categories: [CategoryDataModel]
     @Environment(\.modelContext) var modelContext
+    @State var showAddCategoryView = false
     @Binding var selection: Int
     @State var item = ItemDataModel(name: "", location: "", category: "Miscellaneous", notes: "")
     
@@ -17,47 +18,43 @@ struct AddItemView: View {
     @State private var newCategoryName = ""
     
     var body: some View {
-        
-        NavigationStack {   //needed for the toolbar
-            GeometryReader { _ in   //used in conjunction with .ignoreSafeAreas(.keyboard) to keep the keyboard from moving the view
-                ZStack{
-                    //MARK: Background Image
-                    Image("appBackground")
-                        .resizable()
-                        .aspectRatio(contentMode: .fill)
-                        .frame(minWidth: 0, maxWidth: .infinity)
-                        .ignoresSafeArea(.all)
-                    
-                    VStack {
-                        FormView(nextScreen: changeScreen, item: $item )
-                            .navigationTitle("Add Item")
-                            .preferredColorScheme(.dark)
-                            .scrollContentBackground(.hidden)
-                        //this section add the tool bar button to add a new category
-                            .toolbar{
-                                ToolbarItem(placement: .topBarTrailing){
-                                    Button("Add Category"){
-                                        showingAlert.toggle()
-//                                        print(modelContext.sqliteCommand)
-                                    }
-                                    .alert("Enter Category Name", isPresented: $showingAlert){
-                                        TextField("Enter Cateory Name", text: $newCategoryName)     //TODO: input validation to ensure no spaces or whitespace-only inputs typed in
-                                        Button("OK", action: submitCategory)
-                                        Button("Cancel") {
-                                            newCategoryName = ""
-                                        }
-                                    } message: {
-                                        Text("")
-                                    }
-                                }// end toolbaritem
-                            }// end tool bar
+        ZStack{
+            NavigationStack {   //needed for the toolbar
+                GeometryReader { _ in   //used in conjunction with .ignoreSafeAreas(.keyboard) to keep the keyboard from moving the view
+                    ZStack{
+                        //MARK: Background Image
+                        Image("appBackground")
+                            .resizable()
+                            .aspectRatio(contentMode: .fill)
+                            .frame(minWidth: 0, maxWidth: .infinity)
+                            .ignoresSafeArea(.all)
                         
-                    }// end vstack
-                }//end zstack
-                .ignoresSafeArea(.keyboard)
-            }//end geometry reader
-        } //end navigationStack
-        
+                        VStack {
+                            FormView(nextScreen: changeScreen, item: $item )
+                                .navigationTitle("Add Item")
+                                .preferredColorScheme(.dark)
+                                .scrollContentBackground(.hidden)
+                            //this section add the tool bar button to add a new category
+                                .toolbar{
+                                    ToolbarItem(placement: .topBarTrailing){
+                                        Button("Add Category"){
+                                            withAnimation {
+                                                showAddCategoryView.toggle()
+                                            }
+                                        }
+                                    }// end toolbaritem
+                                }// end tool bar
+                            
+                        }// end vstack
+                    }//end zstack
+                    .ignoresSafeArea(.keyboard)
+                }//end geometry reader
+            } //end navigationStack
+            //TODO: insert alert view here!!!
+            if(showAddCategoryView){
+                AddCategoryAlertView(showView: $showAddCategoryView)
+            }
+        }//end zstack
     }// end body
     
     func submitCategory(){

@@ -21,6 +21,9 @@
         }
       }
     },
+    "+Add Category" : {
+
+    },
     "Add" : {
       "localizations" : {
         "es-419" : {
@@ -471,6 +474,9 @@
           }
         }
       }
+    },
+    "Submit" : {
+
     },
     "Take Photo" : {
       "localizations" : {

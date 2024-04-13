@@ -17,12 +17,14 @@ struct AddCategoryView: View {
     @State private var newCategoryName = ""
     
     var body: some View {
+        
         Button("+ Add Category"){
             showAlert.toggle()
         }  //end button
         .alert("Enter Category Name", isPresented: $showAlert){
             TextField("Enter Cateory Name", text: $newCategoryName)
-            Button("OK", action: submitCategory)
+            Button("Submit", action: submitCategory)
+                .disabled(newCategoryName.isEmpty || newCategoryName.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty)
             Button("Cancel") {
                 newCategoryName = ""
             }
@@ -31,7 +33,21 @@ struct AddCategoryView: View {
     }//end view
     
     private func submitCategory(){
-        modelContext.insert(CategoryDataModel(name: newCategoryName.trimmingCharacters(in: .whitespacesAndNewlines)))
+        //check that there is no duplicates in category database
+        if (!doesExist(categoryName: newCategoryName)){
+            modelContext.insert(CategoryDataModel(name: newCategoryName))
+        } else {
+            //do not submit
+        }
+    }
+    
+    private func doesExist(categoryName: String) -> Bool {
+        for cat in categories{
+            if (cat.name == categoryName){
+                return true
+            }
+        }
+        return false
     }
     
 }
