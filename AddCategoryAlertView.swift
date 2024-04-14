@@ -63,7 +63,7 @@ struct AddCategoryAlertView: View {
     private func submitCategory(){
         //check that there is no duplicates in category database
         if (!doesExist(categoryName: newCategoryName)){
-            modelContext.insert(CategoryDataModel(name: newCategoryName))
+            modelContext.insert(CategoryDataModel(name: newCategoryName.trimmingCharacters(in: .whitespacesAndNewlines)))
             showView = false
         } else {
             inputValMessage = "Category already exists"

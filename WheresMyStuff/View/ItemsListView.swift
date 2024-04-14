@@ -38,7 +38,7 @@ struct ItemsListView: View {
                     .alignmentGuide(.listRowSeparatorLeading) { _ in
                         100
                     }
-                    .listRowBackground(Color.clear)
+                    .listRowBackground(Color.indigo.opacity(0.9).blur(radius: 30.0))
                 }//end ForEach
                 .onDelete{ indexSet in
                     for index in indexSet{
@@ -48,7 +48,6 @@ struct ItemsListView: View {
                     }
                 }//end onDelete
             }//end list
-//            .background(.ultraThinMaterial)
             .background(Color.clear)
             .scrollContentBackground(.hidden)
 //            .background(.ultraThinMaterial) //this sets the entire view blurry

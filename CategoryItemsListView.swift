@@ -1,6 +1,6 @@
 import SwiftUI
 import SwiftData
-
+import os
 /*
  - creates a list of items based on a chosen cateogry.
  - the cateogry is passed as an argument to build the list
@@ -8,15 +8,17 @@ import SwiftData
 struct CategoryItemsListView: View {
     
     //setting up swiftdata prerequisites
+    let log = Logger(subsystem: "WheresMyStuff", category: "CategoryItemsListView")
     @Query var items: [ItemDataModel]
     @Environment(\.modelContext) var context
     @State var itemSelected: ItemDataModel?     //used to help implement sheet mechanic
+    @State private var showAddItemForm = false
     private var categoryName: String
     
     //initializing items by filtering out the items that do not match the chosen category
     init(chosenCategory: String) {
         categoryName = chosenCategory   //TODO: Possible point of error in the future
-        
+        log.info("chosenCategory/category name is set to \(chosenCategory)")
         _items = Query(filter: #Predicate<ItemDataModel> {item in
             item.category == chosenCategory //chosenCategory is provided, database is queried to match any item that has the matching category name
         })
@@ -59,7 +61,8 @@ struct CategoryItemsListView: View {
                                 .alignmentGuide(.listRowSeparatorLeading) { _ in
                                     100
                                 }
-                                .listRowBackground(Color.clear)
+//                                .listRowBackground(Color.clear)
+                                .listRowBackground(Color.indigo.opacity(0.9).blur(radius: 30.0))
                                 
                             }
                             .onDelete{ indexSet in
@@ -75,10 +78,21 @@ struct CategoryItemsListView: View {
                         .sheet(item: $itemSelected) { item in
                             ItemSheetView(item: item, canEdit: true)
                         }
+                        
                         .scrollContentBackground(.hidden)
                     }//end else
                 }//end vstack
             }//end zstack
+            .sheet(isPresented: $showAddItemForm){
+                FormViewSheetView(chosenCategory: categoryName, shouldDismiss: $showAddItemForm)
+            }
+            .toolbar{
+                ToolbarItem(placement: .topBarTrailing){
+                    Button("+Item"){
+                        showAddItemForm.toggle()
+                    }
+                }
+            }
             .navigationTitle(categoryName)
             .navigationBarTitleDisplayMode(.large)
         }//end navigation stack
@@ -100,10 +114,10 @@ struct CategoryItemsListView: View {
     let thirdItem = ItemDataModel(name: "Dehumidifier", location: "Chloe's Crate", category: "Desk", notes: "Third added")
     thirdItem.image = data
     
-    container.mainContext.insert(newItem)
-    container.mainContext.insert(firstItem)
-    container.mainContext.insert(secondItem)
-    container.mainContext.insert(thirdItem)
+//    container.mainContext.insert(newItem)
+//    container.mainContext.insert(firstItem)
+//    container.mainContext.insert(secondItem)
+//    container.mainContext.insert(thirdItem)
 //    let itemsArray = [
 //        firstItem,
 //        secondItem,
@@ -117,6 +131,6 @@ struct CategoryItemsListView: View {
     }
     
     
-    return CategoryItemsListView(chosenCategory: "Desk")
+    return CategoryItemsListView(chosenCategory: "testMiscellaneous")
         .modelContainer(container)
 }

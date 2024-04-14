@@ -17,71 +17,73 @@ struct BrowseView: View {
     
     var body: some View {
         NavigationStack {
-            ZStack {
-                
-                //MARK: Background Image
-                Image("appBackground")
-                .resizable()
-                .aspectRatio(contentMode: .fill)
-                .frame(minWidth: 0, maxWidth: .infinity)
-                .ignoresSafeArea(.all)
-                
-                VStack {
-                    //These show the recently viewed and added items views
-                    RecentsCards()
+            GeometryReader { _ in
+                ZStack {
                     
-                    //lists the categories
-                    Text("Categories")  //Consider making this a tab selection view to choose to browse between items and categories
-                        .padding([.top, .bottom])
-                        .foregroundStyle(Color.white)
+                    //MARK: Background Image
+                    Image("appBackground")
+                        .resizable()
+                        .aspectRatio(contentMode: .fill)
+                        .frame(minWidth: 0, maxWidth: .infinity)
+                        .ignoresSafeArea(.all)
                     
-                    //MARK: category list
-                    if(!categories.isEmpty){
-                        List{
-                            ForEach(categories, id: \.self){ cat in
+                    VStack {
+                        //These show the recently viewed and added items views
+                        RecentsCards()
+                        
+                        //lists the categories
+                        Text("Categories")  //Consider making this a tab selection view to choose to browse between items and categories
+                            .padding([.top, .bottom])
+                            .foregroundStyle(Color.white)
+                        
+                        //MARK: category list
+                        if(!categories.isEmpty){
+                            List{
+                                ForEach(categories, id: \.self){ cat in
+                                    
+                                    NavigationLink (cat.name){
+                                        CategoryItemsListView(chosenCategory: cat.name)
+                                    }
+                                    .listRowSeparatorTint(Color.white)
+                                    .listRowBackground(Color.clear)
+                                    //                                .listRowBackground(border(Color.red))
+                                }
+                                .onDelete{ indexSet in
+                                    for index in indexSet{
+                                        modelContext.delete(categories[index])
+                                    }
+                                }
                                 
-                                NavigationLink (cat.name){
-                                    CategoryItemsListView(chosenCategory: cat.name)
+                            }// end list
+                            .listStyle(.plain)  //without this, the first row starts too low
+                            //                        .scrollContentBackground(.hidden)
+                            .background(.ultraThinMaterial)
+                            .background(Color.clear)
+                            .cornerRadius(20)
+                            .padding([.leading, .trailing, .bottom], 38)
+                        } else {
+                            //MARK: Add category button
+                            Button("+Add Category", action: {
+                                withAnimation {
+                                    showAddCategoryView.toggle()
                                 }
-                                .listRowSeparatorTint(Color.white)
-                                .listRowBackground(Color.clear)
-//                                .listRowBackground(border(Color.red))
-                            }
-                            .onDelete{ indexSet in
-                                for index in indexSet{
-                                    modelContext.delete(categories[index])
-                                }
-                            }
-                            
-                        }// end list
-                        .listStyle(.plain)  //without this, the first row starts too low
-                        //                        .scrollContentBackground(.hidden)
-                        .background(.ultraThinMaterial)
-                        .background(Color.clear)
-                        .cornerRadius(20)
-                        .padding([.leading, .trailing, .bottom], 38)
-                    } else {
-                        //MARK: Add category button
-                        Button("+Add Category", action: {
-                            withAnimation {
-                                showAddCategoryView.toggle()
-                            }
-                        })
-                        .tint(.lightPurple)
-                        .padding(30)
-                        .background(.ultraThinMaterial)
-                        .cornerRadius(20)
-                        Spacer()
+                            })
+                            .tint(.lightPurple)
+                            .padding(30)
+                            .background(.ultraThinMaterial)
+                            .cornerRadius(20)
+                            Spacer()
+                        }
+                    }//end vstack
+                    .navigationTitle("Browse")
+                    .navigationBarTitleDisplayMode(.inline)
+                    if(showAddCategoryView){
+                        AddCategoryAlertView(showView: $showAddCategoryView)
                     }
-                }//end vstack
-                .navigationTitle("Browse")
-                .navigationBarTitleDisplayMode(.inline)
-                if(showAddCategoryView){
-                    AddCategoryAlertView(showView: $showAddCategoryView)
-                }
-            }//end zstack
-            .transition(.opacity)
-            
+                }//end zstack
+                .transition(.opacity)
+                .ignoresSafeArea(.keyboard, edges: .bottom)
+            }// end geometry reader
         }//end navigation stack
     }//end body
 }
