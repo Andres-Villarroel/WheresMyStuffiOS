@@ -3,9 +3,13 @@ import SwiftData
 import os
 struct RecentsCards: View {
     
-    @Query(sort: \ItemDataModel.creationDate, order: .reverse) var items: [ItemDataModel]
+//    @Query(sort: \ItemDataModel.creationDate, order: .reverse) var items: [ItemDataModel]
+    @Query var items: [ItemDataModel]
     @State private var showRecAddSheet = false
     let log = Logger()
+    init(){
+        _items = Query(sort: \ItemDataModel.creationDate, order: .reverse)
+    }
     
     var body: some View {
         HStack{
@@ -18,7 +22,7 @@ struct RecentsCards: View {
                     ContentUnavailableView {
                         Image(systemName: "questionmark")
                     } description: {
-                        Text("Your most recently added item will appear here")
+                        Text("No items found")
                     }
                         .frame(width: 170, height: 150)
                         
@@ -31,11 +35,12 @@ struct RecentsCards: View {
                         log.info("Current items count: \(items.count) as of \(Date.now) RecentsCards.swift")
                     },
                     label: {
-                        ItemCardView(imageData: items[0].image, itemName: items[0].name, itemLocation: items[0].location)   //crash happens here when item is deleted through the delete button in EditItemView when accessing it through the 'Recently Viewed' card
+//                        ItemCardView(imageData: items[0].image, itemName: items[0].name, itemLocation: items[0].location)   //crash happens here when item is deleted through the delete button in EditItemView when accessing it through the 'Recently Viewed' card
+                        ItemCardView(providedItem: items.first ?? ItemDataModel(name: "Error", location: "Error", category: "Error", notes: "Error"))
                     })
                     .buttonStyle(PlainButtonStyle())
                     .sheet(isPresented: $showRecAddSheet) {
-                        ItemSheetView(item: items[0], canEdit: false)
+                        ItemSheetView(item: items.first ?? ItemDataModel(name: "Error", location: "Error", category: "Error", notes: "Error"), canEdit: false)
                     }
                     
                 }
@@ -50,7 +55,7 @@ struct RecentsCards: View {
                     ContentUnavailableView {
                         Image(systemName: "questionmark")
                     } description: {
-                        Text("Your most recently seen item will appear here")
+                        Text("No items found")
                     }
                         .frame(width: 170, height: 150)
                         
