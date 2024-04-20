@@ -17,6 +17,16 @@ struct SearchView: View {
                         .aspectRatio(contentMode: .fill)
                         .frame(minWidth: 0, maxWidth: .infinity)
                         .ignoresSafeArea(.all)
+                        .toolbar {
+                            ToolbarItem{
+                                NavigationLink{
+                                    SettingsView()
+                                } label: {
+                                    Image(systemName: "gearshape.fill")
+                                        .tint(Color.lightPurple)
+                                }
+                            }
+                        }
                     
                     ItemsListView(filterString: searchTerm)
 //                        .clipShape(RoundedRectangle(cornerRadius: 5))

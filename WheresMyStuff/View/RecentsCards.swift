@@ -40,7 +40,7 @@ struct RecentsCards: View {
                     })
                     .buttonStyle(PlainButtonStyle())
                     .sheet(isPresented: $showRecAddSheet) {
-                        ItemSheetView(item: items.first ?? ItemDataModel(name: "Error", location: "Error", category: "Error", notes: "Error"), canEdit: false)
+                        ItemSheetView(item: items.first ?? ItemDataModel(name: "Error", location: "Error", category: "Error", notes: "Error"), canEdit: true)
                     }
                     
                 }

@@ -18,7 +18,7 @@ struct CategoryItemsListView: View {
     //initializing items by filtering out the items that do not match the chosen category
     init(chosenCategory: String) {
         categoryName = chosenCategory   //TODO: Possible point of error in the future
-        log.info("chosenCategory/category name is set to \(chosenCategory)")
+        log.notice("chosenCategory/category name is set to \(chosenCategory)")
         _items = Query(filter: #Predicate<ItemDataModel> {item in
             item.category == chosenCategory //chosenCategory is provided, database is queried to match any item that has the matching category name
         })

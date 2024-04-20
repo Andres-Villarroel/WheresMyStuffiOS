@@ -26,12 +26,12 @@ struct TabBarView: View {
                 }
                 .tag(2)
             
-            
             SearchView()
                 .tabItem {
                     Label("Search", systemImage: "magnifyingglass")
                 }
                 .tag(3)
+            
         }// end tabview
         .tint(.white)
         .onAppear {

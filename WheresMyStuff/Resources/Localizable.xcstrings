@@ -23,10 +23,28 @@
       }
     },
     "+Add Category" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "+Categoría"
+          }
+        }
+      }
+    },
+    "+Category" : {
 
     },
     "+Item" : {
-
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "+Artículo"
+          }
+        }
+      }
     },
     "Add" : {
       "localizations" : {
@@ -303,6 +321,12 @@
         }
       }
     },
+    "No categories found. \nPress the '+Category' button \nto add a category.'" : {
+
+    },
+    "No items found" : {
+
+    },
     "No Items Here..." : {
       "localizations" : {
         "es-419" : {
@@ -324,7 +348,14 @@
       }
     },
     "None" : {
-
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No categoría"
+          }
+        }
+      }
     },
     "Notes" : {
       "localizations" : {
@@ -418,6 +449,9 @@
         }
       }
     },
+    "Restore Purchase" : {
+
+    },
     "Save Changes" : {
       "localizations" : {
         "es-419" : {
@@ -480,7 +514,14 @@
       }
     },
     "Submit" : {
-
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enviar"
+          }
+        }
+      }
     },
     "Take Photo" : {
       "localizations" : {
@@ -503,6 +544,7 @@
       }
     },
     "Your most recently added item will appear here" : {
+      "extractionState" : "stale",
       "localizations" : {
         "es-419" : {
           "stringUnit" : {
@@ -513,6 +555,7 @@
       }
     },
     "Your most recently seen item will appear here" : {
+      "extractionState" : "stale",
       "localizations" : {
         "es-419" : {
           "stringUnit" : {

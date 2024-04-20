@@ -163,9 +163,7 @@ struct FormView: View {
         log.info("Button pressed")
     }
     private func saveItem() {
-        log.info("save button pressed")
-        //let item = ItemDataModel(name: name, location: location, category: category, notes: notes)
-        //item.image = imageData
+        log.info("save button pressed 1/6")
         let emptyItem = ItemDataModel(name: "", location: "", category: "", notes: "")
         item.name = name.trimmingCharacters(in: .whitespacesAndNewlines)
         item.location = location.trimmingCharacters(in: .whitespacesAndNewlines)
@@ -181,9 +179,10 @@ struct FormView: View {
             log.info("imageData is nil")
         }
         item.notes = notes.trimmingCharacters(in: .whitespacesAndNewlines)
-        log.info("Before ADDING, Items has \(items.count) items")
         modelContext.insert(item)
+        log.info("model context insert executed 2/6")
         try? modelContext.save()
+        log.info("model context save() executed 3/6")
         //CLEAR FORM WHEN FINISHED
         name = ""
         category = ""
@@ -192,10 +191,11 @@ struct FormView: View {
         imageData = nil
         avatarImage = nil
         item = emptyItem
-        
-        log.info("After ADDING, Items has \(items.count) items")
+        log.info("form cleared 4/6")
         notificationBanner.show(notification: infoNotification)
-        nextScreen()
+        log.info("notificationBanner executed 5/6")
+        nextScreen()      //THIS IS CAUSING THE PRECONDITION ERROR
+        log.info("save button exited 6/6")
     }
     
     var infoNotification: DYNotification {

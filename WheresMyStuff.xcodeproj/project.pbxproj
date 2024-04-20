@@ -34,13 +34,18 @@
 		44E2EC692BC0736C00860D63 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 44E2EC682BC0736C00860D63 /* LaunchScreen.storyboard */; };
 		44E836D82BC37986007A19FE /* CameraManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44E836D72BC37986007A19FE /* CameraManager.swift */; };
 		44E836DE2BC83923007A19FE /* ItemTextDisplayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44E836DD2BC83923007A19FE /* ItemTextDisplayView.swift */; };
-		44E836E82BC988BC007A19FE /* SwiftUI_NotificationBanner in Frameworks */ = {isa = PBXBuildFile; productRef = 44E836E72BC988BC007A19FE /* SwiftUI_NotificationBanner */; };
 		44E836EB2BCAD728007A19FE /* AddCategoryAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44E836EA2BCAD727007A19FE /* AddCategoryAlertView.swift */; };
 		44E836ED2BCB475B007A19FE /* FormViewSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44E836EC2BCB475B007A19FE /* FormViewSheetView.swift */; };
+		44E836F02BCF29D2007A19FE /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44E836EF2BCF29D2007A19FE /* StoreKit.framework */; };
+		44E836F52BCF3497007A19FE /* SwiftUI_NotificationBanner in Frameworks */ = {isa = PBXBuildFile; productRef = 44E836F42BCF3497007A19FE /* SwiftUI_NotificationBanner */; };
+		44E836F72BCF39C7007A19FE /* FlashFindProduct.storekit in Resources */ = {isa = PBXBuildFile; fileRef = 44E836F62BCF39C7007A19FE /* FlashFindProduct.storekit */; };
+		44E836FC2BD169C5007A19FE /* StoreKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44E836FB2BD169C5007A19FE /* StoreKitManager.swift */; };
+		44E836FE2BD17021007A19FE /* PurchaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44E836FD2BD17021007A19FE /* PurchaseView.swift */; };
+		44E837022BD1CF9F007A19FE /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44E837012BD1CF9F007A19FE /* SettingsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		4450DE9B2B850654007C0841 /* WheresMyStuff.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WheresMyStuff.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4450DE9B2B850654007C0841 /* WheresMyStuff.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = WheresMyStuff.app; path = "/Users/andresvi/Documents/Development/WheresMyStuff/build/Debug-iphoneos/WheresMyStuff.app"; sourceTree = "<absolute>"; };
 		4450DE9E2B850654007C0841 /* WheresMyStuffApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WheresMyStuffApp.swift; sourceTree = "<group>"; };
 		4450DEA02B850654007C0841 /* BrowseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowseView.swift; sourceTree = "<group>"; };
 		4450DEA22B850656007C0841 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -70,6 +75,11 @@
 		44E836DD2BC83923007A19FE /* ItemTextDisplayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemTextDisplayView.swift; sourceTree = "<group>"; };
 		44E836EA2BCAD727007A19FE /* AddCategoryAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCategoryAlertView.swift; sourceTree = SOURCE_ROOT; };
 		44E836EC2BCB475B007A19FE /* FormViewSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormViewSheetView.swift; sourceTree = "<group>"; };
+		44E836EF2BCF29D2007A19FE /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		44E836F62BCF39C7007A19FE /* FlashFindProduct.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = FlashFindProduct.storekit; sourceTree = "<group>"; };
+		44E836FB2BD169C5007A19FE /* StoreKitManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreKitManager.swift; sourceTree = SOURCE_ROOT; };
+		44E836FD2BD17021007A19FE /* PurchaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PurchaseView.swift; path = WheresMyStuff/Model/PurchaseView.swift; sourceTree = SOURCE_ROOT; };
+		44E837012BD1CF9F007A19FE /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,7 +87,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				44E836E82BC988BC007A19FE /* SwiftUI_NotificationBanner in Frameworks */,
+				44E836F02BCF29D2007A19FE /* StoreKit.framework in Frameworks */,
+				44E836F52BCF3497007A19FE /* SwiftUI_NotificationBanner in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -87,17 +98,10 @@
 		4450DE922B850654007C0841 = {
 			isa = PBXGroup;
 			children = (
-				4450DE9C2B850654007C0841 /* Products */,
+				44E836F62BCF39C7007A19FE /* FlashFindProduct.storekit */,
 				4450DE9D2B850654007C0841 /* WheresMyStuff */,
+				44E836EE2BCF29D2007A19FE /* Frameworks */,
 			);
-			sourceTree = "<group>";
-		};
-		4450DE9C2B850654007C0841 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				4450DE9B2B850654007C0841 /* WheresMyStuff.app */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 		4450DE9D2B850654007C0841 /* WheresMyStuff */ = {
@@ -132,6 +136,7 @@
 		44651ADE2B9687DF009F2BFF /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				44E836FB2BD169C5007A19FE /* StoreKitManager.swift */,
 				44592FAA2BA67EC80047E8B5 /* ImagePicker.swift */,
 				4450DE9E2B850654007C0841 /* WheresMyStuffApp.swift */,
 				44651ACF2B8EB802009F2BFF /* ItemDataModel.swift */,
@@ -145,6 +150,8 @@
 		44651ADF2B9687F6009F2BFF /* View */ = {
 			isa = PBXGroup;
 			children = (
+				44E836FD2BD17021007A19FE /* PurchaseView.swift */,
+				44E837012BD1CF9F007A19FE /* SettingsView.swift */,
 				44E836EA2BCAD727007A19FE /* AddCategoryAlertView.swift */,
 				4450DEB22B851790007C0841 /* AddItemView.swift */,
 				4450DEA02B850654007C0841 /* BrowseView.swift */,
@@ -168,6 +175,14 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		44E836EE2BCF29D2007A19FE /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				44E836EF2BCF29D2007A19FE /* StoreKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -185,7 +200,7 @@
 			);
 			name = WheresMyStuff;
 			packageProductDependencies = (
-				44E836E72BC988BC007A19FE /* SwiftUI_NotificationBanner */,
+				44E836F42BCF3497007A19FE /* SwiftUI_NotificationBanner */,
 			);
 			productName = WheresMyStuff;
 			productReference = 4450DE9B2B850654007C0841 /* WheresMyStuff.app */;
@@ -219,7 +234,7 @@
 			packageReferences = (
 				44592FBF2BA9E3000047E8B5 /* XCRemoteSwiftPackageReference "SwiftUI_NotificationBanner" */,
 			);
-			productRefGroup = 4450DE9C2B850654007C0841 /* Products */;
+			productRefGroup = 4450DE922B850654007C0841;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
@@ -233,6 +248,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				44E836F72BCF39C7007A19FE /* FlashFindProduct.storekit in Resources */,
 				4450DEA62B850656007C0841 /* Preview Assets.xcassets in Resources */,
 				4450DEA32B850656007C0841 /* Assets.xcassets in Resources */,
 				44E2EC692BC0736C00860D63 /* LaunchScreen.storyboard in Resources */,
@@ -259,6 +275,7 @@
 				4450DEA12B850654007C0841 /* BrowseView.swift in Sources */,
 				44651AE12B977DF7009F2BFF /* ItemCardView.swift in Sources */,
 				44592FC72BACE20B0047E8B5 /* ZoomScrollView.swift in Sources */,
+				44E836FE2BD17021007A19FE /* PurchaseView.swift in Sources */,
 				44E836D82BC37986007A19FE /* CameraManager.swift in Sources */,
 				4450DEAF2B8513F6007C0841 /* TabBarView.swift in Sources */,
 				4450DEB72B85A1B7007C0841 /* RecentsCards.swift in Sources */,
@@ -267,8 +284,10 @@
 				44651AE52B97C5D7009F2BFF /* RecentlyViewedView.swift in Sources */,
 				44651AD02B8EB802009F2BFF /* ItemDataModel.swift in Sources */,
 				44651ADB2B93C003009F2BFF /* CustomContainer.swift in Sources */,
+				44E837022BD1CF9F007A19FE /* SettingsView.swift in Sources */,
 				44651AD52B918664009F2BFF /* ItemsListView.swift in Sources */,
 				44651AD72B93B93B009F2BFF /* CategoryDataModel.swift in Sources */,
+				44E836FC2BD169C5007A19FE /* StoreKitManager.swift in Sources */,
 				44592F9A2BA139F50047E8B5 /* FormView.swift in Sources */,
 				4450DEB32B851790007C0841 /* AddItemView.swift in Sources */,
 				44592FC52BACC8800047E8B5 /* EditFormView.swift in Sources */,
@@ -410,7 +429,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = WheresMyStuff/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "";
+				INFOPLIST_KEY_CFBundleDisplayName = FlashFind;
 				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_NSCameraUsageDescription = "To add images to your items";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -451,7 +470,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = WheresMyStuff/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "";
+				INFOPLIST_KEY_CFBundleDisplayName = FlashFind;
 				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_NSCameraUsageDescription = "To add images to your items";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -514,7 +533,7 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		44E836E72BC988BC007A19FE /* SwiftUI_NotificationBanner */ = {
+		44E836F42BCF3497007A19FE /* SwiftUI_NotificationBanner */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 44592FBF2BA9E3000047E8B5 /* XCRemoteSwiftPackageReference "SwiftUI_NotificationBanner" */;
 			productName = SwiftUI_NotificationBanner;

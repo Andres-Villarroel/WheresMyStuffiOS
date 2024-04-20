@@ -1,0 +1,61 @@
+//
+//  PurchaseView.swift
+//  WheresMyStuff
+//
+//  Created by Andres Villarroel on 4/18/24.
+//
+
+import SwiftUI
+import StoreKit
+import os
+struct PurchaseView: View {
+    @StateObject var storekit = StoreKitManager()
+    let log = Logger(subsystem: "WheresMyStuff", category: "PurchaseView")
+    
+    var body: some View {
+        VStack{
+            ForEach(storekit.storeProducts){ product in
+                VStack {
+                    Text(product.displayName)
+                        .font(.title)
+                        .bold()
+                    Text(product.description)
+                        .foregroundStyle(Color.gray)
+                    Button(action: {
+                        Task {
+                            try await storekit.purchase(product)
+                        }
+                    }, label: {
+                        if(!storekit.didPurchaseFullVersion()){
+                            Text(product.displayPrice)
+                                .padding(12)
+                                .bold()
+                                .background(.ultraThinMaterial)
+                                .clipShape(RoundedRectangle(cornerRadius: 50))
+                        } else {
+                            Image(systemName: "checkmark")
+                                .padding(5)
+                        }
+                    })
+                    .tint(Color.blue)
+                    .disabled(storekit.didPurchaseFullVersion())
+                }
+                .padding()
+            }
+            
+            Button(action: {
+                Task{
+                    try await storekit.restore()
+                }
+            }, label: {
+                Text("Restore Purchase")
+            })
+            .tint(Color.blue)
+            .font(.title3)
+        }//end vstack
+    }
+}
+
+#Preview {
+    PurchaseView()
+}

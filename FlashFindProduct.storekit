@@ -1,0 +1,90 @@
+{
+  "identifier" : "0B5C23F4",
+  "nonRenewingSubscriptions" : [
+
+  ],
+  "products" : [
+    {
+      "displayPrice" : "1.99",
+      "familyShareable" : false,
+      "internalID" : "6498315399",
+      "localizations" : [
+        {
+          "description" : "Versión completa sin restricciones",
+          "displayName" : "Versión completa",
+          "locale" : "es_MX"
+        },
+        {
+          "description" : "Unlocks the full version of the app",
+          "displayName" : "Full Version",
+          "locale" : "en_US"
+        }
+      ],
+      "productID" : "com.andresvillarroel.FlashFind.fullVersion",
+      "referenceName" : "fullVersion",
+      "type" : "NonConsumable"
+    }
+  ],
+  "settings" : {
+    "_applicationInternalID" : "6498315521",
+    "_developerTeamID" : "9Q257VGY8J",
+    "_failTransactionsEnabled" : false,
+    "_lastSynchronizedDate" : 735146620.75286603,
+    "_locale" : "en_US",
+    "_storefront" : "USA",
+    "_storeKitErrors" : [
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Load Products"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Purchase"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Verification"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "App Store Sync"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Subscription Status"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "App Transaction"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Manage Subscriptions Sheet"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Refund Request Sheet"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Offer Code Redeem Sheet"
+      }
+    ]
+  },
+  "subscriptionGroups" : [
+
+  ],
+  "version" : {
+    "major" : 3,
+    "minor" : 0
+  }
+}

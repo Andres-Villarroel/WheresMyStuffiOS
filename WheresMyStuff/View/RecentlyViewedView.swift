@@ -27,7 +27,7 @@ struct RecentlyViewedView: View {
         })
         .buttonStyle(PlainButtonStyle())
         .sheet(isPresented: $showRecViewSheet) {
-            ItemSheetView(item: items[0], canEdit: false)
+            ItemSheetView(item: items.first ?? ItemDataModel(name: "error", location: "error", category: "error", notes: "error"), canEdit: true)
         }
     }
 }
