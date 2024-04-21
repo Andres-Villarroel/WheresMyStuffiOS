@@ -73,8 +73,10 @@ struct RecentsCards: View {
 #Preview {
     //RecentsCards()
     let container = try! ModelContainer(for: ItemDataModel.self, configurations: ModelConfiguration(isStoredInMemoryOnly: true))
-    let image = UIImage(named: "tiltedParrot")!
+//        let image = UIImage(named: "tiltedParrot")!
+    let image = UIImage(named: "debugImage")!
     let data = image.pngData()
+//    let data = image!.pngData()
     let newItem = ItemDataModel(name: "test name", location: "test location", category: "test category", notes: "test notes")
     newItem.image = data
     container.mainContext.insert(newItem)

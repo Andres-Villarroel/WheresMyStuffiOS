@@ -25,6 +25,7 @@ struct EditFormView: View {
     //for the category addition mechanic
     @State private var showingAlert = false
     @State private var newCategoryName = ""
+    let noCategoryTag = "bvhqfpy9qfnprwio"
     
     //for the photo picker feature
     @State private var photoPickerItem: PhotosPickerItem?
@@ -156,6 +157,7 @@ struct EditFormView: View {
                     //MARK: Optional Section
                     Section (header: Text("Optional")){
                         Picker("Choose Category", selection: $category){
+                            Text("None").tag(noCategoryTag)
                             ForEach(categories, id: \.self) { cat in
                                 Text(cat.name).tag(cat.name)
                             }
@@ -217,9 +219,13 @@ struct EditFormView: View {
     private func saveItem() {
         item.name = name
         item.location = location
-        item.category = category
         item.image = imageData
         item.notes = notes
+        if(category != noCategoryTag){
+            item.category = category.trimmingCharacters(in: .whitespacesAndNewlines)
+        } else {
+            item.category = ""
+        }
         if imageData == nil{
             log.info("setting item.image to nil")
         } else {

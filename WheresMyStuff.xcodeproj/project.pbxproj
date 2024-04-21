@@ -24,7 +24,7 @@
 		44592FC52BACC8800047E8B5 /* EditFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44592FC42BACC8800047E8B5 /* EditFormView.swift */; };
 		44592FC72BACE20B0047E8B5 /* ZoomScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44592FC62BACE20B0047E8B5 /* ZoomScrollView.swift */; };
 		44651AD02B8EB802009F2BFF /* ItemDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44651ACF2B8EB802009F2BFF /* ItemDataModel.swift */; };
-		44651AD32B91013A009F2BFF /* ItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44651AD22B91013A009F2BFF /* ItemCell.swift */; };
+		44651AD32B91013A009F2BFF /* ItemCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44651AD22B91013A009F2BFF /* ItemCellView.swift */; };
 		44651AD52B918664009F2BFF /* ItemsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44651AD42B918664009F2BFF /* ItemsListView.swift */; };
 		44651AD72B93B93B009F2BFF /* CategoryDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44651AD62B93B93B009F2BFF /* CategoryDataModel.swift */; };
 		44651AD92B93BA15009F2BFF /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44651AD82B93BA15009F2BFF /* ContentView.swift */; };
@@ -45,7 +45,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		4450DE9B2B850654007C0841 /* WheresMyStuff.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = WheresMyStuff.app; path = "/Users/andresvi/Documents/Development/WheresMyStuff/build/Debug-iphoneos/WheresMyStuff.app"; sourceTree = "<absolute>"; };
 		4450DE9E2B850654007C0841 /* WheresMyStuffApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WheresMyStuffApp.swift; sourceTree = "<group>"; };
 		4450DEA02B850654007C0841 /* BrowseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowseView.swift; sourceTree = "<group>"; };
 		4450DEA22B850656007C0841 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -63,13 +62,14 @@
 		44592FC42BACC8800047E8B5 /* EditFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditFormView.swift; sourceTree = "<group>"; };
 		44592FC62BACE20B0047E8B5 /* ZoomScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZoomScrollView.swift; sourceTree = "<group>"; };
 		44651ACF2B8EB802009F2BFF /* ItemDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDataModel.swift; sourceTree = "<group>"; };
-		44651AD22B91013A009F2BFF /* ItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCell.swift; sourceTree = "<group>"; };
+		44651AD22B91013A009F2BFF /* ItemCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCellView.swift; sourceTree = "<group>"; };
 		44651AD42B918664009F2BFF /* ItemsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsListView.swift; sourceTree = "<group>"; };
 		44651AD62B93B93B009F2BFF /* CategoryDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryDataModel.swift; sourceTree = "<group>"; };
 		44651AD82B93BA15009F2BFF /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		44651ADA2B93C003009F2BFF /* CustomContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomContainer.swift; sourceTree = "<group>"; };
 		44651AE02B977DF7009F2BFF /* ItemCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCardView.swift; sourceTree = "<group>"; };
 		44651AE42B97C5D7009F2BFF /* RecentlyViewedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentlyViewedView.swift; sourceTree = "<group>"; };
+		44CEBD722BD3645E00EBDDB6 /* WheresMyStuff.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WheresMyStuff.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		44E2EC682BC0736C00860D63 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		44E836D72BC37986007A19FE /* CameraManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraManager.swift; sourceTree = "<group>"; };
 		44E836DD2BC83923007A19FE /* ItemTextDisplayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemTextDisplayView.swift; sourceTree = "<group>"; };
@@ -101,6 +101,7 @@
 				44E836F62BCF39C7007A19FE /* FlashFindProduct.storekit */,
 				4450DE9D2B850654007C0841 /* WheresMyStuff */,
 				44E836EE2BCF29D2007A19FE /* Frameworks */,
+				44CEBD722BD3645E00EBDDB6 /* WheresMyStuff.app */,
 			);
 			sourceTree = "<group>";
 		};
@@ -162,7 +163,7 @@
 				44592F992BA139F50047E8B5 /* FormView.swift */,
 				44592FC22BACB2790047E8B5 /* ImageView.swift */,
 				44651AE02B977DF7009F2BFF /* ItemCardView.swift */,
-				44651AD22B91013A009F2BFF /* ItemCell.swift */,
+				44651AD22B91013A009F2BFF /* ItemCellView.swift */,
 				44592F6F2B9FDB980047E8B5 /* ItemSheetView.swift */,
 				44E836DD2BC83923007A19FE /* ItemTextDisplayView.swift */,
 				44651AD42B918664009F2BFF /* ItemsListView.swift */,
@@ -203,7 +204,7 @@
 				44E836F42BCF3497007A19FE /* SwiftUI_NotificationBanner */,
 			);
 			productName = WheresMyStuff;
-			productReference = 4450DE9B2B850654007C0841 /* WheresMyStuff.app */;
+			productReference = 44CEBD722BD3645E00EBDDB6 /* WheresMyStuff.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -271,7 +272,7 @@
 				44592FAB2BA67EC80047E8B5 /* ImagePicker.swift in Sources */,
 				44E836ED2BCB475B007A19FE /* FormViewSheetView.swift in Sources */,
 				44E836DE2BC83923007A19FE /* ItemTextDisplayView.swift in Sources */,
-				44651AD32B91013A009F2BFF /* ItemCell.swift in Sources */,
+				44651AD32B91013A009F2BFF /* ItemCellView.swift in Sources */,
 				4450DEA12B850654007C0841 /* BrowseView.swift in Sources */,
 				44651AE12B977DF7009F2BFF /* ItemCardView.swift in Sources */,
 				44592FC72BACE20B0047E8B5 /* ZoomScrollView.swift in Sources */,

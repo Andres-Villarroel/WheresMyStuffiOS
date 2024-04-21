@@ -31,7 +31,7 @@ struct ItemsListView: View {
                         itemSelected = item
                         item.lastViewDate = Date.now
                     } label: {
-                        ItemCell(item: item)
+                        ItemCellView(item: item)
                     }
                     .listRowSeparatorTint(Color.white)
                     .buttonStyle(PlainButtonStyle())
