@@ -1,6 +1,7 @@
 import SwiftUI
 import SwiftData
 import os
+import Combine
 
 struct AddCategoryAlertView: View {
     @Binding var showView: Bool
@@ -11,53 +12,54 @@ struct AddCategoryAlertView: View {
     @State private var inputValMessage = ""
     
     var body: some View {
-        VStack(spacing: 0){
-            //MARK: Texts and textfield
-            VStack{
-                Spacer()
-                Text("Enter Category Name")
-                
-                if (!inputValMessage.isEmpty){
-                    Text(inputValMessage)   //if input validation fails, the reason will be shown here.
-                        .foregroundStyle(Color.red)
-                        .padding([.top, .bottom], 2)
-                } else {
+            VStack(spacing: 0){
+                //MARK: Texts and textfield
+                VStack{
                     Spacer()
-                }
+                    Text("Enter Category Name")
+                    
+                    if (!inputValMessage.isEmpty){
+                        Text(inputValMessage)   //if input validation fails, the reason will be shown here.
+                            .foregroundStyle(Color.red)
+                            .padding([.top, .bottom], 2)
+                    } else {
+                        Spacer()
+                    }
+                    
+                    TextField("Enter Cateory Name", text: $newCategoryName)
+                    //                    .padding(5)
+                        .background(Color.init(uiColor: .darkGray))
+                        .clipShape(RoundedRectangle(cornerRadius: 5))
+                        .foregroundStyle(Color.white)
+                        .frame(width: 200)
+                    //                    .padding(.bottom, 5)
+                    Spacer()
+                    Divider()
+                }//end vstack
                 
-                TextField("Enter Cateory Name", text: $newCategoryName)
-//                    .padding(5)
-                    .background(Color.init(uiColor: .darkGray))
-                    .clipShape(RoundedRectangle(cornerRadius: 5))
-                    .foregroundStyle(Color.white)
-                    .frame(width: 200)
-//                    .padding(.bottom, 5)
-                Spacer()
-                Divider()
+                //MARK: Buttons
+                HStack (){
+                    Spacer()
+                    Button("Submit", action: submitCategory)
+                        .disabled(newCategoryName.isEmpty || newCategoryName.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty)
+                        .tint(.lightPurple)
+                    
+                    Divider()
+                        .padding([.leading, .trailing], 30)
+                    
+                    Button("Cancel", role: .destructive) {
+                        newCategoryName = ""
+                        showView = false
+                    }
+                    Spacer()
+                }// end hstack
+                .frame(height: 50)
+                
             }//end vstack
-            
-            //MARK: Buttons
-            HStack (){
-                Spacer()
-                Button("Submit", action: submitCategory)
-                    .disabled(newCategoryName.isEmpty || newCategoryName.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty)
-                    .tint(.lightPurple)
-                
-                Divider()
-                    .padding([.leading, .trailing], 30)
-                
-                Button("Cancel", role: .destructive) {
-                    newCategoryName = ""
-                    showView = false
-                }
-                Spacer()
-            }// end hstack
-            .frame(height: 50)
-            
-        }//end vstack
-        .frame(width: 250, height: 170)
-        .background(.ultraThinMaterial)
-        .clipShape(RoundedRectangle(cornerRadius: 15))
+            .frame(width: 250, height: 170)
+            .background(.ultraThinMaterial)
+            .clipShape(RoundedRectangle(cornerRadius: 15))
+            .ignoresSafeArea(.keyboard, edges: .bottom)
     }
     
     private func submitCategory(){

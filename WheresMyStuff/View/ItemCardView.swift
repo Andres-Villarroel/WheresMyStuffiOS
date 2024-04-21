@@ -31,9 +31,12 @@ struct ItemCardView: View {
                 .frame(maxWidth: 200, maxHeight: 50)
                 .background(.ultraThinMaterial)
             }
-            .frame(width: 200, height: 250)
+            .frame(height: 250)
+            //.frame(width: 200, height: 250)
+//            .frame(maxWidth: 150, maxHeight: 200) //change this value to fit non-max iPhones
             .background(.ultraThinMaterial)
             .clipShape(RoundedRectangle(cornerRadius: 25.0))
+//            .padding()
         } else {
             ZStack(alignment: .bottom){
                 Image(systemName: "photo")

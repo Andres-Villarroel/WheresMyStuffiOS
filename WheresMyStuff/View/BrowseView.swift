@@ -14,18 +14,16 @@ struct BrowseView: View {
     @Query var items: [ItemDataModel]
     @Query var categories: [CategoryDataModel]
     @State var showAddCategoryView = false
+    @State private var keyboardHeight: CGFloat = 0
     
     var body: some View {
         NavigationStack {
-            GeometryReader { _ in     //CAUSING PRECONDITION FAILURE CRASH
+//            GeometryReader { _ in     //CAUSING PRECONDITION FAILURE CRASH, looks like geometry reader should be the root view as in navStack should be inside geometry reader.
                 ZStack {
                     
                     //MARK: Background Image
-                    Image("appBackground")
-                        .resizable()
-                        .aspectRatio(contentMode: .fill)
-                        .frame(minWidth: 0, maxWidth: .infinity)
-                        .ignoresSafeArea(.all)
+//                    Spacer()
+                    
                     
                     VStack {
                         //These show the recently viewed and added items views
@@ -33,11 +31,10 @@ struct BrowseView: View {
                         //lists the categories
                         //category labels
                         ZStack {
-//                            Spacer()
+                            //                            Spacer()
                             Text("Categories")  //Consider making this a tab selection view to choose to browse between items and categories
                                 .foregroundStyle(Color.white)
-//                                .frame(maxWidth: .infinity, alignment: .center)
-//                            Spacer()
+                            
                             Button("+Category"){
                                 showAddCategoryView.toggle()
                             }
@@ -45,6 +42,7 @@ struct BrowseView: View {
                             .padding(.trailing, 15)
                             .frame(maxWidth: .infinity, alignment: .trailing)
                         }
+                        //                        .ignoresSafeArea(.keyboard, edges: .bottom)
                         .padding([.top, .bottom])
                         
                         //MARK: category list
@@ -67,7 +65,6 @@ struct BrowseView: View {
                                 
                             }// end list
                             .listStyle(.plain)  //without this, the first row starts too low
-                            //                        .scrollContentBackground(.hidden)
                             .background(.ultraThinMaterial)
                             .background(Color.clear)
                             .cornerRadius(20)
@@ -82,18 +79,29 @@ struct BrowseView: View {
                             Spacer()
                         }
                     }//end vstack
+                    .background(
+                        Image("appBackground")
+                            .resizable()
+                            .aspectRatio(contentMode: .fill)
+                            .frame(minWidth: 0, maxWidth: .infinity)
+                            .ignoresSafeArea(.all)
+                    )
+                    
                     .navigationTitle("Browse")
                     .navigationBarTitleDisplayMode(.inline)
                     if(showAddCategoryView){
                         AddCategoryAlertView(showView: $showAddCategoryView)
+                        
                     }
                 }//end zstack
                 .transition(.opacity)
-                .ignoresSafeArea(.keyboard, edges: .bottom)
-            }// end geometry reader
+                //                .ignoresSafeArea(.keyboard, edges: .bottom)
+//            }// end geometry reader
         }//end navigation stack
+        
     }//end body
 }
+
 
 #Preview {
     let container = try! ModelContainer(for: CategoryDataModel.self, ItemDataModel.self, configurations: ModelConfiguration(isStoredInMemoryOnly: true))
@@ -114,11 +122,11 @@ struct BrowseView: View {
     
     let tempName = "testMiscellaneous"
     let otherName = "otherCategory"
-//    let newCategory = CategoryDataModel(categoryList: tempArray)
+    //    let newCategory = CategoryDataModel(categoryList: tempArray)
     let newCategory = CategoryDataModel(name: tempName)
     let otherCategory = CategoryDataModel(name: otherName)
     container.mainContext.insert(newCategory)
-//    container.mainContext.insert(otherCategory)
+    //    container.mainContext.insert(otherCategory)
     return BrowseView()
         .modelContainer(container)
     
