@@ -7,6 +7,7 @@ struct ItemSheetView: View {
     let item: ItemDataModel
     let canEdit: Bool
     @Environment(\.dismiss) private var dismiss
+    @EnvironmentObject var constants: GlobalConstant
     @State private var showEditItem = false
     @State private var showImageView = false
     
@@ -47,6 +48,7 @@ struct ItemSheetView: View {
                             Button("Edit"){
                                 showEditItem.toggle()
                             }
+                            .tint(constants.buttonColor)
                             .sheet (isPresented: $showEditItem) {
                                 EditFormView(item: item)
                             }
@@ -61,10 +63,11 @@ struct ItemSheetView: View {
                             log.info("Category: \(item.category)")
                             log.info("Notes: \(item.notes)")
                         }
+                        .tint(.red)
                     }
                 }
                 .sheet(isPresented: $showImageView){
-                    ImageView(item: item, isInEditMode: false)
+                    ImageView(item: item)
                 }
             }// end zstack
         }// end navigation stack
@@ -90,5 +93,6 @@ struct ItemSheetView: View {
 //    container.mainContext.insert(newCategory)
     return ItemSheetView(item: newItem, canEdit: true)
         .modelContainer(container)
+        .environmentObject(GlobalConstant())
 //        .environmentObject(DYNotificationHandler())
 }

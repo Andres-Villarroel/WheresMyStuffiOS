@@ -11,6 +11,7 @@ struct CategoryItemsListView: View {
     let log = Logger(subsystem: "WheresMyStuff", category: "CategoryItemsListView")
     @Query var items: [ItemDataModel]
     @Environment(\.modelContext) var context
+    @EnvironmentObject var constants: GlobalConstant
     @State var itemSelected: ItemDataModel?     //used to help implement sheet mechanic
     @State private var showAddItemForm = false
     private var categoryName: String
@@ -91,6 +92,7 @@ struct CategoryItemsListView: View {
                     Button("+Item"){
                         showAddItemForm.toggle()
                     }
+                    .foregroundStyle(constants.buttonColor)
                 }
             }
             .navigationTitle(categoryName)
@@ -114,23 +116,23 @@ struct CategoryItemsListView: View {
     let thirdItem = ItemDataModel(name: "Dehumidifier", location: "Chloe's Crate", category: "Desk", notes: "Third added")
     thirdItem.image = data
     
-//    container.mainContext.insert(newItem)
-//    container.mainContext.insert(firstItem)
-//    container.mainContext.insert(secondItem)
-//    container.mainContext.insert(thirdItem)
+    container.mainContext.insert(newItem)
+    container.mainContext.insert(firstItem)
+    container.mainContext.insert(secondItem)
+    container.mainContext.insert(thirdItem)
 //    let itemsArray = [
 //        firstItem,
 //        secondItem,
 //        thirdItem
 //    ]
-    
-    let tempArray = ["testMiscellaneous"]
+    let catName = "Desk"
+    let tempArray = [catName]
     for cat in tempArray{
         let newCategory = CategoryDataModel(name: cat)
         container.mainContext.insert(newCategory)
     }
     
     
-    return CategoryItemsListView(chosenCategory: "testMiscellaneous")
+    return CategoryItemsListView(chosenCategory: catName)
         .modelContainer(container)
 }

@@ -7,6 +7,7 @@ struct AddCategoryAlertView: View {
     @Binding var showView: Bool
     let log = Logger(subsystem: "WheresMyStuff", category: "AddCategoryViewAlert")
     @Environment(\.modelContext) var modelContext
+    @EnvironmentObject var constants: GlobalConstant
     @Query var categories: [CategoryDataModel]
     @State private var newCategoryName = ""
     @State private var inputValMessage = ""
@@ -42,7 +43,7 @@ struct AddCategoryAlertView: View {
                     Spacer()
                     Button("Submit", action: submitCategory)
                         .disabled(newCategoryName.isEmpty || newCategoryName.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty)
-                        .tint(.lightPurple)
+                        .tint(constants.buttonColor)
                     
                     Divider()
                         .padding([.leading, .trailing], 30)

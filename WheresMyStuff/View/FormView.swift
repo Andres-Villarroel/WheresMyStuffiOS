@@ -17,10 +17,14 @@ struct FormView: View {
     var nextScreen: () -> Void  //for switching tabview
     let buttonColor = Color.lightPurple
     let noCategoryTag = "bvhqfpy9qfnprwio"
+    @EnvironmentObject var storekit: StoreKitManager
+    let itemLimit = 10
+    @State private var showLimitReachedAlert = false
     
     @Query var categories: [CategoryDataModel]
     @Query var items: [ItemDataModel]
     @Environment(\.modelContext) var modelContext
+    @EnvironmentObject var constants: GlobalConstant
     private let formBackgroundColor = Color(.gray)
     
     //for the photo picker feature
@@ -83,7 +87,7 @@ struct FormView: View {
                             .frame(maxWidth: 80)
                     } else {
                         Text("Choose Image")
-                            .foregroundStyle(buttonColor)
+                            .foregroundStyle(constants.buttonColor)
                     }
                 }
                 //MARK: PhotoPicker section
@@ -126,6 +130,7 @@ struct FormView: View {
                         Text(cat.name).tag(cat.name)
                     }
                 }
+                .tint(constants.buttonColor)
                 
                 TextField("Notes", text: $notes, axis: .vertical)
                     .padding()
@@ -141,15 +146,19 @@ struct FormView: View {
             //MARK: save button section
             HStack{
                 Spacer()
-                Button ( action: saveItem){
+                Button ( action: attemptSaveItem){
                     Text("Save Item")
-                        .foregroundStyle(buttonColor)
+                        .foregroundStyle(constants.buttonColor)
                 }
                 .padding()
                 .background(Color.form)
                 .cornerRadius(15)
                 .buttonStyle(PlainButtonStyle())
                 .disabled(name.isEmpty || location.isEmpty)     //input validation to ensure name and location are filled out
+                .alert(isPresented: $showLimitReachedAlert){
+                    //show alert if the user has reached the limit for adding items while in the free version of the app.
+                    Alert(title: Text("Item Limit Reached"), message: Text("Limit is \(itemLimit) items, please purchase the full version to remove this limit. The full version can be purchased in: \nSearch screen>Settings."), dismissButton: .default(Text("OK")))
+                }
                 Spacer()
             }
             .listRowBackground(Color.clear)
@@ -162,8 +171,32 @@ struct FormView: View {
     private func debugButton() {
         log.info("Button pressed")
     }
-    private func saveItem() {
-        log.info("save button pressed 1/6")
+    
+    private func attemptSaveItem() {
+        
+        log.info("attemptSaveItem button pressed.")
+        log.info("User purchased full version: \(storekit.didPurchaseFullVersion())")
+        //TODO: implement full version purchase verification
+        if(storekit.didPurchaseFullVersion()){
+            log.info("Full version purchase detected. Item '\(name)' will continue forward through the saving process.")
+            saveItem()
+        } else {
+            log.info("Full version not purchased. Comparing current items array count with item limit...")
+            //set an alert if the item limit has been reached
+            if(items.count < constants.itemLimit){
+                log.info("Limit not yet reached, continuing with the saving process")
+                saveItem()
+            } else {
+                log.info("Item limit has been reached.\nRejecting item save attempt.")
+                showLimitReachedAlert.toggle()
+            }
+        }
+        
+        
+    }//end saveItem()
+    
+    private func saveItem(){
+        log.info("saveItem() triggered. Item '\(name)' will attempt to save.")
         let emptyItem = ItemDataModel(name: "", location: "", category: "", notes: "")
         item.name = name.trimmingCharacters(in: .whitespacesAndNewlines)
         item.location = location.trimmingCharacters(in: .whitespacesAndNewlines)
@@ -179,10 +212,24 @@ struct FormView: View {
             log.info("imageData is nil")
         }
         item.notes = notes.trimmingCharacters(in: .whitespacesAndNewlines)
+        
         modelContext.insert(item)
-        log.info("model context insert executed 2/6")
+        log.info("model context insert() executed")
         try? modelContext.save()
-        log.info("model context save() executed 3/6")
+        log.info("model context save() executed")
+        log.info("Item '\(name)' successfully saved.")
+        
+        //clear the form
+        clearForm()
+        item = emptyItem
+        
+        notificationBanner.show(notification: infoNotification)
+        nextScreen()
+        log.info("saveItem() finished.")
+    }
+    
+    private func clearForm(){
+        log.info("clearForm() triggered.")
         //CLEAR FORM WHEN FINISHED
         name = ""
         category = ""
@@ -190,12 +237,6 @@ struct FormView: View {
         notes = ""
         imageData = nil
         avatarImage = nil
-        item = emptyItem
-        log.info("form cleared 4/6")
-        notificationBanner.show(notification: infoNotification)
-        log.info("notificationBanner executed 5/6")
-        nextScreen()      //THIS IS CAUSING THE PRECONDITION ERROR
-        log.info("save button exited 6/6")
     }
     
     var infoNotification: DYNotification {
@@ -224,5 +265,6 @@ struct FormView: View {
     //    container.mainContext.insert(newCategory)
     func nextScreenPreview() {}
     return FormView(nextScreen: nextScreenPreview, item: .constant(tempItem))
+        .environmentObject(GlobalConstant())
         .modelContainer(container)
 }

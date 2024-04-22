@@ -6,6 +6,7 @@ struct SearchView: View {
     //accessing swiftdata content
     @Query var items: [ItemDataModel]
     @State private var searchTerm = ""
+    @EnvironmentObject var constants: GlobalConstant
     
     var body: some View {
         NavigationStack {
@@ -23,7 +24,7 @@ struct SearchView: View {
                                     SettingsView()
                                 } label: {
                                     Image(systemName: "gearshape.fill")
-                                        .tint(Color.lightPurple)
+                                        .tint(constants.buttonColor)
                                 }
                             }
                         }
@@ -77,4 +78,5 @@ struct SearchView: View {
     }
     return SearchView()
         .modelContainer(container)
+        .environmentObject(GlobalConstant())
 }

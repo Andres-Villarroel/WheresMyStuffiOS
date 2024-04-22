@@ -9,6 +9,7 @@ struct AddItemView: View {
     //SwiftData
     @Query var categories: [CategoryDataModel]
     @Environment(\.modelContext) var modelContext
+    @EnvironmentObject var constants: GlobalConstant
     @State var showAddCategoryView = false
     @Binding var selection: Int
     @State var item = ItemDataModel(name: "", location: "", category: "Miscellaneous", notes: "")
@@ -42,6 +43,7 @@ struct AddItemView: View {
                                                 showAddCategoryView.toggle()
                                             }
                                         }
+                                        .foregroundStyle(constants.buttonColor)
                                     }// end toolbaritem
                                 }// end tool bar
                             

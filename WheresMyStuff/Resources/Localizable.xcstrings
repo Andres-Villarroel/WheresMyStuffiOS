@@ -269,6 +269,9 @@
         }
       }
     },
+    "Item Limit Reached" : {
+
+    },
     "Last Updated: %@" : {
       "localizations" : {
         "es-419" : {
@@ -278,6 +281,9 @@
           }
         }
       }
+    },
+    "Limit is %lld items, please purchase the full version to remove this limit. The full version can be purchased in: \nSearch screen>Settings." : {
+
     },
     "Location" : {
       "localizations" : {

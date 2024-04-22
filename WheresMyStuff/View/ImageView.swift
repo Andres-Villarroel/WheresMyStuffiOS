@@ -4,9 +4,6 @@ import SwiftData
 struct ImageView: View {
 //    @Binding var imageData: Data?
     let item: ItemDataModel
-    var isInEditMode: Bool
-    @State private var currentZoom = 0.0
-    @State private var totalZoom = 1.0
     
     var body: some View {
         NavigationStack {
@@ -25,16 +22,16 @@ struct ImageView: View {
                         .scaledToFit()
                 }
             }
-            .toolbar {
-                if isInEditMode {
-                    Button(action: deleteImage, label: {
-                        Image(systemName: "trash")
-                            .foregroundStyle(Color.white)
-                    })
-                }
-            }
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
-            .background(Color.black).edgesIgnoringSafeArea(.all)
+//            .toolbar {
+//                if isInEditMode {
+//                    Button(action: deleteImage, label: {
+//                        Image(systemName: "trash")
+//                            .foregroundStyle(Color.white)
+//                    })
+//                }
+//            }
+//            .frame(maxWidth: .infinity, maxHeight: .infinity)
+//            .background(Color.black).edgesIgnoringSafeArea(.all)
         }
     }// end body
     
@@ -53,6 +50,6 @@ struct ImageView: View {
     @State var data = image.pngData()
     tempItem.image = data
     
-    return ImageView(item: tempItem, isInEditMode: shouldEdit)
+    return ImageView(item: tempItem)
         .modelContainer(container)
 }

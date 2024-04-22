@@ -35,7 +35,6 @@ struct RecentsCards: View {
                         log.info("Current items count: \(items.count) as of \(Date.now) RecentsCards.swift")
                     },
                     label: {
-//                        ItemCardView(imageData: items[0].image, itemName: items[0].name, itemLocation: items[0].location)   //crash happens here when item is deleted through the delete button in EditItemView when accessing it through the 'Recently Viewed' card
                         ItemCardView(providedItem: items.first ?? ItemDataModel(name: "Error", location: "Error", category: "Error", notes: "Error"))
                     })
                     .buttonStyle(PlainButtonStyle())

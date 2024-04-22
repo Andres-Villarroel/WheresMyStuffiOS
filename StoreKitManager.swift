@@ -37,7 +37,7 @@ class StoreKitManager: ObservableObject{
     @MainActor
     func purchase(_ product: Product) async throws -> Transaction? {
         log.info("purchase(product) triggered.")
-        log.info("Is purchasedItems array empty: \(self.purchasedProducts.isEmpty)")
+        log.info("Is purchasedItems array empty before purchase: \(self.purchasedProducts.isEmpty)")
         let result = try await product.purchase()
         
         switch result {
@@ -69,24 +69,6 @@ class StoreKitManager: ObservableObject{
                 await self.handle(transactionVerification: result)
             }
         }
-        
-//        return Task.detached {
-//            for await result in Transaction.updates {
-//                switch result {
-//                case let.verified(transaction):
-//                    guard let product = self.storeProducts.first(where: {
-//                        $0.id == transaction.productID
-//                    })
-//                    else {
-//                        continue
-//                    }
-//                    self.purchasedProducts.insert(product)
-//                    await transaction.finish()
-//                default:
-//                    continue
-//                }
-//            }
-//        }
     }
     
     @MainActor

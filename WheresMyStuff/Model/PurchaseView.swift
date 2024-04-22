@@ -9,7 +9,8 @@ import SwiftUI
 import StoreKit
 import os
 struct PurchaseView: View {
-    @StateObject var storekit = StoreKitManager()
+//    @StateObject var storekit = StoreKitManager()
+    @EnvironmentObject var storekit: StoreKitManager
     let log = Logger(subsystem: "WheresMyStuff", category: "PurchaseView")
     
     var body: some View {
@@ -57,5 +58,6 @@ struct PurchaseView: View {
 }
 
 #Preview {
-    PurchaseView()
+    return PurchaseView()
+        .environmentObject(StoreKitManager())
 }

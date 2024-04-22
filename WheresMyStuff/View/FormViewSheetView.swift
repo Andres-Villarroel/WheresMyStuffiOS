@@ -8,10 +8,12 @@
  struct FormViewSheetView: View {
      let log = Logger(subsystem: "WheresMyStuff", category: "Adding an Item")
      @EnvironmentObject var notificationBanner: DYNotificationHandler
-     let buttonColor = Color.lightPurple
+     @EnvironmentObject var constants: GlobalConstant
      let noCategoryTag = "bvhqfpy9qfnprwio"
      let chosenCategory: String
      @Binding var shouldShowSheet: Bool
+     @EnvironmentObject var storekit: StoreKitManager
+     @State private var showLimitReachedAlert = false
      
      @Query var categories: [CategoryDataModel]
      @Query var items: [ItemDataModel]
@@ -81,7 +83,7 @@
                              .frame(maxWidth: 80)
                      } else {
                          Text("Choose Image")
-                             .foregroundStyle(buttonColor)
+                             .foregroundStyle(constants.buttonColor)
                      }
                  }
                  //MARK: PhotoPicker section
@@ -124,6 +126,7 @@
                          Text(cat.name).tag(cat.name)
                      }
                  }
+                 .tint(constants.buttonColor)
                  
                  TextField("Notes", text: $notes, axis: .vertical)
                      .padding()
@@ -139,14 +142,17 @@
              //MARK: save button section
              HStack{
                  Spacer()
-                 Button ( action: saveItem){
+                 Button ( action: attemptSaveItem){
                      Text("Save Item")
-                         .foregroundStyle(buttonColor)
+                         .foregroundStyle(constants.buttonColor)
+                 }
+                 .alert(isPresented: $showLimitReachedAlert){
+                     Alert(title: Text("Item Limit Reached"), message: Text("Limit is \(constants.itemLimit) items, please purchase the full version to remove this limit. The full version can be purchased in: \nSearch screen>Settings."), dismissButton: .default(Text("OK")))
                  }
                  .padding()
                  .background(Color.form)
                  .cornerRadius(15)
-                 .buttonStyle(PlainButtonStyle())
+                 .buttonStyle(PlainButtonStyle())   //allows the .disabled modifier to function
                  .disabled(name.isEmpty || location.isEmpty)     //input validation to ensure name and location are filled out
                  Spacer()
              }
@@ -160,6 +166,30 @@
      private func debugButton() {
          log.info("Button pressed")
      }
+     
+     private func attemptSaveItem() {
+         
+         log.info("attemptSaveItem button pressed.")
+         log.info("User purchased full version: \(storekit.didPurchaseFullVersion())")
+         //TODO: implement full version purchase verification
+         if(storekit.didPurchaseFullVersion()){
+             log.info("Full version purchase detected. Item '\(name)' will continue forward through the saving process.")
+             saveItem()
+         } else {
+             log.info("Full version not purchased. Comparing current items array count with item limit...")
+             //set an alert if the item limit has been reached
+             if(items.count < constants.itemLimit){
+                 log.info("Limit not yet reached, continuing with the saving process")
+                 saveItem()
+             } else {
+                 log.info("Item limit has been reached.\nRejecting item save attempt.")
+                 showLimitReachedAlert.toggle()
+             }
+         }
+         
+         
+     }//end saveItem()
+     
      private func saveItem() {
          log.info("save button pressed")
          
@@ -180,21 +210,22 @@
          } else {
              log.info("imageData is nil")
          }
-         
-         log.info("Before ADDING, Items has \(items.count) items")
+        
          modelContext.insert(item)      //saving item to database
+         log.info("'\(item.name)' successfully saved")
+         clearForm()
          
-         //CLEAR FORM WHEN FINISHED
+         notificationBanner.show(notification: infoNotification)
+         shouldShowSheet = false
+     }
+     
+     private func clearForm(){
          name = ""
          category = ""
          location = ""
          notes = ""
          imageData = nil
          avatarImage = nil
-         
-         log.info("After ADDING, Items has \(items.count) items")
-         notificationBanner.show(notification: infoNotification)
-         shouldShowSheet = false
      }
      
      var infoNotification: DYNotification {
@@ -224,4 +255,5 @@
      @State var shouldDismiss = false
      return FormViewSheetView(chosenCategory: "Kitchen", shouldDismiss: $shouldDismiss)
          .modelContainer(container)
+         .environmentObject(GlobalConstant())
  }

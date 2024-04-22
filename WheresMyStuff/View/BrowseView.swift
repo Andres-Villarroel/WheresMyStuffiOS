@@ -11,6 +11,7 @@ import SwiftData
 struct BrowseView: View {
     //loading swift data database contents and components
     @Environment(\.modelContext) var modelContext
+    @EnvironmentObject var constants: GlobalConstant
     @Query var items: [ItemDataModel]
     @Query var categories: [CategoryDataModel]
     @State var showAddCategoryView = false
@@ -18,12 +19,7 @@ struct BrowseView: View {
     
     var body: some View {
         NavigationStack {
-//            GeometryReader { _ in     //CAUSING PRECONDITION FAILURE CRASH, looks like geometry reader should be the root view as in navStack should be inside geometry reader.
                 ZStack {
-                    
-                    //MARK: Background Image
-//                    Spacer()
-                    
                     
                     VStack {
                         //These show the recently viewed and added items views
@@ -38,7 +34,7 @@ struct BrowseView: View {
                             Button("+Category"){
                                 showAddCategoryView.toggle()
                             }
-                            .tint(Color.lightPurple)
+                            .tint(constants.buttonColor)
                             .padding(.trailing, 15)
                             .frame(maxWidth: .infinity, alignment: .trailing)
                         }
@@ -95,10 +91,8 @@ struct BrowseView: View {
                     }
                 }//end zstack
                 .transition(.opacity)
-                //                .ignoresSafeArea(.keyboard, edges: .bottom)
-//            }// end geometry reader
         }//end navigation stack
-        
+        .tint(Color.lightPurple)
     }//end body
 }
 
@@ -130,5 +124,6 @@ struct BrowseView: View {
     //    container.mainContext.insert(otherCategory)
     return BrowseView()
         .modelContainer(container)
+        .environmentObject(GlobalConstant())
     
 }

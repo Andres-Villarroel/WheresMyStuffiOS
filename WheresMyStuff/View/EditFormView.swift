@@ -21,6 +21,7 @@ struct EditFormView: View {
     @Query var items: [ItemDataModel]
     @Environment(\.modelContext) var modelContext
     @EnvironmentObject var notificationBanner: DYNotificationHandler
+    @EnvironmentObject var constants: GlobalConstant
     
     //for the category addition mechanic
     @State private var showingAlert = false
@@ -162,6 +163,7 @@ struct EditFormView: View {
                                 Text(cat.name).tag(cat.name)
                             }
                         }
+                        .tint(constants.buttonColor)
                         
                         TextField("Notes", text: $notes, axis: .vertical)
                     }
@@ -173,6 +175,7 @@ struct EditFormView: View {
                         Button (action: saveItem) {
                             Text("Save Changes")
                         }
+                        .tint(constants.buttonColor)
                         //input validation to ensure name and location are filled out
                         .disabled(name.isEmpty || location.isEmpty)
                         Spacer()
@@ -197,6 +200,7 @@ struct EditFormView: View {
                     Button("Add Category"){
                         showingAlert.toggle()
                     }
+                    .tint(constants.buttonColor)
                     .alert("Enter Category Name", isPresented: $showingAlert){
                         TextField("Enter Cateory Name", text: $newCategoryName)
                         Button("OK", action: submitCategory)
@@ -211,6 +215,7 @@ struct EditFormView: View {
                     Button("Cancel"){
                         dismiss()
                     }
+                    .tint(.red)
                 }
             }
         }
@@ -292,5 +297,6 @@ struct EditFormView: View {
         return EditFormView(item: newItem)
             .modelContainer(container)
             .environmentObject(DYNotificationHandler())
+            .environmentObject(GlobalConstant())
         
     }
