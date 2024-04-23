@@ -33,7 +33,6 @@ struct AddCategoryAlertView: View {
                         .clipShape(RoundedRectangle(cornerRadius: 5))
                         .foregroundStyle(Color.white)
                         .frame(width: 200)
-                    //                    .padding(.bottom, 5)
                     Spacer()
                     Divider()
                 }//end vstack
@@ -100,4 +99,5 @@ struct AddCategoryAlertView: View {
     
     return AddCategoryAlertView(showView: .constant(true))
         .modelContainer(container)
+        .environmentObject(GlobalConstant())
 }

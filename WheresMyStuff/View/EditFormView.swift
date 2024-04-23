@@ -74,18 +74,13 @@ struct EditFormView: View {
                     
                     if imageData != nil {       //deletes the selected image
                         Button ("Delete Image", role: .destructive) {
-                            //                            imageData = nil
-                            //                            item.image = nil
-                            //                            avatarImage = nil
                             log.info("Delete button triggered for image menu")
                             tempImageHolder = nil   //triggers the .onChange(tempImageHolder) modifier which will also set imageData to nil which will then be used to set item.image to nil when the user presses the save button.
                         }
                     }
                     
                 } label: {  //displays the image of the item
-                    //                    if avatarImage != nil {
                     if tempImageHolder != nil {
-                        //                        Image(uiImage: avatarImage!)
                         Image(uiImage: tempImageHolder!) 
                             .resizable()
                             .scaledToFit()

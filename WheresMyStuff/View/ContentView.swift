@@ -1,10 +1,3 @@
-//
-//  ContentView.swift
-//  WheresMyStuff
-//
-//  Created by Andres Villarroel on 3/2/24.
-//
-
 import SwiftUI
 import SwiftData
 import SwiftUI_NotificationBanner
@@ -44,4 +37,6 @@ struct ContentView: View {
         .modelContainer(container)
         .environmentObject(DYNotificationHandler())
 //        .environment(\.locale, .init(identifier: "es"))
+        .environmentObject(GlobalConstant())
+        .environmentObject(StoreKitManager())
 }

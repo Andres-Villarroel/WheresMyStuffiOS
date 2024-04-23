@@ -1,4 +1,3 @@
-
 import SwiftUI
 import SwiftData //note that this is only used in the preview
 
@@ -28,18 +27,11 @@ struct ItemCellView: View {
                 
                 Text(item.location)
                     .font(.subheadline)
-                //Text(item.notes), add this when item is tapped. maybe notify that it has notes
                 
             }
             Spacer()
         }// end hstack
         .frame(height: 60)
-//        .padding()
-//        .background(.ultraThinMaterial)
-        .background(Color.clear)
-//        .background(Color.purple)
-//        .blur(radius: 5)
-//        .clipShape((RoundedRectangle(cornerRadius: 30)))
     }
 }
 

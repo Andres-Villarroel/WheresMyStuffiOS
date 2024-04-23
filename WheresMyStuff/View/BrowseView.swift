@@ -1,10 +1,3 @@
-//
-//  ContentView.swift
-//  WheresMyStuff
-//
-//  Created by Andres Villarroel on 2/20/24.
-//
-
 import SwiftUI
 import SwiftData
 
@@ -27,7 +20,6 @@ struct BrowseView: View {
                         //lists the categories
                         //category labels
                         ZStack {
-                            //                            Spacer()
                             Text("Categories")  //Consider making this a tab selection view to choose to browse between items and categories
                                 .foregroundStyle(Color.white)
                             
@@ -38,7 +30,6 @@ struct BrowseView: View {
                             .padding(.trailing, 15)
                             .frame(maxWidth: .infinity, alignment: .trailing)
                         }
-                        //                        .ignoresSafeArea(.keyboard, edges: .bottom)
                         .padding([.top, .bottom])
                         
                         //MARK: category list
@@ -51,7 +42,6 @@ struct BrowseView: View {
                                     }
                                     .listRowSeparatorTint(Color.white)
                                     .listRowBackground(Color.clear)
-                                    //                                .listRowBackground(border(Color.red))
                                 }
                                 .onDelete{ indexSet in
                                     for index in indexSet{

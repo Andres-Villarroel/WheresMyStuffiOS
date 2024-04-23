@@ -1,5 +1,3 @@
-//consider implementing a custom form to allow for the background image to show. it would probably look cooler anyways.
-
 import SwiftUI
 import SwiftData
 
@@ -83,5 +81,6 @@ struct AddItemView: View {
     container.mainContext.insert(newCategory)
     return AddItemView(selection: .constant(2))
         .modelContainer(container)
+        .environmentObject(GlobalConstant())
     
 }

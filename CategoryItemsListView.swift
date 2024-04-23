@@ -56,9 +56,10 @@ struct CategoryItemsListView: View {
                                     item.lastViewDate = Date.now
                                 } label: {
                                     ItemCellView(item: item)
+                                        .foregroundStyle(Color.white)
                                 }
                                 .listRowSeparatorTint(Color.white)
-                                .buttonStyle(PlainButtonStyle())
+//                                .buttonStyle(PlainButtonStyle())
                                 .alignmentGuide(.listRowSeparatorLeading) { _ in
                                     100
                                 }
@@ -135,4 +136,5 @@ struct CategoryItemsListView: View {
     
     return CategoryItemsListView(chosenCategory: catName)
         .modelContainer(container)
+        .environmentObject(GlobalConstant())
 }

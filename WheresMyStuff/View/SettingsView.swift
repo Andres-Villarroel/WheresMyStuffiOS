@@ -1,10 +1,3 @@
-//
-//  SettingsView.swift
-//  WheresMyStuff
-//
-//  Created by Andres Villarroel on 4/18/24.
-//
-
 import SwiftUI
 
 struct SettingsView: View {
@@ -24,4 +17,5 @@ struct SettingsView: View {
 
 #Preview {
     SettingsView()
+        .environmentObject(StoreKitManager())
 }

@@ -1,16 +1,10 @@
-//
-//  FormView.swift
-//  WheresMyStuff
-//
-//  Created by Andres Villarroel on 3/12/24.
-//
-
 import SwiftUI
 import SwiftData
 import PhotosUI
 import SwiftUI_NotificationBanner
 import AVFoundation
 import os
+
 struct FormView: View {
     let log = Logger(subsystem: "WheresMyStuff", category: "Adding an Item")
     @EnvironmentObject var notificationBanner: DYNotificationHandler
@@ -112,7 +106,6 @@ struct FormView: View {
                 .onChange(of: avatarImage) { _, _ in
                     Task {
                         if let avatarImage,
-//                           let data = avatarImage.pngData(){
                            let data = avatarImage.jpegData(compressionQuality: 0.5){    //switching to jpeg for better file compression
                             imageData = data
                         }
@@ -255,7 +248,6 @@ struct FormView: View {
 #Preview {
     let container = try! ModelContainer(for: CategoryDataModel.self, ItemDataModel.self, configurations: ModelConfiguration(isStoredInMemoryOnly: true))
     let tempArray = ["Miscellaneous", "Desk", "Kitchen"]
-    //    let newCategory = CategoryDataModel(categoryList: tempArray)
     let tempItem = ItemDataModel(name: "", location: "", category: "Miscellaneous", notes: "")
     
     for cat in tempArray{

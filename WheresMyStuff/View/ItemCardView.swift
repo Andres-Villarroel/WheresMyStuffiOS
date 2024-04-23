@@ -32,16 +32,12 @@ struct ItemCardView: View {
                 .background(.ultraThinMaterial)
             }
             .frame(height: 250)
-            //.frame(width: 200, height: 250)
-//            .frame(maxWidth: 150, maxHeight: 200) //change this value to fit non-max iPhones
             .background(.ultraThinMaterial)
             .clipShape(RoundedRectangle(cornerRadius: 25.0))
-//            .padding()
         } else {
             ZStack(alignment: .bottom){
                 Image(systemName: "photo")
                     .resizable()
-//                    .scaledToFit()
                     .frame(maxWidth: 200, maxHeight: 200)
                 //sets the text
                 VStack{
@@ -56,9 +52,6 @@ struct ItemCardView: View {
                 .clipShape(
                     .rect(cornerRadii: RectangleCornerRadii(topLeading: 10, bottomLeading: 25, bottomTrailing: 25, topTrailing: 10 ))
                 )
-//                .mask {
-//                    RoundedRectangle(cornerRadius: 25.0)
-//                }
             }
             .frame(width: 200, height: 250)
             .clipShape(RoundedRectangle(cornerRadius: 25.0))

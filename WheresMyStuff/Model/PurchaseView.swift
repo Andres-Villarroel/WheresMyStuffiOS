@@ -1,15 +1,7 @@
-//
-//  PurchaseView.swift
-//  WheresMyStuff
-//
-//  Created by Andres Villarroel on 4/18/24.
-//
-
 import SwiftUI
 import StoreKit
 import os
 struct PurchaseView: View {
-//    @StateObject var storekit = StoreKitManager()
     @EnvironmentObject var storekit: StoreKitManager
     let log = Logger(subsystem: "WheresMyStuff", category: "PurchaseView")
     

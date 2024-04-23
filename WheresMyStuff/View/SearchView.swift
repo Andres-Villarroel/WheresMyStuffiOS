@@ -30,8 +30,6 @@ struct SearchView: View {
                         }
                     
                     ItemsListView(filterString: searchTerm)
-//                        .clipShape(RoundedRectangle(cornerRadius: 5))
-//                        .padding(.top, 5)
                         .searchable(text: $searchTerm, placement: .navigationBarDrawer(displayMode: .always), prompt: "What do you want to find?")//this provides the search function such as the built-in search bar
                 }// end zstack
                 .ignoresSafeArea(.keyboard, edges: .bottom)
@@ -49,7 +47,7 @@ struct SearchView: View {
     newItem.image = data
     let firstItem = ItemDataModel(name: "Pen", location: "Desk", category: "Desk", notes: "First added")
     firstItem.image = data
-    let secondItem = ItemDataModel(name: "PSP", location: "Closet middle", category: "Closet", notes: "Second added")
+    let secondItem = ItemDataModel(name: "P", location: "Closet middle", category: "Closet", notes: "Second added")
     secondItem.image = data
     let thirdItem = ItemDataModel(name: "Dehumidifier", location: "Chloe's Crate", category: "My Bedroom", notes: "Third added")
     thirdItem.image = data

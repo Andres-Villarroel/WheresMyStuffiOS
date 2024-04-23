@@ -3,7 +3,6 @@ import SwiftData
 import os
 struct RecentsCards: View {
     
-//    @Query(sort: \ItemDataModel.creationDate, order: .reverse) var items: [ItemDataModel]
     @Query var items: [ItemDataModel]
     @State private var showRecAddSheet = false
     let log = Logger()
@@ -15,7 +14,6 @@ struct RecentsCards: View {
         HStack{
             Spacer()
             VStack {
-                //.frame(width: 170, height: 150)
                 Text("Recently Added")
                     .foregroundStyle(Color.white)
                 if items.isEmpty{
@@ -70,7 +68,6 @@ struct RecentsCards: View {
 }// end struct
 
 #Preview {
-    //RecentsCards()
     let container = try! ModelContainer(for: ItemDataModel.self, configurations: ModelConfiguration(isStoredInMemoryOnly: true))
 //        let image = UIImage(named: "tiltedParrot")!
     let image = UIImage(named: "debugImage")!

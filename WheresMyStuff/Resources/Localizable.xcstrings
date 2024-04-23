@@ -34,7 +34,14 @@
       }
     },
     "+Category" : {
-
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "+Categoría"
+          }
+        }
+      }
     },
     "+Item" : {
       "localizations" : {
@@ -270,7 +277,14 @@
       }
     },
     "Item Limit Reached" : {
-
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Límite alcanzado"
+          }
+        }
+      }
     },
     "Last Updated: %@" : {
       "localizations" : {
@@ -283,7 +297,14 @@
       }
     },
     "Limit is %lld items, please purchase the full version to remove this limit. The full version can be purchased in: \nSearch screen>Settings." : {
-
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "El límite es de %lld artículos, por favor compre la versión completa para eliminar este límite. La versión completa se puede comprar en: \nPantalla de búsqueda>Configuración."
+          }
+        }
+      }
     },
     "Location" : {
       "localizations" : {
@@ -328,10 +349,24 @@
       }
     },
     "No categories found. \nPress the '+Category' button \nto add a category.'" : {
-
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No hay categorías. \nPresione el botón '+Categoría' \npara crear una categoría\". "
+          }
+        }
+      }
     },
     "No items found" : {
-
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No se encontró artículos"
+          }
+        }
+      }
     },
     "No Items Here..." : {
       "localizations" : {
@@ -456,7 +491,14 @@
       }
     },
     "Restore Purchase" : {
-
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Restaurar la compra"
+          }
+        }
+      }
     },
     "Save Changes" : {
       "localizations" : {

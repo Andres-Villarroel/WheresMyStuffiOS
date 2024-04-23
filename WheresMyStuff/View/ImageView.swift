@@ -2,7 +2,6 @@ import SwiftUI
 import SwiftData
 
 struct ImageView: View {
-//    @Binding var imageData: Data?
     let item: ItemDataModel
     
     var body: some View {
@@ -22,16 +21,6 @@ struct ImageView: View {
                         .scaledToFit()
                 }
             }
-//            .toolbar {
-//                if isInEditMode {
-//                    Button(action: deleteImage, label: {
-//                        Image(systemName: "trash")
-//                            .foregroundStyle(Color.white)
-//                    })
-//                }
-//            }
-//            .frame(maxWidth: .infinity, maxHeight: .infinity)
-//            .background(Color.black).edgesIgnoringSafeArea(.all)
         }
     }// end body
     

@@ -1,5 +1,3 @@
-//TODO: REFACTOR THIS FILE ALONG WITH CATEGORYITEMSLISTVIEW() AS THY APPEAR THE SAME AND USE THE SAME LAYOUT FOR THE SHEETS FEATURE
-
 import SwiftUI
 import SwiftData
 import SwiftUI_NotificationBanner
@@ -32,9 +30,9 @@ struct ItemsListView: View {
                         item.lastViewDate = Date.now
                     } label: {
                         ItemCellView(item: item)
+                            .foregroundStyle(Color.white)
                     }
                     .listRowSeparatorTint(Color.white)
-                    .buttonStyle(PlainButtonStyle())
                     .alignmentGuide(.listRowSeparatorLeading) { _ in
                         100
                     }
@@ -99,4 +97,5 @@ struct ItemsListView: View {
     container.mainContext.insert(thirdItem)
     return ItemsListView(filterString: "")
         .modelContainer(container)
+        .environmentObject(GlobalConstant())
 }

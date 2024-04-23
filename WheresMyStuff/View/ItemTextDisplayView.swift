@@ -1,10 +1,3 @@
-//
-//  ItemTextDisplayView.swift
-//  WheresMyStuff
-//
-//  Created by Andres Villarroel on 4/11/24.
-//
-
 import SwiftUI
 import SwiftData
 
@@ -13,7 +6,6 @@ struct ItemTextDisplayView: View {
     private let cRadius = CGFloat(5)
     
     var body: some View {
-//        Spacer()
         ScrollView {
             VStack {
                 Text("Name")
@@ -24,7 +16,6 @@ struct ItemTextDisplayView: View {
                     .clipShape(RoundedRectangle(cornerRadius: cRadius))
             }
             .padding(.top)
-            //        Spacer()
             VStack{
                 Text("Location")
                     .bold()

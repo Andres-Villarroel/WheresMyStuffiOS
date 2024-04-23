@@ -1,10 +1,3 @@
-//
-//  MainView.swift
-//  WheresMyStuff
-//
-//  Created by Andres Villarroel on 2/20/24.
-//
-
 import SwiftUI
 import SwiftData
 
@@ -37,7 +30,6 @@ struct TabBarView: View {
         .onAppear {
             let appearance = UITabBarAppearance()
             appearance.backgroundEffect = UIBlurEffect(style: .systemUltraThinMaterial)
-//            appearance.backgroundColor = UIColor(Color.orange.opacity(0.2))
             
             UITabBar.appearance().standardAppearance = appearance
             
@@ -56,4 +48,5 @@ struct TabBarView: View {
     }
     return TabBarView()
         .modelContainer(container)
+        .environmentObject(GlobalConstant())
 }
