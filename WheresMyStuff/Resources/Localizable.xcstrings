@@ -205,6 +205,9 @@
         }
       }
     },
+    "Dashboard" : {
+
+    },
     "Delete Image" : {
       "localizations" : {
         "es-419" : {

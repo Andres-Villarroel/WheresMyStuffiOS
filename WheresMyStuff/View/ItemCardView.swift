@@ -38,7 +38,7 @@ struct ItemCardView: View {
             ZStack(alignment: .bottom){
                 Image(systemName: "photo")
                     .resizable()
-                    .frame(maxWidth: 200, maxHeight: 200)
+//                    .frame(maxWidth: 200, maxHeight: 200)
                 //sets the text
                 VStack{
                     Text(providedItem.name)
@@ -47,13 +47,15 @@ struct ItemCardView: View {
                     Text(providedItem.location)
                         .padding([.bottom, .leading, .trailing], 12)
                 }
-                .frame(maxWidth: 200, maxHeight: 50)
+                .frame(maxWidth: .infinity, maxHeight: 50)
                 .background(.ultraThinMaterial)
-                .clipShape(
-                    .rect(cornerRadii: RectangleCornerRadii(topLeading: 10, bottomLeading: 25, bottomTrailing: 25, topTrailing: 10 ))
-                )
+//                .clipShape(RoundedRectangle(cornerRadius: 25.0))
+//                .clipShape(
+//                    .rect(cornerRadii: RectangleCornerRadii(topLeading: 10, bottomLeading: 25, bottomTrailing: 25, topTrailing: 10 ))
+//                )
             }
-            .frame(width: 200, height: 250)
+            .frame(height: 250)
+//            .frame(width: 200, height: 250)
             .clipShape(RoundedRectangle(cornerRadius: 25.0))
         }
     }
@@ -62,8 +64,8 @@ struct ItemCardView: View {
 #Preview {
     let container = try! ModelContainer(for: CategoryDataModel.self, ItemDataModel.self, configurations: ModelConfiguration(isStoredInMemoryOnly: true))
     
-//    let image = UIImage(named: "tiltedParrot")!
-    let image = UIImage(named: "debugImage")!
+    let image = UIImage(named: "tiltedParrot")!
+//    let image = UIImage(named: "debugImage")!
     let item = ItemDataModel(name: "test name", location: "test location", category: "test category", notes: "test notes")
     item.image = image.jpegData(compressionQuality: 0.5)
     container.mainContext.insert(CategoryDataModel(name: item.category))

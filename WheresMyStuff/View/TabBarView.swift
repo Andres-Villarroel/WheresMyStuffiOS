@@ -15,7 +15,7 @@ struct TabBarView: View {
             
             BrowseView()
                 .tabItem {
-                    Label("Browse", systemImage: "list.dash")
+                    Label("Dashboard", systemImage: "list.dash")
                 }
                 .tag(2)
             

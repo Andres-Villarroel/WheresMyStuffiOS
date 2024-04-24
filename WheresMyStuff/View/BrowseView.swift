@@ -89,9 +89,9 @@ struct BrowseView: View {
 
 #Preview {
     let container = try! ModelContainer(for: CategoryDataModel.self, ItemDataModel.self, configurations: ModelConfiguration(isStoredInMemoryOnly: true))
-//    let image = UIImage(named: "tiltedParrot")!
-    let image = UIImage(named: "debugImage")
-    let data = image!.pngData()
+    let image = UIImage(named: "tiltedParrot")!
+//    let image = UIImage(named: "debugImage")
+    let data = image.pngData()
     
     let newItem = ItemDataModel(name: "test name", location: "test location", category: "testMiscellaneous", notes: "test notes")
     let secondItem = ItemDataModel(name: "second name", location: "second location", category: "testMiscellaneous", notes: "test notes")

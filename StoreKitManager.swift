@@ -13,7 +13,7 @@ class StoreKitManager: ObservableObject{
     @Published var entitlements = [Transaction]()   //used to handle refunds
     
     init(){
-        log.info("init triggered")
+        log.info("StoreKitManager init triggered")
         transactionListener = listenForTransactions()
         
         Task{
@@ -21,7 +21,7 @@ class StoreKitManager: ObservableObject{
             //must be called after the products are already fetched
             await updateCurrentEntitlements()
         }
-        log.info("init finished")
+        log.info("StoreKitManager init finished")
     }
     
     @MainActor
