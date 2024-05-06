@@ -264,7 +264,7 @@ struct EditFormView: View {
     }
     
     var infoNotification: DYNotification {
-        let message = "Saved"
+        let message = String(localized: "Saved")
         let type: DYNotificationType = .success
         let displayDuration: TimeInterval = 0.9
         let dismissOnTap = true

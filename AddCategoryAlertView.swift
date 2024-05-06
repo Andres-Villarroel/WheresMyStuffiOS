@@ -27,7 +27,7 @@ struct AddCategoryAlertView: View {
                         Spacer()
                     }
                     
-                    TextField("Enter Cateory Name", text: $newCategoryName)
+                    TextField("Enter Category Name", text: $newCategoryName)
                     //                    .padding(5)
                         .background(Color.init(uiColor: .darkGray))
                         .clipShape(RoundedRectangle(cornerRadius: 5))

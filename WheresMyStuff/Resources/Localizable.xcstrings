@@ -206,7 +206,14 @@
       }
     },
     "Dashboard" : {
-
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Explorar"
+          }
+        }
+      }
     },
     "Delete Image" : {
       "localizations" : {
@@ -253,7 +260,7 @@
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Escriba Nueva Nombre"
+            "value" : "Escriba Nuevo Nombre"
           }
         }
       }
@@ -263,7 +270,7 @@
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Escriba Nueva Nombre"
+            "value" : "Escriba Nuevo Nombre"
           }
         }
       }
@@ -523,6 +530,16 @@
         }
       }
     },
+    "Saved" : {
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Guardado"
+          }
+        }
+      }
+    },
     "Search" : {
       "localizations" : {
         "es-419" : {
@@ -574,12 +591,22 @@
         }
       }
     },
+    "Successfully Added" : {
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Agregado con éxito"
+          }
+        }
+      }
+    },
     "Take Photo" : {
       "localizations" : {
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Tomar nueva foto"
+            "value" : "Tomar nuevo foto"
           }
         }
       }

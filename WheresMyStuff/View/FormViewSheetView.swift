@@ -229,7 +229,7 @@
      }
      
      var infoNotification: DYNotification {
-         let message = "Successfully Added"
+         let message = String(localized: "Successfully Added")
          let type: DYNotificationType = .success
          let displayDuration: TimeInterval = 1.5
          let dismissOnTap = true
