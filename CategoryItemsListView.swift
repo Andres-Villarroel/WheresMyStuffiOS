@@ -80,8 +80,9 @@ struct CategoryItemsListView: View {
                         .sheet(item: $itemSelected) { item in
                             ItemSheetView(item: item, canEdit: true)
                         }
-                        
                         .scrollContentBackground(.hidden)
+                        Text("Items: \(items.count)")
+                            .padding(.bottom)
                     }//end else
                 }//end vstack
             }//end zstack

@@ -17,7 +17,16 @@ struct BrowseView: View {
                     VStack {
                         //These show the recently viewed and added items views
                         RecentsCards()
-                        //lists the categories
+                        
+                        //quick statistics
+                        HStack{
+                            Text("Total Items: \(items.count)")
+                                .padding(.leading)
+                            Spacer()
+                            Text("Total Categories: \(categories.count)")
+                                .padding(.trailing)
+                        }
+                        
                         //category labels
                         ZStack {
                             Text("Categories")  //Consider making this a tab selection view to choose to browse between items and categories
@@ -55,6 +64,7 @@ struct BrowseView: View {
                             .background(Color.clear)
                             .cornerRadius(20)
                             .padding([.leading, .trailing, .bottom], 30)
+                            
                         } else {
                             Text("No categories found. \nPress the '+Category' button \nto add a category.'")
                                 .padding(15)

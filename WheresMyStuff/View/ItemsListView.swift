@@ -9,15 +9,19 @@ struct ItemsListView: View {
     @EnvironmentObject var notificationBanner: DYNotificationHandler
     @State var itemSelected: ItemDataModel? //to be used to help implement sheet feature
     @Query var items: [ItemDataModel]
+    @Binding var searchTerm: String
     
-    init (filterString: String) {
+    init (filterString: Binding<String>) {
+        self._searchTerm = filterString
         let predicate  = #Predicate<ItemDataModel>{ item in
-            item.name.localizedStandardContains(filterString) ||
-            item.location.localizedStandardContains(filterString) ||
-            filterString.isEmpty
+            item.name.localizedStandardContains(searchTerm) ||
+            item.location.localizedStandardContains(searchTerm) ||
+            searchTerm.isEmpty
         }
         
         _items = Query(filter: predicate)   //reinitializes reinitializes the queried items array to now include the predicate (search filter)
+            
+//        self.searchTerm = filterString
     }
     
     var body: some View {
@@ -51,6 +55,13 @@ struct ItemsListView: View {
 //            .background(.ultraThinMaterial) //this sets the entire view blurry
             .sheet(item: $itemSelected) { item in
                 ItemSheetView(item: item, canEdit: true)
+            }
+            if (searchTerm.isEmpty){
+                Text("Item count: \(items.count)")
+                    .padding(.bottom)
+            } else {
+                Text("Results: \(items.count)")
+                    .padding(.bottom)
             }
         }//end if
         //set blurry background here
@@ -95,7 +106,7 @@ struct ItemsListView: View {
     container.mainContext.insert(firstItem)
     container.mainContext.insert(secondItem)
     container.mainContext.insert(thirdItem)
-    return ItemsListView(filterString: "")
+    return ItemsListView(filterString: .constant(""))
         .modelContainer(container)
         .environmentObject(GlobalConstant())
 }

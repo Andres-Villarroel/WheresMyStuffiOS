@@ -275,6 +275,16 @@
         }
       }
     },
+    "Full Version" : {
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Versión completa"
+          }
+        }
+      }
+    },
     "hi yall" : {
       "extractionState" : "stale",
       "localizations" : {
@@ -286,6 +296,9 @@
         }
       }
     },
+    "Item count: %lld" : {
+
+    },
     "Item Limit Reached" : {
       "localizations" : {
         "es-419" : {
@@ -295,6 +308,9 @@
           }
         }
       }
+    },
+    "Items: %lld" : {
+
     },
     "Last Updated: %@" : {
       "localizations" : {
@@ -510,6 +526,9 @@
         }
       }
     },
+    "Results: %lld" : {
+
+    },
     "Save Changes" : {
       "localizations" : {
         "es-419" : {
@@ -607,6 +626,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Tomar nuevo foto"
+          }
+        }
+      }
+    },
+    "Total Categories: %lld" : {
+
+    },
+    "Total Items: %lld" : {
+
+    },
+    "Unlocks the full version of the app" : {
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Versión completa sin restricciones"
           }
         }
       }
