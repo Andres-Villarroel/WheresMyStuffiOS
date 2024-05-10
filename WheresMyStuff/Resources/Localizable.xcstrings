@@ -53,6 +53,9 @@
         }
       }
     },
+    "A max of %lld items can be added, please purchase the full version to remove this limit. The full version can be purchased in: \nSearch>Settings Button." : {
+
+    },
     "Add" : {
       "localizations" : {
         "es-419" : {

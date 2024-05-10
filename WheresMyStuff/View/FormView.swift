@@ -150,7 +150,7 @@ struct FormView: View {
                 .disabled(name.isEmpty || location.isEmpty)     //input validation to ensure name and location are filled out
                 .alert(isPresented: $showLimitReachedAlert){
                     //show alert if the user has reached the limit for adding items while in the free version of the app.
-                    Alert(title: Text("Item Limit Reached"), message: Text("Limit is \(itemLimit) items, please purchase the full version to remove this limit. The full version can be purchased in: \nSearch screen>Settings."), dismissButton: .default(Text("OK")))
+                    Alert(title: Text("Item Limit Reached"), message: Text("A max of \(itemLimit) items can be added, please purchase the full version to remove this limit. The full version can be purchased in: \nSearch>Settings Button."), dismissButton: .default(Text("OK")))
                 }
                 Spacer()
             }

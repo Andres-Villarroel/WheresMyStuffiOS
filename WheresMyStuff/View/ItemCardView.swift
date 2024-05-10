@@ -20,6 +20,7 @@ struct ItemCardView: View {
                     Image(uiImage: image!)
                         .resizable()
                 }
+                
                 //sets the text
                 VStack{
                     Text(providedItem.name)
@@ -31,14 +32,15 @@ struct ItemCardView: View {
                 .frame(maxWidth: .infinity, maxHeight: 50)
                 .background(.ultraThinMaterial)
             }
-            .frame(height: 250)
+            .frame(height: 200)
             .background(.ultraThinMaterial)
             .clipShape(RoundedRectangle(cornerRadius: 25.0))
         } else {
             ZStack(alignment: .bottom){
                 Image(systemName: "photo")
                     .resizable()
-//                    .frame(maxWidth: 200, maxHeight: 200)
+//                Image("photo")
+//                    .frame(maxWidth: .infinity)
                 //sets the text
                 VStack{
                     Text(providedItem.name)
@@ -49,13 +51,9 @@ struct ItemCardView: View {
                 }
                 .frame(maxWidth: .infinity, maxHeight: 50)
                 .background(.ultraThinMaterial)
-//                .clipShape(RoundedRectangle(cornerRadius: 25.0))
-//                .clipShape(
-//                    .rect(cornerRadii: RectangleCornerRadii(topLeading: 10, bottomLeading: 25, bottomTrailing: 25, topTrailing: 10 ))
-//                )
             }
-            .frame(height: 250)
-//            .frame(width: 200, height: 250)
+//            .fixedSize(horizontal: true, vertical: false)
+            .frame(height: 200)
             .clipShape(RoundedRectangle(cornerRadius: 25.0))
         }
     }
@@ -67,7 +65,7 @@ struct ItemCardView: View {
     let image = UIImage(named: "tiltedParrot")!
 //    let image = UIImage(named: "debugImage")!
     let item = ItemDataModel(name: "test name", location: "test location", category: "test category", notes: "test notes")
-    item.image = image.jpegData(compressionQuality: 0.5)
+//    item.image = image.jpegData(compressionQuality: 0.5)
     container.mainContext.insert(CategoryDataModel(name: item.category))
     container.mainContext.insert(item)
 //    return ItemCardView(imageData: nil, itemName: "testName testName testName testName", itemLocation: "bottom closet bottom closet bottom closet bottom closet")

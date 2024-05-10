@@ -43,10 +43,12 @@ class StoreKitManager: ObservableObject{
         switch result {
             //        case .success(let verificationResult):
             case .success(.verified(let transaction)):
+            log.info("PURHCASE STATUS: Verified purhcase confirmed.")
                 purchasedProducts.insert(product)
                 await transaction.finish()
                 return transaction
             case .userCancelled:
+            log.info("PURCHASE STATUS: User cancelled purchase.")
                 return nil
             case .pending:
                 return nil

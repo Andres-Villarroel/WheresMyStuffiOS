@@ -9,23 +9,27 @@ struct BrowseView: View {
     @Query var categories: [CategoryDataModel]
     @State var showAddCategoryView = false
     @State private var keyboardHeight: CGFloat = 0
+    @State var categoryCount: Int?
     
     var body: some View {
         NavigationStack {
                 ZStack {
                     
-                    VStack {
+                    VStack{
                         //These show the recently viewed and added items views
-                        RecentsCards()
+                        RecentsCards(categoryCount: $categoryCount)
+                            .onAppear{
+                                categoryCount = categories.count
+                            }
                         
                         //quick statistics
-                        HStack{
-                            Text("Total Items: \(items.count)")
-                                .padding(.leading)
-                            Spacer()
-                            Text("Total Categories: \(categories.count)")
-                                .padding(.trailing)
-                        }
+//                        HStack{
+//                            Spacer()
+//                            Text("Total Items: \(items.count)")
+//                            Spacer()
+//                            Text("Total Categories: \(categories.count)")
+//                            Spacer()
+//                        }
                         
                         //category labels
                         ZStack {

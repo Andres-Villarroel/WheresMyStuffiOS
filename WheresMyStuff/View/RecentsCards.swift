@@ -4,9 +4,12 @@ import os
 struct RecentsCards: View {
     
     @Query var items: [ItemDataModel]
+    @Query var categories: [CategoryDataModel]
     @State private var showRecAddSheet = false
+    @Binding var categoryCount: Int?
     let log = Logger()
-    init(){
+    init(categoryCount: Binding<Int?>){
+        self._categoryCount = categoryCount
         _items = Query(sort: \ItemDataModel.creationDate, order: .reverse)
     }
     
@@ -39,9 +42,9 @@ struct RecentsCards: View {
                     .sheet(isPresented: $showRecAddSheet) {
                         ItemSheetView(item: items.first ?? ItemDataModel(name: "Error", location: "Error", category: "Error", notes: "Error"), canEdit: true)
                     }
-                    
                 }
-                
+                Text("Total Items: \(items.count)")
+                    .padding(.vertical)
             }   //card 1
             
             Spacer()
@@ -54,11 +57,13 @@ struct RecentsCards: View {
                     } description: {
                         Text("No items found")
                     }
-                        .frame(width: 170, height: 150)
+                    .frame(width: 170, height: 150)
                         
                 } else {
                     RecentlyViewedView()
                 }
+                Text("Total Categories: \(categoryCount ?? 8008135)")
+                    .padding(.vertical)
             }// card 2
         
             Spacer()
@@ -74,8 +79,8 @@ struct RecentsCards: View {
     let data = image.pngData()
 //    let data = image!.pngData()
     let newItem = ItemDataModel(name: "test name", location: "test location", category: "test category", notes: "test notes")
-    newItem.image = data
+//    newItem.image = data
     container.mainContext.insert(newItem)
-    return RecentsCards()
+    return RecentsCards(categoryCount: .constant(5))
         .modelContainer(container)
 }

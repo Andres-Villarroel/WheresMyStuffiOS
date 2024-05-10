@@ -87,7 +87,7 @@ struct EditFormView: View {
                             .frame(maxHeight: 300)
                     } else {
                         //if the item has no image, display this image as default
-                        Image("tiltedParrot")
+                        Image("defaultImageTiel")
                             .resizable()
                     }
                 }
@@ -287,7 +287,7 @@ struct EditFormView: View {
             container.mainContext.insert(newCategory)
         }
         let newItem = ItemDataModel(name: "test name", location: "test location", category: "test category", notes: "test notes")
-        newItem.image = data
+//        newItem.image = data
         
         return EditFormView(item: newItem)
             .modelContainer(container)

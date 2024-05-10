@@ -37,7 +37,7 @@ struct ImageView: View {
     
     let image = UIImage(named: "tiltedParrot")!
     @State var data = image.pngData()
-    tempItem.image = data
+//    tempItem.image = data
     
     return ImageView(item: tempItem)
         .modelContainer(container)
