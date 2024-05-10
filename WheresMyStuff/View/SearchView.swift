@@ -34,7 +34,8 @@ struct SearchView: View {
                         .searchable(text: $searchTerm, placement: .navigationBarDrawer(displayMode: .always), prompt: "What do you want to find?")//this provides the search function
                     
                 }// end zstack
-                .ignoresSafeArea(.keyboard, edges: .bottom)
+//                .ignoresSafeArea(.keyboard, edges: .bottom)
+//                .ignoresSafeArea(.keyboard)
             }
             .navigationTitle("Search Items")
         }// end navigation stack
