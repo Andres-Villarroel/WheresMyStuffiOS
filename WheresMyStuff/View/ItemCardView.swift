@@ -53,7 +53,7 @@ struct ItemCardView: View {
                 .background(.ultraThinMaterial)
             }
 //            .fixedSize(horizontal: true, vertical: false)
-            .frame(height: 200)
+            .frame(width: 180, height: 180)
             .clipShape(RoundedRectangle(cornerRadius: 25.0))
         }
     }

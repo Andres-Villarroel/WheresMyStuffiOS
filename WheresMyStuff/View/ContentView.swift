@@ -1,7 +1,7 @@
 import SwiftUI
 import SwiftData
 import SwiftUI_NotificationBanner
-
+//TODO: consider haptic and acoustic feedback instead of a notification banner
 struct ContentView: View {
     //prep work for the notification banner feature
     @EnvironmentObject var notificationHandler: DYNotificationHandler

@@ -35,6 +35,7 @@ struct BrowseView: View {
                         ZStack {
                             Text("Categories")  //Consider making this a tab selection view to choose to browse between items and categories
                                 .foregroundStyle(Color.white)
+                                .bold()
                             
                             Button("+Category"){
                                 showAddCategoryView.toggle()
@@ -43,7 +44,7 @@ struct BrowseView: View {
                             .padding(.trailing, 15)
                             .frame(maxWidth: .infinity, alignment: .trailing)
                         }
-                        .padding([.top, .bottom])
+//                        .padding([.top, .bottom])
                         
                         //MARK: category list
                         if(!categories.isEmpty){
@@ -70,6 +71,7 @@ struct BrowseView: View {
                             .padding([.leading, .trailing, .bottom], 30)
                             
                         } else {
+                            Spacer()
                             Text("No categories found. \nPress the '+Category' button \nto add a category.'")
                                 .padding(15)
                                 .multilineTextAlignment(.center)

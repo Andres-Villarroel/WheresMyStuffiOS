@@ -1,6 +1,7 @@
 import SwiftUI
 import SwiftData
 import SwiftUI_NotificationBanner
+import UIKit
 
 struct ItemsListView: View {
     
@@ -10,6 +11,7 @@ struct ItemsListView: View {
     @State var itemSelected: ItemDataModel? //to be used to help implement sheet feature
     @Query var items: [ItemDataModel]
     @Binding var searchTerm: String
+    let device = UIDevice.current
     
     init (filterString: Binding<String>) {
         self._searchTerm = filterString
@@ -20,49 +22,53 @@ struct ItemsListView: View {
         }
         
         _items = Query(filter: predicate)   //reinitializes reinitializes the queried items array to now include the predicate (search filter)
-            
-//        self.searchTerm = filterString
     }
     
     var body: some View {
         if !items.isEmpty {
-            List{
-                //using ForEach due to its access to the .onDelete modifier
-                ForEach(items) { item in
-                    Button {
-                        itemSelected = item
-                        item.lastViewDate = Date.now
-                    } label: {
-                        ItemCellView(item: item)
-                            .foregroundStyle(Color.white)
-                    }
-                    .listRowSeparatorTint(Color.white)
-                    .alignmentGuide(.listRowSeparatorLeading) { _ in
-                        100
-                    }
-                    .listRowBackground(Color.indigo.opacity(0.9).blur(radius: 30.0))
-                }//end ForEach
-                .onDelete{ indexSet in
-                    for index in indexSet{
-                        print("LOG Before deleting in ItemsListView, Items has \(items.count) items")
-                        context.delete(items[index])
-                        print("LOG After deleting in ItemsListView, Items has \(items.count) items")
-                    }
-                }//end onDelete
-            }//end list
-            .background(Color.clear)
-            .scrollContentBackground(.hidden)
-//            .background(.ultraThinMaterial) //this sets the entire view blurry
-            .sheet(item: $itemSelected) { item in
-                ItemSheetView(item: item, canEdit: true)
-            }
-            if (searchTerm.isEmpty){
-                Text("Item count: \(items.count)")
-                    .padding(.bottom)
-            } else {
-                Text("Results: \(items.count)")
-                    .padding(.bottom)
-            }
+            VStack{
+                List{
+                    //using ForEach due to its access to the .onDelete modifier
+                    ForEach(items) { item in
+                        Button {
+                            itemSelected = item
+                            item.lastViewDate = Date.now
+                        } label: {
+                            ItemCellView(item: item)
+                                .foregroundStyle(Color.white)
+                        }
+                        .listRowSeparatorTint(Color.white)
+                        .alignmentGuide(.listRowSeparatorLeading) { _ in
+                            100
+                        }
+                        .listRowBackground(Color.indigo.opacity(0.9).blur(radius: 30.0))
+                    }//end ForEach
+                    .onDelete{ indexSet in
+                        for index in indexSet{
+                            print("LOG Before deleting in ItemsListView, Items has \(items.count) items")
+                            context.delete(items[index])
+                            print("LOG After deleting in ItemsListView, Items has \(items.count) items")
+                        }
+                    }//end onDelete
+                }//end list
+                .background(Color.clear)
+                .scrollContentBackground(.hidden)
+                //            .background(.ultraThinMaterial) //this sets the entire view blurry
+                .sheet(item: $itemSelected) { item in
+                    ItemSheetView(item: item, canEdit: true)
+                }
+                .padding(.top, 2)
+                if (searchTerm.isEmpty){
+                    Text("Item count: \(items.count)")
+                    //                        .padding(.bottom, 5)
+                        .safeAreaPadding(.bottom)
+                } else {
+                    Text("Results: \(items.count)")
+                    //                        .padding(.bottom, 5)
+                        .safeAreaPadding(.bottom)
+                }
+                
+            }// end vstack
         }//end if
         //set blurry background here
         else {
@@ -78,6 +84,7 @@ struct ItemsListView: View {
                 Text("Check the spelling or try a new search.")
             }
         }
+        
     }//end body
     
 }

@@ -7,10 +7,18 @@ struct SearchView: View {
     @Query var items: [ItemDataModel]
     @State private var searchTerm = ""
     @EnvironmentObject var constants: GlobalConstant
+    private let navBarAppearance = UINavigationBarAppearance()
+    
+    init(){
+        navBarAppearance.configureWithDefaultBackground()
+        navBarAppearance.backgroundColor = UIColor(.launch)
+        UINavigationBar.appearance().standardAppearance = navBarAppearance
+        UINavigationBar.appearance().scrollEdgeAppearance = navBarAppearance
+    }
     
     var body: some View {
         NavigationStack {
-            GeometryReader { _ in   //necesary to get rid of that very annoying visual bug that pushed the list under the navigation bar whenever the keyboard appeared
+//            GeometryReader { geo in   //necesary to get rid of that very annoying visual bug that pushed the list under the navigation bar whenever the keyboard appeared
                 ZStack {
                     //MARK: Background Image
                     Image("appBackground")
@@ -25,6 +33,7 @@ struct SearchView: View {
                                 } label: {
                                     Image(systemName: "gearshape.fill")
                                         .tint(constants.buttonColor)
+                                        
                                 }
                             }
                             
@@ -34,9 +43,7 @@ struct SearchView: View {
                         .searchable(text: $searchTerm, placement: .navigationBarDrawer(displayMode: .always), prompt: "What do you want to find?")//this provides the search function
                     
                 }// end zstack
-//                .ignoresSafeArea(.keyboard, edges: .bottom)
-//                .ignoresSafeArea(.keyboard)
-            }
+//            }
             .navigationTitle("Search Items")
         }// end navigation stack
     }// end body
@@ -67,11 +74,11 @@ struct SearchView: View {
     container.mainContext.insert(firstItem)
     container.mainContext.insert(secondItem)
     container.mainContext.insert(thirdItem)
-//    container.mainContext.insert(newItem)
-//    container.mainContext.insert(fourthItem)
-//    container.mainContext.insert(fifthItem)
-//    container.mainContext.insert(sixthItem)
-//    container.mainContext.insert(seventhItem)
+    container.mainContext.insert(newItem)
+    container.mainContext.insert(fourthItem)
+    container.mainContext.insert(fifthItem)
+    container.mainContext.insert(sixthItem)
+    container.mainContext.insert(seventhItem)
     let tempArray = ["testMiscellaneous"]
     for cat in tempArray{
         let newCategory = CategoryDataModel(name: cat)

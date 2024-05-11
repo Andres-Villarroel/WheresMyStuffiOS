@@ -44,7 +44,7 @@ struct RecentsCards: View {
                     }
                 }
                 Text("Total Items: \(items.count)")
-                    .padding(.vertical)
+                    .padding(.vertical, 5)
             }   //card 1
             
             Spacer()
@@ -63,7 +63,7 @@ struct RecentsCards: View {
                     RecentlyViewedView()
                 }
                 Text("Total Categories: \(categoryCount ?? 8008135)")
-                    .padding(.vertical)
+                    .padding(.vertical, 5)
             }// card 2
         
             Spacer()
