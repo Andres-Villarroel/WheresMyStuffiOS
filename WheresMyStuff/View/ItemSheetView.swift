@@ -32,7 +32,7 @@ struct ItemSheetView: View {
                             }
                             .clipped()
                     } else {
-                        Image("defaultImageTiel")
+                        Image(systemName: "photo")
                             .resizable()
                             .scaledToFit()
                     }

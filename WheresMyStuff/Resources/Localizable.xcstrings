@@ -11,28 +11,6 @@
         }
       }
     },
-    "+ Add Category" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "es-419" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "+ Categoría"
-          }
-        }
-      }
-    },
-    "+Add Category" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "es-419" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "+Categoría"
-          }
-        }
-      }
-    },
     "+Category" : {
       "localizations" : {
         "es-419" : {
@@ -54,7 +32,14 @@
       }
     },
     "A max of %lld items can be added, please purchase the full version to remove this limit. The full version can be purchased in: \nSearch>Settings Button." : {
-
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "El límite es de %lld artículos, por favor compre la versión completa para eliminar este límite. La versión completa se puede comprar en: \nBuscar>Botón de Configuración."
+          }
+        }
+      }
     },
     "Add" : {
       "localizations" : {
@@ -86,17 +71,6 @@
         }
       }
     },
-    "Add items under the '%@' category to fill this page" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "es-419" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Agregue artículos a la categoría \"%@\" para llenar esta página."
-          }
-        }
-      }
-    },
     "Add items under the '%@' category to fill this page." : {
       "localizations" : {
         "es-419" : {
@@ -112,7 +86,7 @@
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Navegar"
+            "value" : "Explorar"
           }
         }
       }
@@ -147,17 +121,6 @@
         }
       }
     },
-    "Category: %@" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "es-419" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Categoría: %@"
-          }
-        }
-      }
-    },
     "Check the spelling or try a new search." : {
       "localizations" : {
         "es-419" : {
@@ -183,7 +146,7 @@
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Por fototeca"
+            "value" : "Por álbum"
           }
         }
       }
@@ -288,19 +251,15 @@
         }
       }
     },
-    "hi yall" : {
-      "extractionState" : "stale",
+    "Item count: %lld" : {
       "localizations" : {
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : ""
+            "value" : "Artículos: %lld"
           }
         }
       }
-    },
-    "Item count: %lld" : {
-
     },
     "Item Limit Reached" : {
       "localizations" : {
@@ -313,7 +272,14 @@
       }
     },
     "Items: %lld" : {
-
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Artículos: %lld"
+          }
+        }
+      }
     },
     "Last Updated: %@" : {
       "localizations" : {
@@ -345,34 +311,12 @@
         }
       }
     },
-    "Location: %@" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "es-419" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Lugar: %@"
-          }
-        }
-      }
-    },
     "Name" : {
       "localizations" : {
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Nombre"
-          }
-        }
-      }
-    },
-    "Name: %@" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "es-419" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Nombre: %@"
           }
         }
       }
@@ -437,17 +381,6 @@
         }
       }
     },
-    "Notes: %@" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "es-419" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Notas: %@"
-          }
-        }
-      }
-    },
     "OK" : {
       "localizations" : {
         "es-419" : {
@@ -464,17 +397,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Opcional"
-          }
-        }
-      }
-    },
-    "Photo Library" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "es-419" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Fototeca"
           }
         }
       }
@@ -530,7 +452,14 @@
       }
     },
     "Results: %lld" : {
-
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Resultados: %lld"
+          }
+        }
+      }
     },
     "Save Changes" : {
       "localizations" : {
@@ -582,17 +511,6 @@
         }
       }
     },
-    "Settings > WheresMyApp > use camera" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "es-419" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Configuracíones > WheresMyStuff > permitir camera"
-          }
-        }
-      }
-    },
     "Settings > WheresMyStuff > toggle camera" : {
       "localizations" : {
         "es-419" : {
@@ -634,10 +552,24 @@
       }
     },
     "Total Categories: %lld" : {
-
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Categorías: %lld"
+          }
+        }
+      }
     },
     "Total Items: %lld" : {
-
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Artículos: %lld"
+          }
+        }
+      }
     },
     "Unlocks the full version of the app" : {
       "localizations" : {
@@ -655,28 +587,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "¿Qué le gustaría bucar?"
-          }
-        }
-      }
-    },
-    "Your most recently added item will appear here" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "es-419" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "El último artículo agregado aparecerá aquí"
-          }
-        }
-      }
-    },
-    "Your most recently seen item will appear here" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "es-419" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "El último artículo visto aparecerá aquí"
           }
         }
       }

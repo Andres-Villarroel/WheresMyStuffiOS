@@ -36,7 +36,7 @@ struct AddItemView: View {
                             //this section add the tool bar button to add a new category
                                 .toolbar{
                                     ToolbarItem(placement: .topBarTrailing){
-                                        Button("Add Category"){
+                                        Button("+Category"){
                                             withAnimation {
                                                 showAddCategoryView.toggle()
                                             }

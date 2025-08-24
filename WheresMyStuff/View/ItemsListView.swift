@@ -57,7 +57,7 @@ struct ItemsListView: View {
                 .sheet(item: $itemSelected) { item in
                     ItemSheetView(item: item, canEdit: true)
                 }
-                .padding(.top, 2)
+                .padding(.top, 5)
                 if (searchTerm.isEmpty){
                     Text("Item count: \(items.count)")
                     //                        .padding(.bottom, 5)

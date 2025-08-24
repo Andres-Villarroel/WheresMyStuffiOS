@@ -69,6 +69,7 @@ struct BrowseView: View {
                             .background(Color.clear)
                             .cornerRadius(20)
                             .padding([.leading, .trailing, .bottom], 30)
+                            .ignoresSafeArea(.keyboard)
                             
                         } else {
                             Spacer()

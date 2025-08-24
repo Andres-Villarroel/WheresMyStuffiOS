@@ -32,7 +32,7 @@ struct ItemCardView: View {
                 .frame(maxWidth: .infinity, maxHeight: 50)
                 .background(.ultraThinMaterial)
             }
-            .frame(height: 200)
+            .frame(width: 180, height: 180)
             .background(.ultraThinMaterial)
             .clipShape(RoundedRectangle(cornerRadius: 25.0))
         } else {
