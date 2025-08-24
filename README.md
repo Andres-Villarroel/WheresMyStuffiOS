@@ -5,6 +5,15 @@
   # Technologies Used
   This app uses the new SwiftUI framework and the new SwiftData framework for the database.
 
+  # Features and Functionality
+  - Create item profiles with name, location, category, image, and notes. 
+  - Easily look up items using a searchbar
+  - Create category labels and assign items to them.
+    - View items based on category
+  - Automatic backups on iCloud
+  - Data stored locally
+  - Private: No user data is ever collected
+
   # How to download
   App is uploaded to Apple's App Store. Type 'FlashFind' in the search bar.
 
